@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/shape_white_rectangle"
+    android:padding="15dp">
+
+    <TextView
+        style="@style/MainText"
+        android:id="@+id/postTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="МЕДИАЛАБОРАТОРИЯ МЭИ" />
+
+    <TextView
+        style="@style/SecondaryText"
+        android:id="@+id/postText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="лялялялялялялялялляляляллялялялялляляллялялялялялляляллялялляляляллялялляля" />
+
+    <TextView
+        style="@style/HyperText"
+        android:id="@+id/postOpenFull"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/open_full" />
+
+    <ImageView
+        android:id="@+id/postImage"
+        android:layout_width="wrap_content"
+        android:layout_height="300dp"
+        android:scaleType="centerCrop"
+        android:layout_marginVertical="8dp"
+        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+    <TextView
+        style="@style/SmallSecondaryText"
+        android:id="@+id/postDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="20 мая 17:43" />
+</LinearLayout>

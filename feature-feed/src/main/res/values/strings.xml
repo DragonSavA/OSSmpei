@@ -1,0 +1,6 @@
+<resources>
+    <string name="brief">Сводка</string>
+    <string name="billboard">Афиша</string>
+    <string name="news">Новости</string>
+    <string name="open_full">Показать полностью…</string>
+</resources>

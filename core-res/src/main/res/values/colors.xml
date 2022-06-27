@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Common colors -->
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+
+    <!-- Indicators -->
+    <color name="red_indicator">#F57858</color>
+    <color name="yellow_indicator">#F5CE4C</color>
+    <color name="green_indicator">#AAF564</color>
+    <color name="blue_indicator">#7DF5CE</color>
+
+    <!-- OSS colors -->
+    <color name="bg_blue">#F2F3F8</color>
+    <color name="dark_bg_blue">#E3E4ED</color>
+    <color name="main_blue">#4B56A0</color>
+
+    <!-- Text colors -->
+    <color name="text_hyper_blue">#449AFF</color>
+    <color name="text_gray">#7C7C7C</color>
+    <color name="text_dark_gray">#555555</color>
+
+</resources>
