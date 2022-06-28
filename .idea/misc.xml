@@ -8,6 +8,7 @@
         <entry key="core-res/src/main/res/layout/item_lesson.xml" value="0.48802585325379294" />
         <entry key="feature-feed/src/main/res/layout/fragment_feed.xml" value="0.18206521739130435" />
         <entry key="feature-feed/src/main/res/layout/item_post.xml" value="0.21965579710144928" />
+        <entry key="feature-timetable/src/main/res/layout/fragment_timetable.xml" value="0.21965579710144928" />
       </map>
     </option>
   </component>
