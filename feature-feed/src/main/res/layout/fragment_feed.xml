@@ -9,7 +9,7 @@
     tools:context=".ui.FeedFragment">
 
     <com.google.android.material.tabs.TabLayout
-        android:id="@+id/daysTabLayout"
+        android:id="@+id/feedTabs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/background_tabs"
@@ -21,7 +21,7 @@
         app:tabUnboundedRipple="false"/>
 
     <androidx.viewpager.widget.ViewPager
-        android:id="@+id/daysViewPager"
+        android:id="@+id/feedViewPager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
