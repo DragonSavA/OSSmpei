@@ -1,0 +1,7 @@
+<resources>
+    <string name="email_example">example@mpei.ru</string>
+    <string name="password">Пароль</string>
+    <string name="auth">Войти</string>
+    <string name="register">Регистрация</string>
+    <string name="forgot_pass"><u>Забыли пароль?</u></string>
+</resources>

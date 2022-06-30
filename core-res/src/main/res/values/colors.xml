@@ -14,6 +14,7 @@
     <color name="bg_blue">#F2F3F8</color>
     <color name="dark_bg_blue">#E3E4ED</color>
     <color name="main_blue">#4B56A0</color>
+    <color name="main_blue_dark">#343B6E</color>
 
     <!-- Text colors -->
     <color name="text_hyper_blue">#449AFF</color>
