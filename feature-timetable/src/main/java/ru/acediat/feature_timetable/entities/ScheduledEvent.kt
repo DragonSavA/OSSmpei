@@ -2,8 +2,8 @@ package ru.acediat.feature_timetable.entities
 
 class ScheduledEvent(
     id : Int,
-    time : String,
+    startTime : String,
+    endTime : String,
     dayOfWeek: Int,
     name : String,
-) : Event(id, time, dayOfWeek, name) {
-}
+) : Event(id, startTime, endTime, dayOfWeek, name)

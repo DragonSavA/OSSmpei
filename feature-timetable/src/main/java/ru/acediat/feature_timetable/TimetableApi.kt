@@ -8,7 +8,7 @@ import ru.acediat.core_network.EndpointUrl
 import ru.acediat.core_network.OSS_URL
 import ru.acediat.feature_timetable.dtos.GroupDTO
 import ru.acediat.feature_timetable.dtos.GroupValidDTO
-import ru.acediat.feature_timetable.dtos.LessonsDTO
+import ru.acediat.feature_timetable.dtos.LessonDTO
 
 @EndpointUrl(OSS_URL)
 interface TimetableApi {
@@ -17,14 +17,14 @@ interface TimetableApi {
     fun getPersonLessons(
         @Query("group") group : String,
         @Query("date") date : String
-    ) : Single<List<LessonsDTO>>
+    ) : Single<List<LessonDTO>>
 
     @GET("Android/get_group_timetable.php")
     fun getPersonLessons(
         @Query("group") group : String,
         @Query("fromDate") fromDate : String,
         @Query("toDate") toDate : String,
-    ) : Observable<List<LessonsDTO>>
+    ) : Observable<List<LessonDTO>>
 
     @GET("Android/get_user_group.php")
     fun getUserGroup(

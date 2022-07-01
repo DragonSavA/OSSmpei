@@ -3,11 +3,21 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/OSS/core-res/src/main/res/drawable/background_subject.xml" value="0.2335" />
+        <entry key="..\:/OSS/core-res/src/main/res/drawable/background_tab.xml" value="0.2335" />
         <entry key="..\:/OSS/core-res/src/main/res/drawable/ic_oss.xml" value="0.2335" />
+        <entry key="..\:/OSS/core-res/src/main/res/drawable/ic_settings.xml" value="0.2335" />
+        <entry key="..\:/OSS/core-res/src/main/res/layout/item_event.xml" value="0.26721014492753625" />
+        <entry key="..\:/OSS/core-res/src/main/res/layout/item_lesson.xml" value="0.26721014492753625" />
         <entry key="..\:/OSS/feature-auth/src/main/res/drawable/button_auth.xml" value="0.2335" />
         <entry key="..\:/OSS/feature-auth/src/main/res/drawable/button_reg.xml" value="0.2335" />
         <entry key="..\:/OSS/feature-auth/src/main/res/drawable/edit_text_auth.xml" value="0.2335" />
         <entry key="..\:/OSS/feature-auth/src/main/res/layout/activity_auth.xml" value="0.25" />
+        <entry key="..\:/OSS/feature-timetable/src/main/res/drawable/background_event_list.xml" value="0.2335" />
+        <entry key="..\:/OSS/feature-timetable/src/main/res/drawable/ic_calendar.xml" value="0.2335" />
+        <entry key="..\:/OSS/feature-timetable/src/main/res/drawable/ic_group.xml" value="0.2335" />
+        <entry key="..\:/OSS/feature-timetable/src/main/res/drawable/ic_settings.xml" value="0.2335" />
+        <entry key="..\:/OSS/feature-timetable/src/main/res/layout/fragment_timetable.xml" value="0.33" />
         <entry key="core-res/src/main/res/drawable/background_subject.xml" value="0.1975" />
         <entry key="core-res/src/main/res/drawable/background_tab.xml" value="0.1975" />
         <entry key="core-res/src/main/res/layout/item_lesson.xml" value="0.48802585325379294" />
