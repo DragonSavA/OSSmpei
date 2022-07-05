@@ -9,8 +9,10 @@ class Lesson(
     endTime : String,
     dayOfWeek: Int,
     name : String,
+    place : String,
+    val type : String,
     val teacher : String,
-) : Event(id, startTime, endTime, dayOfWeek, name){
+) : Event(id, startTime, endTime, dayOfWeek, name, place){
 
     val colorId : Int by lazy {
         when(name){
@@ -26,7 +28,8 @@ class Lesson(
         fun buildFromDTO(dto : LessonDTO) : Lesson = with(dto){
             return@with Lesson(
                 lessonOId, beginLesson, endLesson,
-                dayOfWeek, kindOfWork, lecturer
+                dayOfWeek, discipline, auditorium,
+                kindOfWork, lecturer
             )
         }
     }
