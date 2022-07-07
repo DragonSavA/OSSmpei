@@ -9,36 +9,11 @@ class Timetable(
     private val amountOfDays : Int
 ) {
 
-    private val dayNames = arrayOf(
-        "ПН", "ВТ",
-        "СР", "ЧТ",
-        "ПТ", "СБ", "ВС"
-    )
-
-    private val monthNames = arrayOf(
-        "янв", "фев", "мар", "апр",
-        "май", "июн", "июл", "авг",
-        "сен", "окт", "ноя", "дек"
-    )
-
-    private val days = Time.getDates(
-        Time.mondayDate(Time.currentDate()),
-        amountOfDays.toLong(),
-        Time.RUZ
-    )
-
     private val timetable = ArrayList<ArrayList<Lesson>>()
 
     fun getDayTimetable(dayNumber : Int) : ArrayList<Lesson> = timetable[dayNumber]
 
-    fun getTimetableFormatDates(dayNumber : Int) : String
-            = "${getDayName(dayNumber)}\n${(Time.RUZ.parse(days[dayNumber]) as LocalDate).dayOfMonth}"
-
     fun appendDayTimetable(day : ArrayList<Lesson>) = timetable.addAll(listOf(day))
-
-    private fun getDayName(dayNumber : Int) : String = dayNames[dayNumber]
-
-    private fun getMonthName(monthNumber : Int) : String = monthNames[monthNumber]
 
     private fun addDayToTimetable(day : ArrayList<Lesson>){
         timetable.add(day.clone() as ArrayList<Lesson>)
@@ -82,6 +57,5 @@ class Timetable(
         }
 
     }
-
 
 }
