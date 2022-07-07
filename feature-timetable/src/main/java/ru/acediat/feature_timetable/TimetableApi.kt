@@ -15,12 +15,14 @@ interface TimetableApi {
 
     @GET("")
     fun getPersonLessons(
+        @Query("userId") id : Int,
         @Query("group") group : String,
         @Query("date") date : String
     ) : Single<List<LessonDTO>>
 
     @GET("Android/get_group_timetable.php")
     fun getPersonLessons(
+        @Query("userId") id : Int,
         @Query("group") group : String,
         @Query("fromDate") fromDate : String,
         @Query("toDate") toDate : String,
