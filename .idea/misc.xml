@@ -7,11 +7,14 @@
         <entry key="app/src/main/res/menu/menu_bottom_navigation.xml" value="0.3098958333333333" />
         <entry key="core-res/src/main/res/drawable/background_subject.xml" value="0.1975" />
         <entry key="core-res/src/main/res/drawable/background_tab.xml" value="0.1975" />
+        <entry key="core-res/src/main/res/drawable/ic_load.xml" value="0.1995" />
+        <entry key="core-res/src/main/res/layout/frame_loading.xml" value="0.2649169921875" />
         <entry key="core-res/src/main/res/layout/item_event.xml" value="0.4806690603062727" />
         <entry key="core-res/src/main/res/layout/item_lesson.xml" value="0.48802585325379294" />
         <entry key="feature-feed/src/main/res/layout/fragment_feed.xml" value="0.18206521739130435" />
         <entry key="feature-feed/src/main/res/layout/item_post.xml" value="0.29223270139832425" />
-        <entry key="feature-timetable/src/main/res/layout/fragment_timetable.xml" value="0.21965579710144928" />
+        <entry key="feature-timetable/src/main/res/layout/fragment_timetable.xml" value="0.37140598020691806" />
+        <entry key="feature-timetable/src/main/res/layout/item_loading.xml" value="0.3619221411192214" />
       </map>
     </option>
   </component>

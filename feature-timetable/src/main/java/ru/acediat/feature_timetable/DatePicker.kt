@@ -1,7 +1,7 @@
 package ru.acediat.feature_timetable
 
 import ru.acediat.core_utils.Time
-import ru.acediat.feature_timetable.entities.Lesson
+import ru.acediat.core_utils.Time.RUZ
 import java.time.LocalDate
 
 class DatePicker(val amountOfDays : Int) {
@@ -20,12 +20,11 @@ class DatePicker(val amountOfDays : Int) {
 
     private val days = Time.getDates(
         Time.mondayDate(Time.currentDate()),
-        amountOfDays.toLong(),
-        Time.RUZ
+        amountOfDays.toLong(), RUZ
     )
 
-    fun getFormatDate(dayNumber : Int) : String
-            = "${getDayName(dayNumber)}\n${(Time.RUZ.parse(days[dayNumber]) as LocalDate).dayOfMonth}"
+    fun getFormatDate(dayNumber : Int) : String //Time.RUZ.parse(days[dayNumber]) as LocalDate
+            = "${getDayName(dayNumber)}\n${LocalDate.parse(days[dayNumber], RUZ).dayOfMonth}"
 
     private fun getDayName(dayNumber : Int) : String = dayNames[dayNumber]
 

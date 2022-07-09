@@ -24,4 +24,7 @@ class TimetableModule {
     fun provideViewHoldersManager() : ViewHoldersManager = ViewHoldersManagerImpl().apply{
         registerViewHolder(ItemTypes.LESSON, LessonViewHolder())
     }
+
+    @Provides
+    fun provideDatePicker() : DatePicker = DatePicker(6)
 }
