@@ -2,4 +2,6 @@
 <resources>
     <string name="note_hint">Заметка…</string>
     <string name="timetable">Расписание</string>
+    <string name="ok">Ок</string>
+    <string name="cancel">Отмена</string>
 </resources>

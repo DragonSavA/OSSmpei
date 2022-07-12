@@ -2,6 +2,8 @@ package ru.acediat.core_android
 
 import android.util.Log
 
+const val OSS_TAG = "OSS_TAG"
+
 object Logger {
 
     fun i(tag : String, info : String) = Log.i(tag, info)

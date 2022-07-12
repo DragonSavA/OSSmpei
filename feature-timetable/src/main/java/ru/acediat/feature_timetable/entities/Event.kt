@@ -10,6 +10,7 @@ abstract class Event(
     val name : String,
     val place : String
 ) : HasId{
+
     val minutesFromMidnight : Int by lazy {
         var time = 0
         var i = 0

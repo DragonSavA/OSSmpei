@@ -6,11 +6,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import ru.acediat.core_android.Logger
+import ru.acediat.core_android.OSS_TAG
+import ru.acediat.core_utils.Time
 import ru.acediat.feature_timetable.databinding.FragmentTimetableBinding
 import ru.acediat.feature_timetable.di.TimetableComponent
 import javax.inject.Inject
 
 class TimetableFragment : Fragment() {
+
+    @Inject lateinit var pagerAdapter: DaysAdapter
 
     private val viewModel : TimetableViewModel = ViewModelProvider
         .NewInstanceFactory()
@@ -18,7 +23,10 @@ class TimetableFragment : Fragment() {
 
     private lateinit var binding : FragmentTimetableBinding
 
-    @Inject lateinit var pagerAdapter: DaysAdapter
+    //TODO: Найти способ обновить табы
+    private val calendarLauncher = registerForActivityResult(CalendarContract()){
+        (binding.daysPager.adapter as DaysAdapter).changeDays(it)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,11 +38,14 @@ class TimetableFragment : Fragment() {
 
         with(binding){
             daysPager.adapter = pagerAdapter
-            daysTabs.setupWithViewPager(daysPager)
+            daysTabs.setupWithViewPager(daysPager, true)
+            calendarButton.setOnClickListener{ startCalendar() }
         }
 
         return binding.root
     }
+
+    private fun startCalendar() = calendarLauncher.launch(Time.currentDate())
 
     companion object {
 

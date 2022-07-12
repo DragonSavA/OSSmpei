@@ -1,8 +1,6 @@
 package ru.acediat.feature_timetable
 
-import ru.acediat.core_utils.Time
 import ru.acediat.feature_timetable.entities.Lesson
-import java.time.LocalDate
 
 class Timetable(
     private var lessonList : List<Lesson>,
@@ -14,6 +12,8 @@ class Timetable(
     fun getDayTimetable(dayNumber : Int) : ArrayList<Lesson> = timetable[dayNumber]
 
     fun appendDayTimetable(day : ArrayList<Lesson>) = timetable.addAll(listOf(day))
+
+    fun isEmpty() : Boolean = lessonList.isEmpty()
 
     private fun addDayToTimetable(day : ArrayList<Lesson>){
         timetable.add(day.clone() as ArrayList<Lesson>)

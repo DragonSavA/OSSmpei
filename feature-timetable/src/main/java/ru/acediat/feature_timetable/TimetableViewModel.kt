@@ -1,14 +1,28 @@
 package ru.acediat.feature_timetable
 
-import android.media.metrics.Event
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import io.reactivex.rxjava3.core.Observable
 import ru.acediat.core_android.HasId
+import ru.acediat.feature_timetable.di.TimetableComponent
+import javax.inject.Inject
 
 class TimetableViewModel : ViewModel() {
 
-    private val items = mutableListOf<HasId>()
+    @Inject lateinit var repository : TimetableRepository
 
-    //fun getEvents() : Observable<Event> =
+    private val items = MutableLiveData<ArrayList<HasId>>()
+    private val error = MutableLiveData<Throwable>()
 
+    init{
+        TimetableComponent.init().inject(this)
+    }
+
+    fun setItemsObserver(owner : LifecycleOwner, observer : (ArrayList<HasId>) -> Unit) =
+        items.observe(owner, observer)
+
+    fun setErrorObserver(owner : LifecycleOwner, observer : (Throwable) -> Unit) =
+        error.observe(owner, observer)
+
+    //fun observeLessons() = repository.getGroupLessons(group, )
 }

@@ -11,18 +11,16 @@
 
     <TableRow
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingBottom="3dp">
+        android:layout_height="wrap_content">
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/daysTabs"
             android:layout_width="match_parent"
-            android:layout_height="70dp"
+            android:layout_height="55dp"
             android:layout_weight="1"
+            android:layout_margin="5dp"
             android:layout_gravity="start|center"
             android:background="@drawable/background_tabs"
-            android:layout_marginHorizontal="7dp"
-            android:layout_marginTop="8dp"
             app:tabIndicatorHeight="0dp"
             app:tabMode="fixed"
             app:tabBackground="@drawable/background_tab"
@@ -30,75 +28,20 @@
             app:tabSelectedTextColor="@color/white"
             app:tabUnboundedRipple="false"/>
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end|center"
-            android:layout_marginTop="8dp"
-            android:paddingHorizontal="4dp"
-            android:orientation="vertical">
-
-            <ImageView
-                android:id="@+id/settingsButton"
-                android:layout_width="31dp"
-                android:layout_height="31dp"
-                android:scaleType="centerCrop"
-                android:padding="2dp"
-                android:layout_marginBottom="4dp"
-                android:src="@drawable/ic_settings" />
-
             <ImageView
                 android:id="@+id/calendarButton"
-                android:layout_width="31dp"
-                android:layout_height="31dp"
-                android:padding="2dp"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginEnd="5dp"
+                android:layout_gravity="center"
                 android:src="@drawable/ic_calendar" />
-        </LinearLayout>
 
     </TableRow>
 
-    <LinearLayout
-        android:id="@+id/changeGroup"
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/daysPager"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="8dp"
-        android:gravity="center_vertical">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="4dp"
-            android:src="@drawable/ic_group"/>
-
-        <TextView
-            style="@style/SmallMainText"
-            android:id="@+id/currentGroup"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:text="A-07-20"/>
-
-        <TextView
-            style="@style/SecondaryText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/click_to_change_timetable"/>
-    </LinearLayout>
-
-
-    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/refreshLayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <androidx.viewpager.widget.ViewPager
-            android:id="@+id/daysPager"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/background_event_list" />
-
-    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+        android:layout_height="match_parent"
+        android:background="@drawable/background_event_list" />
 
 </LinearLayout>

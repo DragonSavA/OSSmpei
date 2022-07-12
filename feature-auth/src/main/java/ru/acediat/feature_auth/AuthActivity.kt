@@ -2,10 +2,15 @@ package ru.acediat.feature_auth
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import ru.acediat.feature_auth.databinding.ActivityAuthBinding
 
 class AuthActivity : AppCompatActivity() {
+
+    private lateinit var binding : ActivityAuthBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_auth)
+        binding = ActivityAuthBinding.inflate(layoutInflater)
+        setContentView(binding.root)
     }
 }
