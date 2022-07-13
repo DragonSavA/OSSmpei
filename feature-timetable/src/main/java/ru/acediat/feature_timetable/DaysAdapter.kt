@@ -1,15 +1,18 @@
 package ru.acediat.feature_timetable
 
+import android.content.Context
 import android.view.View
 import android.view.ViewGroup
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import androidx.viewpager.widget.PagerAdapter
-import ru.acediat.core_android.Logger
-import ru.acediat.core_android.OSS_TAG
 import ru.acediat.core_res.loadingFrame
+import ru.acediat.core_res.recyclerView
 import java.time.LocalDateTime
 import javax.inject.Inject
 
-class DaysAdapter @Inject constructor(private val datePicker: DatePicker) : PagerAdapter() {
+class DaysAdapter @Inject constructor(
+    private val datePicker: DatePicker,
+) : PagerAdapter() {
 
     private var timetable : Timetable? = null
 
@@ -26,12 +29,10 @@ class DaysAdapter @Inject constructor(private val datePicker: DatePicker) : Page
     override fun getCount(): Int = datePicker.amountOfDays
 
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
-        if(timetable == null)
-            with(loadingFrame(container)) {
-                container.addView(this)
-                return this
-            }
-        return container
+        return if(timetable == null)
+            instantiateLoading(container)
+        else
+            instantiateDayTimetable(container.context, position)
     }
 
     override fun getPageTitle(position: Int): CharSequence = datePicker.getFormatDate(position)
@@ -42,5 +43,22 @@ class DaysAdapter @Inject constructor(private val datePicker: DatePicker) : Page
         container.removeView(`object` as View)
 
     override fun getItemPosition(`object`: Any): Int = POSITION_NONE
+
+    private fun instantiateLoading(container : ViewGroup) : Any = with(loadingFrame(container)) {
+        container.addView(this)
+        return this
+    }
+
+    private fun instantiateDayTimetable(context : Context, position: Int) : Any {
+        val refreshLayout = SwipeRefreshLayout(context)
+        refreshLayout.addView(recyclerView(context).apply{
+            adapter = EventsAdapter(ViewHoldersManagerImpl()).apply {
+                currentList.addAll(timetable!![position])
+            }
+        })
+        return refreshLayout
+    }
+
+    private fun instantiateEmpty(container : ViewGroup){}
 
 }

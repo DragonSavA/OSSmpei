@@ -5,12 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import ru.acediat.core_android.Logger
 import ru.acediat.core_android.OSS_TAG
 import ru.acediat.core_utils.Time
 import ru.acediat.feature_timetable.databinding.FragmentTimetableBinding
 import ru.acediat.feature_timetable.di.TimetableComponent
+import ru.acediat.feature_timetable.entities.Lesson
 import javax.inject.Inject
 
 class TimetableFragment : Fragment() {
@@ -23,7 +25,6 @@ class TimetableFragment : Fragment() {
 
     private lateinit var binding : FragmentTimetableBinding
 
-    //TODO: Найти способ обновить табы
     private val calendarLauncher = registerForActivityResult(CalendarContract()){
         (binding.daysPager.adapter as DaysAdapter).changeDays(it)
     }
@@ -42,15 +43,18 @@ class TimetableFragment : Fragment() {
             calendarButton.setOnClickListener{ startCalendar() }
         }
 
+        viewModel.setTimetableObserver(viewLifecycleOwner, ::lessonObserver)
+        viewModel.setErrorObserver(viewLifecycleOwner, ::errorObserver)
+        viewModel.setCurrentGroup("A-07-20")
+        viewModel.observeLessons("2022.06.01", "2022.06.07")
+
         return binding.root
     }
 
     private fun startCalendar() = calendarLauncher.launch(Time.currentDate())
 
-    companion object {
+    private fun lessonObserver(timetable : Timetable) = pagerAdapter.setTimetable(timetable)
 
-        @JvmStatic
-        fun newInstance() = TimetableFragment()
+    private fun errorObserver(t : Throwable) = Toast.makeText(requireContext(), t.message, Toast.LENGTH_SHORT).show()
 
-    }
 }

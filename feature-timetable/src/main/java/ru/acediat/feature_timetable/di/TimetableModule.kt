@@ -4,6 +4,7 @@ import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit
 import ru.acediat.core_android.ViewHoldersManager
+import ru.acediat.core_android.di.AndroidModule
 import ru.acediat.core_network.NetworkModule
 import ru.acediat.core_network.buildApi
 import ru.acediat.feature_timetable.*
@@ -26,5 +27,8 @@ class TimetableModule {
     }
 
     @Provides
-    fun provideDatePicker() : DatePicker = DatePicker(6)
+    fun provideDatePicker() = DatePicker(6)
+
+    @Provides
+    fun provideEventsAdapter(manager : ViewHoldersManager) = EventsAdapter(manager)
 }

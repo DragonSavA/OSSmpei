@@ -10,8 +10,9 @@ import ru.acediat.core_android.BaseDiffCallback
 import ru.acediat.core_android.HasId
 import ru.acediat.core_android.ViewHolderVisitor
 import ru.acediat.core_android.ViewHoldersManager
+import javax.inject.Inject
 
-class EventsAdapter(
+class EventsAdapter @Inject constructor(
     private val viewHoldersManager: ViewHoldersManager
 ) : ListAdapter<HasId, EventsAdapter.DataViewHolder>(BaseDiffCallback()) {
 
