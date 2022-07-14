@@ -4,6 +4,7 @@ import android.content.SharedPreferences
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import ru.acediat.core_android.EMAIL
+import ru.acediat.core_android.IS_AUTH
 import ru.acediat.core_android.PROFILE_ID
 import ru.acediat.feature_auth.di.AuthComponent
 import ru.acediat.feature_auth.entities.AuthParams
@@ -37,6 +38,7 @@ class AuthViewModel : ViewModel() {
         with(prefs.edit()){
             putInt(PROFILE_ID, authParams.id)
             putString(EMAIL, authParams.email)
+            putBoolean(IS_AUTH, true)
             commit()
         }
     }

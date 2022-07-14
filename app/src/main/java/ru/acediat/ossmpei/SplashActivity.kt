@@ -1,17 +1,21 @@
 package ru.acediat.ossmpei
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import ru.acediat.core_android.APP_PREFERENCES
+import ru.acediat.core_android.IS_AUTH
 
 class SplashActivity : AppCompatActivity() {
 
-    //TODO: сделать подгрузку из preferences настоящего положения дел
-    private val isAuth = false
+    private var isAuth = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
+
+        isAuth = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE).getBoolean(IS_AUTH, false)
 
         if(isAuth)
             startMainActivity()
