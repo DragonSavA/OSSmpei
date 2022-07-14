@@ -4,4 +4,12 @@
     <string name="auth">Войти</string>
     <string name="register">Регистрация</string>
     <string name="forgot_pass"><u>Забыли пароль?</u></string>
+
+    <string name="name">Имя</string>
+    <string name="surname">Фамилия</string>
+    <string name="group">Группа</string>
+    <string name="email">ОСЭП</string>
+    <string name="repeat_password">Повторите пароль</string>
+    <string name="sign_up">Зарегистрироваться</string>
+    <string name="is_register">Уже зарегистрированы?</string>
 </resources>

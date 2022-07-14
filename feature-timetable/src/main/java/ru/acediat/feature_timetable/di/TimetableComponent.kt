@@ -22,6 +22,7 @@ interface TimetableComponent {
         fun init() : TimetableComponent = DaggerTimetableComponent.builder()
             .timetableModule(TimetableModule())
             .build()
+
     }
 
 }

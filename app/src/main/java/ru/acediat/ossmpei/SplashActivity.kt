@@ -3,7 +3,6 @@ package ru.acediat.ossmpei
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import ru.acediat.feature_auth.AuthActivity
 
 class SplashActivity : AppCompatActivity() {
 

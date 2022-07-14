@@ -4,7 +4,10 @@
 
     <application>
         <activity
-            android:name=".AuthActivity"
+            android:name="ru.acediat.ossmpei.RegistrationActivity"
+            android:exported="false" />
+        <activity
+            android:name="ru.acediat.ossmpei.AuthActivity"
             android:exported="false" />
     </application>
 
