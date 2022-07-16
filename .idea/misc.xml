@@ -10,6 +10,7 @@
         <entry key="core-android/src/main/res/drawable/backgroud_error.xml" value="0.152" />
         <entry key="core-res/src/main/res/drawable/backgroud_error.xml" value="0.152" />
         <entry key="core-res/src/main/res/drawable/background_button.xml" value="0.1995" />
+        <entry key="core-res/src/main/res/drawable/background_profile_button.xml" value="0.166" />
         <entry key="core-res/src/main/res/drawable/background_subject.xml" value="0.1975" />
         <entry key="core-res/src/main/res/drawable/background_tab.xml" value="0.1975" />
         <entry key="core-res/src/main/res/drawable/ic_load.xml" value="0.1995" />
@@ -25,8 +26,11 @@
         <entry key="feature-feed/src/main/res/layout/fragment_feed.xml" value="0.18206521739130435" />
         <entry key="feature-feed/src/main/res/layout/item_post.xml" value="0.29223270139832425" />
         <entry key="feature-profile/src/main/res/drawable/ic_coin.xml" value="0.152" />
-        <entry key="feature-profile/src/main/res/layout/fragment_profile.xml" value="0.23733571370442705" />
+        <entry key="feature-profile/src/main/res/drawable/ic_store.xml" value="0.166" />
+        <entry key="feature-profile/src/main/res/drawable/ic_tasks.xml" value="0.166" />
+        <entry key="feature-profile/src/main/res/layout/fragment_profile.xml" value="0.27363739013671884" />
         <entry key="feature-timetable/src/main/res/drawable/background_calendar.xml" value="0.1995" />
+        <entry key="feature-timetable/src/main/res/drawable/ic_tasks.xml" value="0.166" />
         <entry key="feature-timetable/src/main/res/drawable/selector_calendar_text.xml" value="0.17" />
         <entry key="feature-timetable/src/main/res/layout/activity_calendar.xml" value="0.18370513916015624" />
         <entry key="feature-timetable/src/main/res/layout/fragment_timetable.xml" value="0.2693069458007812" />
