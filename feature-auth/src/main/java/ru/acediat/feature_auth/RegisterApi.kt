@@ -1,12 +1,11 @@
 package ru.acediat.feature_auth
 
+import io.reactivex.rxjava3.core.Single
 import okhttp3.ResponseBody
-import retrofit2.Call
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.POST
+import retrofit2.http.*
 import ru.acediat.core_network.EndpointUrl
 import ru.acediat.core_network.OSS_URL
+import ru.acediat.feature_auth.dtos.GroupValidDTO
 
 @EndpointUrl(OSS_URL)
 interface RegisterApi {
@@ -20,6 +19,10 @@ interface RegisterApi {
         @Field("gender") gender: String,
         @Field("group") group: String,
         @Field("password") password: String
-    ): Call<ResponseBody>
+    ): Single<ResponseBody>
 
+    @GET("Android/is_group_valid.php")
+    fun isGroupValid(
+        @Query("group") group : String
+    ) : Single<GroupValidDTO>
 }

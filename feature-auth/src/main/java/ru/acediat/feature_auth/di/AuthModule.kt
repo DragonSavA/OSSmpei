@@ -8,6 +8,7 @@ import ru.acediat.core_network.buildApi
 import ru.acediat.feature_auth.AuthApi
 import ru.acediat.feature_auth.AuthRepository
 import ru.acediat.feature_auth.RegisterApi
+import ru.acediat.feature_auth.RegistrationRepository
 
 @Module(includes = [NetworkModule::class])
 class AuthModule {
@@ -20,5 +21,8 @@ class AuthModule {
 
     @Provides
     fun provideAuthRepository(api : AuthApi) = AuthRepository(api)
+
+    @Provides
+    fun provideRegisterRepository(api : RegisterApi) = RegistrationRepository(api)
 
 }

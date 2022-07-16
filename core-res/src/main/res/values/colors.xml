@@ -13,6 +13,7 @@
     <color name="white">#FFFFFF</color>
     <color name="empty">#00000000</color>
     <color name="dark">#3E000000</color>
+    <color name="red">#C20932</color>
 
     <!-- Indicators -->
     <color name="red_indicator">#F57858</color>

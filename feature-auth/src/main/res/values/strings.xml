@@ -7,9 +7,18 @@
 
     <string name="name">Имя</string>
     <string name="surname">Фамилия</string>
+    <string name="gender">Пол</string>
+    <string name="male">Мужской</string>
+    <string name="female">Женский</string>
     <string name="group">Группа</string>
     <string name="email">ОСЭП</string>
     <string name="repeat_password">Повторите пароль</string>
     <string name="sign_up">Зарегистрироваться</string>
     <string name="is_register">Уже зарегистрированы?</string>
+    <string name="not_student">Не студент</string>
+    <string name="other">Другое</string>
+
+    <string name="finish_signup_message">
+        Для завершения регистрации пройдите по ссылке в письме, которое пришло на вашу почту
+    </string>
 </resources>
