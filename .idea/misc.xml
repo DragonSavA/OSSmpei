@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/ic_profile.xml" value="0.152" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.17481884057971014" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.18206521739130435" />
         <entry key="app/src/main/res/menu/menu_bottom_navigation.xml" value="0.3098958333333333" />
@@ -23,6 +24,8 @@
         <entry key="feature-auth/src/main/res/layout/activity_registration.xml" value="0.23700143565302315" />
         <entry key="feature-feed/src/main/res/layout/fragment_feed.xml" value="0.18206521739130435" />
         <entry key="feature-feed/src/main/res/layout/item_post.xml" value="0.29223270139832425" />
+        <entry key="feature-profile/src/main/res/drawable/ic_coin.xml" value="0.152" />
+        <entry key="feature-profile/src/main/res/layout/fragment_profile.xml" value="0.23733571370442705" />
         <entry key="feature-timetable/src/main/res/drawable/background_calendar.xml" value="0.1995" />
         <entry key="feature-timetable/src/main/res/drawable/selector_calendar_text.xml" value="0.17" />
         <entry key="feature-timetable/src/main/res/layout/activity_calendar.xml" value="0.18370513916015624" />
