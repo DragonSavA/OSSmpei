@@ -36,11 +36,21 @@ class ProfileFragment : Fragment() {
         viewModel.setErrorObserver(viewLifecycleOwner, ::onError)
 
         binding = FragmentProfileBinding.inflate(layoutInflater, container, false)
+        with(binding){
+            profileRefreshLayout.setOnRefreshListener {
+                refresh()
+                profileRefreshLayout.isRefreshing = false
+            }
+        }
 
-        viewModel.authorize(preferences.getInt(PROFILE_ID, 0), preferences.getString(PASSWORD, "") ?: "")
-
+        refresh()
         return binding.root
     }
+
+    private fun refresh() = viewModel.authorize(
+        preferences.getInt(PROFILE_ID, 0),
+        preferences.getString(PASSWORD, "") ?: ""
+    )
 
     @SuppressLint("SetTextI18n")
     private fun onAuthorize(profile: Profile) = with(binding){
