@@ -16,7 +16,7 @@
         <entry key="core-res/src/main/res/drawable/ic_load.xml" value="0.1995" />
         <entry key="core-res/src/main/res/drawable/ic_oss.xml" value="0.17" />
         <entry key="core-res/src/main/res/layout/frame_loading.xml" value="0.2649169921875" />
-        <entry key="core-res/src/main/res/layout/item_event.xml" value="0.4806690603062727" />
+        <entry key="core-res/src/main/res/layout/item_event.xml" value="0.44768718774767896" />
         <entry key="core-res/src/main/res/layout/item_lesson.xml" value="0.48802585325379294" />
         <entry key="core-res/src/main/res/layout/layout_error.xml" value="0.29789123535156253" />
         <entry key="feature-auth/src/main/res/drawable/button_auth.xml" value="0.1995" />
@@ -29,6 +29,7 @@
         <entry key="feature-profile/src/main/res/drawable/ic_store.xml" value="0.166" />
         <entry key="feature-profile/src/main/res/drawable/ic_tasks.xml" value="0.166" />
         <entry key="feature-profile/src/main/res/layout/fragment_profile.xml" value="0.27363739013671884" />
+        <entry key="feature-profile/src/main/res/layout/fragment_shop.xml" value="0.22916666666666666" />
         <entry key="feature-timetable/src/main/res/drawable/background_calendar.xml" value="0.1995" />
         <entry key="feature-timetable/src/main/res/drawable/ic_tasks.xml" value="0.166" />
         <entry key="feature-timetable/src/main/res/drawable/selector_calendar_text.xml" value="0.17" />

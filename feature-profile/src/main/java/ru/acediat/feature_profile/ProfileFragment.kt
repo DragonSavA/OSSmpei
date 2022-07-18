@@ -9,11 +9,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.appcompat.content.res.AppCompatResources
-import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import ru.acediat.core_android.*
-import ru.acediat.core_res.loadingFrame
 import ru.acediat.feature_profile.databinding.FragmentProfileBinding
 
 class ProfileFragment : Fragment() {
@@ -54,14 +51,12 @@ class ProfileFragment : Fragment() {
 
     @SuppressLint("SetTextI18n")
     private fun onAuthorize(profile: Profile) = with(binding){
-        Logger.d(OSS_TAG, "authorize complete")
         profileName.text = profile.name + " " + profile.surname
-        profileGroup.text = getString(R.string.group) + " " + "undefined"
+        profileGroup.text = getString(R.string.group) + " " + profile.group
         profileScore.text = getString(R.string.balance) + " " + profile.capital
     }
 
     private fun onError(t: Throwable){
         Toast.makeText(requireContext(), t.message, Toast.LENGTH_LONG).show()
-        Logger.d(OSS_TAG, t.message.toString())
     }
 }

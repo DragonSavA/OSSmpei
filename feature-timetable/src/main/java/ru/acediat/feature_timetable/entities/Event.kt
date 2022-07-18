@@ -1,15 +1,15 @@
 package ru.acediat.feature_timetable.entities
 
-import ru.acediat.core_android.HasId
+import java.io.Serializable
 
 abstract class Event(
-    override val id : Int,
+    val id : Int,
     val startTime : String,
     val endTime : String,
     val dayOfWeek: Int,
     val name : String,
     val place : String
-) : HasId{
+) : Serializable{
 
     val minutesFromMidnight : Int by lazy {
         var time = 0
@@ -26,6 +26,4 @@ abstract class Event(
     }
 
     fun getFormatTime() : String = "$startTime - $endTime"
-
-    override fun equals(other: Any?): Boolean = other is Event && other.id == id
 }

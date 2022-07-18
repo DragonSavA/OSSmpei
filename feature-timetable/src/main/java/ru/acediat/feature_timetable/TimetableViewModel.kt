@@ -3,7 +3,8 @@ package ru.acediat.feature_timetable
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import ru.acediat.core_android.HasId
+import ru.acediat.core_android.Logger
+import ru.acediat.core_android.OSS_TAG
 import ru.acediat.feature_timetable.di.TimetableComponent
 import ru.acediat.feature_timetable.entities.Lesson
 import javax.inject.Inject
@@ -33,6 +34,7 @@ class TimetableViewModel : ViewModel() {
 
     fun observeLessons(from : String, to : String) = repository.getGroupLessons(currentGroup, from, to)
         .subscribe({ list ->
+            Logger.d(OSS_TAG, "lessons get: ${list.size}")
             val lessonList = ArrayList<Lesson>()
             list.forEach { lessonList.add(Lesson.buildFromDTO(it)) }
             timetable.postValue(Timetable.build(lessonList, 6))
