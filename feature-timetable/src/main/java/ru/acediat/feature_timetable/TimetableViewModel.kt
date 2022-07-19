@@ -3,6 +3,7 @@ package ru.acediat.feature_timetable
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import io.reactivex.rxjava3.disposables.Disposable
 import ru.acediat.core_android.Logger
 import ru.acediat.core_android.OSS_TAG
 import ru.acediat.feature_timetable.di.TimetableComponent
@@ -32,9 +33,9 @@ class TimetableViewModel : ViewModel() {
     fun setErrorObserver(owner : LifecycleOwner, observer : (Throwable) -> Unit) =
         error.observe(owner, observer)
 
-    fun observeLessons(from : String, to : String) = repository.getGroupLessons(currentGroup, from, to)
+    fun observeLessons(from : String, to : String): Disposable = repository
+        .getGroupLessons(currentGroup, from, to)
         .subscribe({ list ->
-            Logger.d(OSS_TAG, "lessons get: ${list.size}")
             val lessonList = ArrayList<Lesson>()
             list.forEach { lessonList.add(Lesson.buildFromDTO(it)) }
             timetable.postValue(Timetable.build(lessonList, 6))

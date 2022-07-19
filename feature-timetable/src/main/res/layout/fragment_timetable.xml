@@ -9,6 +9,16 @@
     android:background="@color/bg_blue"
     tools:context=".TimetableFragment">
 
+    <TextView
+        style="@style/MainText"
+        android:id="@+id/dateText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/main_blue"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="5dp"
+        android:text="..."/>
+
     <TableRow
         android:layout_width="match_parent"
         android:layout_height="wrap_content">

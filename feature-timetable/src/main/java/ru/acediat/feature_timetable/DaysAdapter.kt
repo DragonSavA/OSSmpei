@@ -19,14 +19,17 @@ class DaysAdapter @Inject constructor(
 
     private var onRefresh: () -> Unit = {}
 
+    var selectedDate : LocalDateTime = datePicker.getCurrentDate()
+        private set
+
     fun setTimetable(timetable: Timetable){
-        Logger.d(OSS_TAG, "timetable setted")
         this.timetable = timetable
         notifyDataSetChanged()
     }
 
-    fun changeDays(date : LocalDateTime) {
+    fun changeDays(date : LocalDateTime){
         datePicker.setDates(date)
+        selectedDate = date
         notifyDataSetChanged()
     }
 
@@ -34,17 +37,19 @@ class DaysAdapter @Inject constructor(
         this.onRefresh = onRefresh
     }
 
+    fun getLastDate() = datePicker.getDate(count-1)
+
+    fun getFirstDate() = datePicker.getDate(0)
+
     override fun getCount(): Int = datePicker.amountOfDays
 
-    override fun instantiateItem(container: ViewGroup, position: Int): Any {
-        Logger.d(OSS_TAG, "item instantiated")
-        return if(timetable == null)
+    override fun instantiateItem(container: ViewGroup, position: Int) =
+        if(timetable == null)
             instantiateLoading(container)
         else
             instantiateDayTimetable(container, position)
-    }
 
-    override fun getPageTitle(position: Int): CharSequence = datePicker.getFormatDate(position)
+    override fun getPageTitle(position: Int): CharSequence = datePicker.getTimetableFormatDate(position)
 
     override fun isViewFromObject(view: View, `object`: Any): Boolean = view == `object`
 
@@ -62,7 +67,6 @@ class DaysAdapter @Inject constructor(
 
     private fun instantiateDayTimetable(container : ViewGroup, position: Int) : View =
         with(SwipeRefreshLayout(container.context)){
-            Logger.d(OSS_TAG, "inst timetable")
             layoutParams = ViewGroup.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.MATCH_PARENT

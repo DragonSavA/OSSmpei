@@ -34,6 +34,8 @@ object Time {
             formatter
         )
 
+    fun formatRUZ(date: LocalDateTime): String = date.format(RUZ)
+
     fun currentDate() : LocalDateTime = LocalDateTime.now()
 
     fun currentDate(formatter : DateTimeFormatter) : String = currentDate().format(formatter)
@@ -44,6 +46,9 @@ object Time {
             counter++
         return this.minusDays(counter)
     }
+
+    fun getDateByWeekPosition(date : LocalDateTime, position : Int) : LocalDateTime =
+        mondayDate(date).plusDays(position.toLong())
 
     fun mondayDate(date : LocalDateTime, formatter : DateTimeFormatter) : String
         = mondayDate(date).format(formatter)

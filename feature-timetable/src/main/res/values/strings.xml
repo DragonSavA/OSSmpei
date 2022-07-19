@@ -1,3 +1,24 @@
 <resources>
     <string name="click_to_change_timetable">Сменить расписание</string>
+
+    <string name="monday">Понедельник</string>
+    <string name="tuesday">Вторник</string>
+    <string name="wednesday">Среда</string>
+    <string name="thursday">Четверг</string>
+    <string name="friday">Пятница</string>
+    <string name="saturday">Суббота</string>
+    <string name="sunday">Воскресенье</string>
+
+    <string name="of_january">января</string>
+    <string name="of_february">февраля</string>
+    <string name="of_march">марта</string>
+    <string name="of_april">апреля</string>
+    <string name="of_may">мая</string>
+    <string name="of_june">июня</string>
+    <string name="of_jule">июля</string>
+    <string name="of_august">августа</string>
+    <string name="of_september">сентября</string>
+    <string name="of_october">октября</string>
+    <string name="of_november">ноября</string>
+    <string name="of_december">декабря</string>
 </resources>

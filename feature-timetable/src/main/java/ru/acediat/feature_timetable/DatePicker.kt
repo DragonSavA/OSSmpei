@@ -1,7 +1,5 @@
 package ru.acediat.feature_timetable
 
-import ru.acediat.core_android.Logger
-import ru.acediat.core_android.OSS_TAG
 import ru.acediat.core_utils.Time
 import ru.acediat.core_utils.Time.RUZ
 import java.time.LocalDate
@@ -21,24 +19,27 @@ class DatePicker(val amountOfDays : Int) {
         "сен", "окт", "ноя", "дек"
     )
 
-    private var days = getDates(Time.currentDate())
+    private var days = getRUZDates(getCurrentDate())
+
+    fun getCurrentDate() = Time.currentDate()
 
     fun setDates(date: LocalDateTime){
-        days = getDates(date)
+        days = getRUZDates(date)
     }
 
-    fun getFormatDate(dayNumber : Int) : String
-            = "${getDayName(dayNumber)}\n${LocalDate.parse(days[dayNumber], RUZ).dayOfMonth}"
+    fun getDatePositionInWeek(date : LocalDateTime) = date.dayOfWeek.value
+
+    fun getTimetableFormatDate(dayNumber : Int) : String
+            = "${getDayName(dayNumber)}\n${LocalDate.parse(days[dayNumber], RUZ).dayOfMonth}\n"
+
+    fun getDate(position : Int) = days[position]
 
     private fun getDayName(dayNumber : Int) : String = dayNames[dayNumber]
 
     private fun getMonthName(monthNumber : Int) : String = monthNames[monthNumber]
 
-    private fun getDates(date: LocalDateTime) : ArrayList<String> {
-        Logger.d(OSS_TAG, Time.mondayDate(date).toString())
-        return Time.getDates(
+    private fun getRUZDates(date: LocalDateTime) : ArrayList<String> = Time.getDates(
             Time.mondayDate(date),
             amountOfDays.toLong(), RUZ
         )
-    }
 }
