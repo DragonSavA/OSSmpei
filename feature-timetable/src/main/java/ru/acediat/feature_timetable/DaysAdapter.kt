@@ -1,17 +1,13 @@
 package ru.acediat.feature_timetable
 
-import android.content.Context
 import android.view.View
 import android.view.ViewGroup
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import androidx.viewpager.widget.PagerAdapter
-import ru.acediat.core_android.AdapterCallback
 import ru.acediat.core_android.Logger
 import ru.acediat.core_android.OSS_TAG
-import ru.acediat.core_android.RecyclerViewAdapter
 import ru.acediat.core_res.loadingFrame
 import ru.acediat.core_res.recyclerView
-import ru.acediat.feature_timetable.entities.Lesson
 import java.time.LocalDateTime
 import javax.inject.Inject
 
@@ -20,6 +16,8 @@ class DaysAdapter @Inject constructor(
 ) : PagerAdapter() {
 
     private var timetable : Timetable? = null
+
+    private var onRefresh: () -> Unit = {}
 
     fun setTimetable(timetable: Timetable){
         Logger.d(OSS_TAG, "timetable setted")
@@ -30,6 +28,10 @@ class DaysAdapter @Inject constructor(
     fun changeDays(date : LocalDateTime) {
         datePicker.setDates(date)
         notifyDataSetChanged()
+    }
+
+    fun setOnRefreshListener(onRefresh: () -> Unit){
+        this.onRefresh = onRefresh
     }
 
     override fun getCount(): Int = datePicker.amountOfDays
@@ -71,9 +73,7 @@ class DaysAdapter @Inject constructor(
                     Logger.dArray(OSS_TAG, timetable!![position].toArray())
                 }
             })
-            setOnRefreshListener {
-                //TODO: тут явно нужно переделать откуда берется SwipeRefreshLayout, потому что сейчас обновляться неоткуда
-            }
+            setOnRefreshListener { onRefresh() }
             container.addView(this)
             return@with this
         }

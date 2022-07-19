@@ -37,6 +37,10 @@ class TimetableFragment : Fragment() {
 
         TimetableComponent.init().inject(this)
 
+        pagerAdapter.setOnRefreshListener {
+            viewModel.observeLessons("2022.06.01", "2022.06.07")
+        }
+
         with(binding){
             daysPager.adapter = pagerAdapter
             daysTabs.setupWithViewPager(daysPager, true)
