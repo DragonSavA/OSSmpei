@@ -29,25 +29,30 @@ class ProfileFragment : Fragment() {
     ): View {
         preferences = requireContext().getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE)
 
-        viewModel.setProfileObserver(viewLifecycleOwner, ::onAuthorize)
-        viewModel.setErrorObserver(viewLifecycleOwner, ::onError)
+        initViewModel()
 
         binding = FragmentProfileBinding.inflate(layoutInflater, container, false)
-        with(binding){
-            profileRefreshLayout.setOnRefreshListener {
-                refresh()
-                profileRefreshLayout.isRefreshing = false
-            }
-        }
-
+        initViews()
         refresh()
         return binding.root
     }
 
-    private fun refresh() = viewModel.authorize(
-        preferences.getInt(PROFILE_ID, 0),
-        preferences.getString(PASSWORD, "") ?: ""
-    )
+    private fun initViewModel() = with(viewModel){
+        setProfileObserver(viewLifecycleOwner, ::onAuthorize)
+        setErrorObserver(viewLifecycleOwner, ::onError)
+    }
+
+    private fun initViews() = with(binding){
+        profileRefreshLayout.setOnRefreshListener { refresh() }
+    }
+
+    private fun refresh() {
+        viewModel.authorize(
+            preferences.getInt(PROFILE_ID, 0),
+            preferences.getString(PASSWORD, "") ?: ""
+        )
+        binding.profileRefreshLayout.isRefreshing = false
+    }
 
     @SuppressLint("SetTextI18n")
     private fun onAuthorize(profile: Profile) = with(binding){

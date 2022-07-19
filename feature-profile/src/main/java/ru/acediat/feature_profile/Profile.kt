@@ -6,11 +6,10 @@ import java.io.Serializable
 data class Profile(
     @SerializedName("id")
     var id: Int = 0,
-    var hashPass: String = "",
     @SerializedName("name")
-    var name: String = "Name",
+    var name: String = "",
     @SerializedName("surname")
-    var surname: String = "Surname",
+    var surname: String = "",
     @SerializedName("group")
     var group: String = "",
     @SerializedName("email")

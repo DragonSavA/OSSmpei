@@ -25,6 +25,7 @@ class Lesson(
 
     companion object {
 
+        @JvmStatic
         fun buildFromDTO(dto : LessonDTO) : Lesson = with(dto){
             return@with Lesson(
                 lessonOId, beginLesson, endLesson,
