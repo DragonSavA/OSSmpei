@@ -15,5 +15,7 @@ data class Profile(
     @SerializedName("email")
     var email: String = "",
     @SerializedName("capital")
-    var capital: Int = 0
+    var capital: Int = 0,
+    @SerializedName("image_src")
+    var imageSrc: String = ""
 ): Serializable

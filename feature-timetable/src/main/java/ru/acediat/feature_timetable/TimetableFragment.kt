@@ -81,7 +81,8 @@ class TimetableFragment : Fragment() {
 
     private fun startCalendar() = calendarLauncher.launch(Time.currentDate())
 
-    private fun observeLessons() = viewModel.observeLessons(pagerAdapter.getFirstDate(), pagerAdapter.getLastDate())
+    private fun observeLessons() =
+        viewModel.observeLessons(pagerAdapter.getFirstDate(), pagerAdapter.getLastDate())
 
     private fun onTimetableReceived(timetable : Timetable) = pagerAdapter.setTimetable(timetable)
 
