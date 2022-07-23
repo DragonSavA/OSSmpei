@@ -4,24 +4,27 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.viewpager.widget.PagerAdapter
 
-abstract class BasePagerAdapter(
-    private val pages : PairArray<String, View>
-) : PagerAdapter(){
+abstract class BasePagerAdapter<T> : PagerAdapter(){
 
-    override fun getCount(): Int = pages.size
+    protected var data : T? = null
 
-    override fun getPageTitle(position: Int): CharSequence = pages[position].first
-
-    override fun instantiateItem(container: ViewGroup, position: Int): Any =
-        with(pages[position].second){
-            container.addView(this)
-            return this
-        }
+    @JvmName("setData1")
+    fun setData(data : T){
+        this.data = data
+        notifyDataSetChanged()
+    }
 
     override fun isViewFromObject(view: View, `object`: Any): Boolean = view == `object`
 
     override fun destroyItem(container: ViewGroup, position: Int, `object`: Any) {
-        container.removeView(`object` as View)
+        if(`object` !is Unit)
+            container.removeView(`object` as View?)
     }
+
+    override fun getItemPosition(`object`: Any): Int = POSITION_NONE
+
+    protected abstract fun instantiateLoading(container: ViewGroup) : View
+
+
 
 }

@@ -84,7 +84,7 @@ class TimetableFragment : Fragment() {
     private fun observeLessons() =
         viewModel.observeLessons(pagerAdapter.getFirstDate(), pagerAdapter.getLastDate())
 
-    private fun onTimetableReceived(timetable : Timetable) = pagerAdapter.setTimetable(timetable)
+    private fun onTimetableReceived(timetable : Timetable) = pagerAdapter.setData(timetable)
 
     private fun onError(t : Throwable) = Toast.makeText(requireContext(), t.message, Toast.LENGTH_SHORT).show()
 
