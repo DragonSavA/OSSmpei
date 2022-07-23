@@ -1,8 +1,10 @@
 <resources>
     <string name="tasks">Задания</string>
     <string name="store">Магазин</string>
+    <string name="settings">Настройки</string>
+    <string name="favorite">Избранное</string>
     <string name="group">Группа:</string>
     <string name="balance">Счет:</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="taken">Взятые</string>
+    <string name="_new">Новые</string>
 </resources>

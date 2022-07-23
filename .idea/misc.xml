@@ -13,6 +13,7 @@
         <entry key="core-res/src/main/res/drawable/background_profile_button.xml" value="0.166" />
         <entry key="core-res/src/main/res/drawable/background_subject.xml" value="0.1975" />
         <entry key="core-res/src/main/res/drawable/background_tab.xml" value="0.1975" />
+        <entry key="core-res/src/main/res/drawable/ic_back.xml" value="0.1595" />
         <entry key="core-res/src/main/res/drawable/ic_load.xml" value="0.1995" />
         <entry key="core-res/src/main/res/drawable/ic_oss.xml" value="0.17" />
         <entry key="core-res/src/main/res/layout/frame_loading.xml" value="0.2649169921875" />
@@ -26,10 +27,13 @@
         <entry key="feature-feed/src/main/res/layout/fragment_feed.xml" value="0.18206521739130435" />
         <entry key="feature-feed/src/main/res/layout/item_post.xml" value="0.29223270139832425" />
         <entry key="feature-profile/src/main/res/drawable/ic_coin.xml" value="0.152" />
+        <entry key="feature-profile/src/main/res/drawable/ic_favorite.xml" value="0.1595" />
+        <entry key="feature-profile/src/main/res/drawable/ic_play.xml" value="0.1595" />
         <entry key="feature-profile/src/main/res/drawable/ic_store.xml" value="0.166" />
         <entry key="feature-profile/src/main/res/drawable/ic_tasks.xml" value="0.166" />
-        <entry key="feature-profile/src/main/res/layout/fragment_profile.xml" value="0.27363739013671884" />
+        <entry key="feature-profile/src/main/res/layout/fragment_profile.xml" value="0.2743930262378138" />
         <entry key="feature-profile/src/main/res/layout/fragment_shop.xml" value="0.22916666666666666" />
+        <entry key="feature-profile/src/main/res/layout/item_product.xml" value="0.2600390829851213" />
         <entry key="feature-timetable/src/main/res/drawable/background_calendar.xml" value="0.1995" />
         <entry key="feature-timetable/src/main/res/drawable/ic_tasks.xml" value="0.166" />
         <entry key="feature-timetable/src/main/res/drawable/selector_calendar_text.xml" value="0.17" />

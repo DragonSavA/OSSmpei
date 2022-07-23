@@ -23,12 +23,12 @@ class RegistrationActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityRegistrationBinding.inflate(layoutInflater)
+
         with(binding){
             signUpButton.setOnClickListener(::signUpClick)
             signInButton.setOnClickListener{ toSignIn() }
         }
         setContentView(binding.root)
-
         viewModel.setRegistrationFinishedObserver(this, ::finishSignUp)
         viewModel.setErrorObserver(this, ::failSignUp)
     }
