@@ -4,6 +4,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.viewpager.widget.PagerAdapter
 
+
+//TODO: базовый класс фигня, надо придумать что-то более универсальное
 abstract class BasePagerAdapter<T> : PagerAdapter(){
 
     protected var data : T? = null
@@ -24,7 +26,4 @@ abstract class BasePagerAdapter<T> : PagerAdapter(){
     override fun getItemPosition(`object`: Any): Int = POSITION_NONE
 
     protected abstract fun instantiateLoading(container: ViewGroup) : View
-
-
-
 }

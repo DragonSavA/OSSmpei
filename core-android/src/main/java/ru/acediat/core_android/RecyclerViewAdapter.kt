@@ -10,6 +10,13 @@ abstract class RecyclerViewAdapter<DATA : Any, B : ViewBinding>
 
     private val items = mutableListOf<DATA>()
 
+    @SuppressLint("NotifyDataSetChanged")
+    fun setItems(items: List<DATA>){
+        this.items.clear()
+        this.items.addAll(items)
+        notifyDataSetChanged()
+    }
+
     fun addItem(item: DATA) {
         this.items.add(item)
         notifyItemInserted(items.size-1)

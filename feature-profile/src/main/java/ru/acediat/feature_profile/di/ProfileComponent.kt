@@ -5,14 +5,22 @@ import dagger.Component
 import ru.acediat.core_android.di.AndroidModule
 import ru.acediat.feature_profile.ProfileFragment
 import ru.acediat.feature_profile.ProfileViewModel
+import ru.acediat.feature_profile.ShopFragment
+import ru.acediat.feature_profile.ShopViewModel
 import javax.inject.Singleton
 
 @Singleton
-@Component(modules = [ProfileModule::class, AndroidModule::class])
+@Component(modules = [
+    ProfileModule::class,
+    ShopModule::class,
+])
 interface ProfileComponent {
 
     fun inject(model : ProfileViewModel)
+    fun inject(model: ShopViewModel)
+
     fun inject(profileFragment: ProfileFragment)
+    fun inject(shopFragment: ShopFragment)
 
     companion object{
 
@@ -20,6 +28,7 @@ interface ProfileComponent {
         fun init(context: Context) : ProfileComponent = DaggerProfileComponent.builder()
             .androidModule(AndroidModule(context))
             .profileModule(ProfileModule())
+            .shopModule(ShopModule())
             .build()
 
     }

@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
-import androidx.viewpager.widget.ViewPager
+import ru.acediat.core_android.SimpleOnPageChangeListener
 import ru.acediat.core_utils.Time
 import ru.acediat.feature_timetable.databinding.FragmentTimetableBinding
 import ru.acediat.feature_timetable.di.TimetableComponent
@@ -30,17 +30,12 @@ class TimetableFragment : Fragment() {
         binding.dateText.text = buildDateText(it)
     }
 
-    private val onPageChangedListener =  object : ViewPager.OnPageChangeListener{
-
+    private val onPageChangedListener =  object : SimpleOnPageChangeListener{
         override fun onPageSelected(position: Int) {
             binding.dateText.text = buildDateText(
                 Time.getDateByWeekPosition(pagerAdapter.selectedDate, position)
             )
         }
-
-        override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {}
-
-        override fun onPageScrollStateChanged(state: Int) {}
     }
 
     override fun onCreateView(
@@ -49,9 +44,6 @@ class TimetableFragment : Fragment() {
     ): View {
         TimetableComponent.init().inject(this)
         binding = FragmentTimetableBinding.inflate(inflater, container, false)
-
-        pagerAdapter.setOnRefreshListener { observeLessons() }
-
         initViews()
         initViewModel()
 
@@ -61,6 +53,7 @@ class TimetableFragment : Fragment() {
     }
 
     private fun initViews() = with(binding){
+        pagerAdapter.setOnRefreshListener { observeLessons() }
         daysPager.adapter = pagerAdapter
         daysPager.currentItem = Time.currentDate().dayOfWeek.value - 1
         daysPager.addOnPageChangeListener(onPageChangedListener)
@@ -72,7 +65,7 @@ class TimetableFragment : Fragment() {
     private fun initViewModel() = with(viewModel) {
         setTimetableObserver(viewLifecycleOwner, ::onTimetableReceived)
         setErrorObserver(viewLifecycleOwner, ::onError)
-        setCurrentGroup("A-07-20")
+        setCurrentGroup("A-07-20")//TODO: Поменять на группу из сохраненных данных
     }
 
     private fun buildDateText(date : LocalDateTime) =

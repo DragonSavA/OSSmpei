@@ -27,7 +27,7 @@ class ProfileFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentProfileBinding.inflate(layoutInflater, container, false)
+        binding = FragmentProfileBinding.inflate(inflater, container, false)
         inject()
         initViewModel()
         initViews()
@@ -46,12 +46,17 @@ class ProfileFragment : Fragment() {
     }
 
     private fun initViews() = with(binding){
+        shopButton.setOnClickListener(::onShopClick)
         profileRefreshLayout.setOnRefreshListener { refresh() }
     }
 
     private fun refresh() {
         viewModel.authorize()
         binding.profileRefreshLayout.isRefreshing = false
+    }
+
+    private fun onShopClick(view: View){
+
     }
 
     @SuppressLint("SetTextI18n")
@@ -65,7 +70,7 @@ class ProfileFragment : Fragment() {
             .into(profileAvatar)
     }
 
-    private fun onError(t: Throwable){
+    private fun onError(t: Throwable) =
         Toast.makeText(requireContext(), t.message, Toast.LENGTH_LONG).show()
-    }
+
 }

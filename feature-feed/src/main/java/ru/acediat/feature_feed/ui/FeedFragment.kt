@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import ru.acediat.core_android.PagerFragment
 import ru.acediat.core_android.PairArray
-import ru.acediat.feature_feed.FeedPagerAdapter
 import ru.acediat.feature_feed.databinding.FragmentFeedBinding
 
 class FeedFragment : PagerFragment() {
@@ -19,7 +18,6 @@ class FeedFragment : PagerFragment() {
     ): View {
         binding = FragmentFeedBinding.inflate(inflater, container, false)
         with(binding) {
-            feedViewPager.adapter = FeedPagerAdapter(getPages())
             feedTabs.setupWithViewPager(feedViewPager)
             return root
         }

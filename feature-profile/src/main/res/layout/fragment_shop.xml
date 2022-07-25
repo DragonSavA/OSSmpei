@@ -38,7 +38,7 @@
     </androidx.appcompat.widget.Toolbar>
 
     <com.google.android.material.tabs.TabLayout
-        android:id="@+id/daysTabs"
+        android:id="@+id/sectionTabs"
         android:layout_width="match_parent"
         android:layout_height="55dp"
         android:layout_margin="5dp"
@@ -51,10 +51,9 @@
         app:tabSelectedTextColor="@color/white"
         app:tabUnboundedRipple="false"/>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler"
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/sectionsPager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"/>
+        android:layout_height="match_parent"/>
 
 </LinearLayout>
