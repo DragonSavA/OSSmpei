@@ -44,6 +44,7 @@ class ShopFragment : Fragment() {
     }
 
     private fun initViews() = with(binding){
+        backButton.setOnClickListener { requireActivity().onBackPressed() }
         sectionsAdapter.setOnProductClickListener(::onProductClick)
         sectionsAdapter.setOnRefreshListener(::onProductsRefresh)
         sectionsPager.adapter = sectionsAdapter
