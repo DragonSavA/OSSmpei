@@ -6,7 +6,7 @@ import retrofit2.Retrofit
 import ru.acediat.core_network.NetworkModule
 import ru.acediat.core_network.buildApi
 import ru.acediat.feature_profile.apis.ProfileApi
-import ru.acediat.feature_profile.ProfileRepository
+import ru.acediat.feature_profile.model.ProfileRepository
 import javax.inject.Singleton
 
 @Module(includes = [NetworkModule::class])

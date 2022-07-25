@@ -4,8 +4,8 @@ import io.reactivex.rxjava3.core.Single
 import retrofit2.http.*
 import ru.acediat.core_network.EndpointUrl
 import ru.acediat.core_network.OSS_URL
-import ru.acediat.feature_profile.CapitalDTO
-import ru.acediat.feature_profile.ProductDTO
+import ru.acediat.feature_profile.model.dtos.CapitalDTO
+import ru.acediat.feature_profile.model.dtos.ProductDTO
 
 @EndpointUrl(OSS_URL)
 interface ShopApi {

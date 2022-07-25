@@ -1,4 +1,4 @@
-package ru.acediat.feature_profile
+package ru.acediat.feature_profile.ui.adapters
 
 import android.view.View
 import android.view.ViewGroup
@@ -6,7 +6,8 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import ru.acediat.core_android.BasePagerAdapter
 import ru.acediat.core_res.gridRecyclerView
 import ru.acediat.core_res.loadingFrame
-import ru.acediat.core_res.linearRecyclerView
+import ru.acediat.feature_profile.model.dtos.ProductDTO
+import ru.acediat.feature_profile.model.ProductsList
 import javax.inject.Inject
 
 class ShopSectionsAdapter @Inject constructor(

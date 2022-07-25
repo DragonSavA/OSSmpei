@@ -12,7 +12,7 @@
 
     <fragment
         android:id="@+id/profile"
-        android:name="ru.acediat.feature_profile.ProfileFragment"
+        android:name="ru.acediat.feature_profile.ui.ProfileFragment"
         android:label="ProfileFragment" >
         <action
             android:id="@+id/action_profile_to_shopFragment"
@@ -21,7 +21,7 @@
 
     <fragment
         android:id="@+id/shopFragment"
-        android:name="ru.acediat.feature_profile.ShopFragment"
+        android:name="ru.acediat.feature_profile.ui.ShopFragment"
         android:label="ShopFragment">
         <deepLink app:uri="https://mpei.oss/shop" />
     </fragment>

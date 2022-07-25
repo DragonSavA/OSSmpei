@@ -1,8 +1,9 @@
-package ru.acediat.feature_profile
+package ru.acediat.feature_profile.model
 
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import ru.acediat.feature_profile.model.dtos.ProductDTO
 import javax.inject.Inject
 
 class ShopViewModel: ViewModel() {

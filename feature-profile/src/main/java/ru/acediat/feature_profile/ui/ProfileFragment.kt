@@ -1,4 +1,4 @@
-package ru.acediat.feature_profile
+package ru.acediat.feature_profile.ui
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -11,6 +11,9 @@ import androidx.core.net.toUri
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.squareup.picasso.Picasso
+import ru.acediat.feature_profile.model.Profile
+import ru.acediat.feature_profile.model.ProfileViewModel
+import ru.acediat.feature_profile.R
 import ru.acediat.feature_profile.databinding.FragmentProfileBinding
 import ru.acediat.feature_profile.di.ProfileComponent
 import javax.inject.Inject

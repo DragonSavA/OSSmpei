@@ -3,10 +3,10 @@ package ru.acediat.feature_profile.di
 import android.content.Context
 import dagger.Component
 import ru.acediat.core_android.di.AndroidModule
-import ru.acediat.feature_profile.ProfileFragment
-import ru.acediat.feature_profile.ProfileViewModel
-import ru.acediat.feature_profile.ShopFragment
-import ru.acediat.feature_profile.ShopViewModel
+import ru.acediat.feature_profile.ui.ProfileFragment
+import ru.acediat.feature_profile.model.ProfileViewModel
+import ru.acediat.feature_profile.ui.ShopFragment
+import ru.acediat.feature_profile.model.ShopViewModel
 import javax.inject.Singleton
 
 @Singleton

@@ -5,7 +5,7 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 import ru.acediat.core_network.EndpointUrl
 import ru.acediat.core_network.OSS_URL
-import ru.acediat.feature_profile.Profile
+import ru.acediat.feature_profile.model.Profile
 
 @EndpointUrl(OSS_URL)
 interface ProfileApi {

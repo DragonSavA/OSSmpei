@@ -1,4 +1,4 @@
-package ru.acediat.feature_profile
+package ru.acediat.feature_profile.model
 
 import io.reactivex.rxjava3.schedulers.Schedulers
 import ru.acediat.feature_profile.apis.ShopApi

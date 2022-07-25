@@ -7,10 +7,10 @@ import retrofit2.Retrofit
 import ru.acediat.core_android.di.AndroidModule
 import ru.acediat.core_network.NetworkModule
 import ru.acediat.core_network.buildApi
-import ru.acediat.feature_profile.ProductsAdapter
+import ru.acediat.feature_profile.ui.adapters.ProductsAdapter
 import ru.acediat.feature_profile.apis.ShopApi
-import ru.acediat.feature_profile.ShopRepository
-import ru.acediat.feature_profile.ShopSectionsAdapter
+import ru.acediat.feature_profile.model.ShopRepository
+import ru.acediat.feature_profile.ui.adapters.ShopSectionsAdapter
 
 @Module(includes = [NetworkModule::class, AndroidModule::class])
 class ShopModule {

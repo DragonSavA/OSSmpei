@@ -1,4 +1,4 @@
-package ru.acediat.feature_profile
+package ru.acediat.feature_profile.ui.adapters
 
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +8,8 @@ import ru.acediat.core_android.AdapterCallback
 import ru.acediat.core_android.Logger
 import ru.acediat.core_android.OSS_TAG
 import ru.acediat.core_android.RecyclerViewAdapter
+import ru.acediat.feature_profile.model.dtos.ProductDTO
+import ru.acediat.feature_profile.R
 import ru.acediat.feature_profile.databinding.ItemProductBinding
 import javax.inject.Inject
 

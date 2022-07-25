@@ -1,4 +1,4 @@
-package ru.acediat.feature_profile
+package ru.acediat.feature_profile.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,6 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.fragment.app.Fragment
+import ru.acediat.feature_profile.model.dtos.ProductDTO
+import ru.acediat.feature_profile.ui.adapters.ShopSectionsAdapter
+import ru.acediat.feature_profile.model.ShopViewModel
 import ru.acediat.feature_profile.databinding.FragmentShopBinding
 import ru.acediat.feature_profile.di.ProfileComponent
 import javax.inject.Inject

@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/bg_blue"
-    tools:context=".ShopFragment">
+    tools:context=".ui.ShopFragment">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"

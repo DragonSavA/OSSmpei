@@ -1,4 +1,6 @@
-package ru.acediat.feature_profile
+package ru.acediat.feature_profile.model
+
+import ru.acediat.feature_profile.model.dtos.ProductDTO
 
 class ProductsList {
 

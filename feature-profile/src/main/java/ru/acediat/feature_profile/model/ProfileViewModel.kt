@@ -1,4 +1,4 @@
-package ru.acediat.feature_profile
+package ru.acediat.feature_profile.model
 
 import android.content.SharedPreferences
 import androidx.lifecycle.LifecycleOwner
@@ -6,7 +6,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import ru.acediat.core_android.PASSWORD
 import ru.acediat.core_android.PROFILE_ID
-import ru.acediat.feature_profile.di.ProfileComponent
 import javax.inject.Inject
 
 class ProfileViewModel : ViewModel() {
