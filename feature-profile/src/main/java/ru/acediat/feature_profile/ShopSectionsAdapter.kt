@@ -4,8 +4,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import ru.acediat.core_android.BasePagerAdapter
+import ru.acediat.core_res.gridRecyclerView
 import ru.acediat.core_res.loadingFrame
-import ru.acediat.core_res.recyclerView
+import ru.acediat.core_res.linearRecyclerView
 import javax.inject.Inject
 
 class ShopSectionsAdapter @Inject constructor(
@@ -17,12 +18,18 @@ class ShopSectionsAdapter @Inject constructor(
     private var onProductClick: (ProductDTO) -> Unit = {}
 
     fun setPopularProducts(products: ArrayList<ProductDTO>){
-        popularProductsAdapter.addItems(products)
+        setData(ProductsList().apply {
+            popular.addAll(products)
+            all.addAll(data?.all ?: listOf())
+        })
         notifyDataSetChanged()
     }
 
     fun setAllProducts(products: ArrayList<ProductDTO>){
-        allProductsAdapter.addItems(products)
+        setData(ProductsList().apply {
+            all.addAll(products)
+            popular.addAll(data?.popular ?: listOf())
+        })
         notifyDataSetChanged()
     }
 
@@ -37,8 +44,8 @@ class ShopSectionsAdapter @Inject constructor(
     override fun getCount(): Int = 2
 
     override fun getPageTitle(position: Int): CharSequence = when(position){
-        1 -> "Популярные"
-        2 -> "Все"
+        0 -> "Популярные"
+        1 -> "Все"
         else -> "undefined"
     }
 
@@ -65,7 +72,7 @@ class ShopSectionsAdapter @Inject constructor(
             ViewGroup.LayoutParams.MATCH_PARENT,
             ViewGroup.LayoutParams.MATCH_PARENT
         )
-        addView(recyclerView(context).apply {
+        addView(gridRecyclerView(context, 2).apply {
             adapter = productsAdapter.apply {
                 addItems(list)
                 setOnProductClick(onProductClick)

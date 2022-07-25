@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import ru.acediat.core_android.BasePagerAdapter
 import ru.acediat.core_res.loadingFrame
-import ru.acediat.core_res.recyclerView
+import ru.acediat.core_res.linearRecyclerView
 import java.time.LocalDateTime
 import javax.inject.Inject
 
@@ -53,7 +53,7 @@ class DaysAdapter @Inject constructor(
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.MATCH_PARENT
             )
-            addView(recyclerView(context).apply {
+            addView(linearRecyclerView(context).apply {
                 adapter = LessonsAdapter().apply {
                     addItems(data!![position])
                 }

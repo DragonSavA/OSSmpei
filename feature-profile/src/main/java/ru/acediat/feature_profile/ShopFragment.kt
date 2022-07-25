@@ -28,6 +28,7 @@ class ShopFragment : Fragment() {
         inject()
         initViewModel()
         initViews()
+        refresh()
         return binding.root
     }
 
@@ -43,8 +44,15 @@ class ShopFragment : Fragment() {
     }
 
     private fun initViews() = with(binding){
+        sectionsAdapter.setOnProductClickListener(::onProductClick)
+        sectionsAdapter.setOnRefreshListener(::onProductsRefresh)
         sectionsPager.adapter = sectionsAdapter
         sectionTabs.setupWithViewPager(sectionsPager)
+    }
+
+    private fun refresh() = with(viewModel){
+        getAllProducts()
+        getPopularProducts()
     }
 
     private fun onAllProductsReceived(products: ArrayList<ProductDTO>) =
@@ -57,9 +65,7 @@ class ShopFragment : Fragment() {
         //TODO: реализовать переход на подробную информацию о товаре
     }
 
-    private fun onProductsRefresh(){
-        //TODO: реализовать обновление списков товара
-    }
+    private fun onProductsRefresh() = refresh()
 
     private fun onError(error : Throwable){}
 

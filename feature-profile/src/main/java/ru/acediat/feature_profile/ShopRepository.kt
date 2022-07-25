@@ -8,16 +8,11 @@ class ShopRepository @Inject constructor(
     private val api: ShopApi
 ) {
 
-    companion object {
-        const val POPULAR_ITEM = "PopularItem"
-        const val ALL_ITEM = "RegularItem"
-    }
-
-    fun getAllProducts() = api.loadProducts(ALL_ITEM)
+    fun getAllProducts() = api.loadProducts(ShopApi.ALL_ITEM)
         .subscribeOn(Schedulers.io())
         .observeOn(Schedulers.io())
 
-    fun getPopularProducts() = api.loadProducts(POPULAR_ITEM)
+    fun getPopularProducts() = api.loadProducts(ShopApi.POPULAR_ITEM)
         .subscribeOn(Schedulers.io())
         .observeOn(Schedulers.io())
 

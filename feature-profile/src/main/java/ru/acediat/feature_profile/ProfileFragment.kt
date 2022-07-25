@@ -7,7 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.net.toUri
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.squareup.picasso.Picasso
 import ru.acediat.feature_profile.databinding.FragmentProfileBinding
 import ru.acediat.feature_profile.di.ProfileComponent
@@ -56,7 +58,7 @@ class ProfileFragment : Fragment() {
     }
 
     private fun onShopClick(view: View){
-
+        findNavController().navigate("https://mpei.oss/shop".toUri())
     }
 
     @SuppressLint("SetTextI18n")

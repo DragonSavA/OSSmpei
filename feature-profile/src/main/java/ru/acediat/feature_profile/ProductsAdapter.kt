@@ -5,6 +5,8 @@ import android.view.View
 import android.view.ViewGroup
 import com.squareup.picasso.Picasso
 import ru.acediat.core_android.AdapterCallback
+import ru.acediat.core_android.Logger
+import ru.acediat.core_android.OSS_TAG
 import ru.acediat.core_android.RecyclerViewAdapter
 import ru.acediat.feature_profile.databinding.ItemProductBinding
 import javax.inject.Inject
@@ -29,9 +31,9 @@ class ProductsAdapter @Inject constructor(
                 with(binding){
                     productName.text = item.name
                     productCost.text = item.price.toString()
+                    Logger.d(OSS_TAG, item.imageUrl)
                     picasso.load(item.imageUrl)
-                        .fit()
-                        .centerCrop()
+                        .error(R.drawable.ic_store)//TODO: затычка, поставить что-то норм
                         .into(productImage)
                 }
 
