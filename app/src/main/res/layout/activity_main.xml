@@ -20,6 +20,8 @@
         android:id="@+id/mainBottomNavigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/dark_bg_blue"
+        app:itemIconTint="@drawable/selector_bottom_nav_ic"
         app:menu="@menu/menu_bottom_navigation" />
 
 

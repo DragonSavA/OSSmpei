@@ -16,21 +16,24 @@
         <ImageView
             android:id="@+id/productImage"
             android:layout_width="match_parent"
-            android:layout_height="220dp"
-            android:scaleType="centerCrop" />
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
 
         <TextView
             style="@style/SecondaryText"
             android:id="@+id/productName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
+            android:layout_marginVertical="5dp"
+            android:layout_marginHorizontal="10dp"
             android:text="very very long example that show me how it looks like"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginBottom="10dp"
             android:orientation="horizontal">
 
             <TextView
@@ -38,7 +41,6 @@
                 android:id="@+id/productCost"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
                 android:text="200"/>
 
             <ImageView
@@ -47,7 +49,6 @@
                 android:src="@drawable/ic_coin"/>
 
         </LinearLayout>
-
 
     </LinearLayout>
 

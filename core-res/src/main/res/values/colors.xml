@@ -27,6 +27,8 @@
     <color name="pressed_dark_bg_blue">#C4C4CC</color>
     <color name="main_blue">#4B56A0</color>
     <color name="main_blue_dark">#343B6E</color>
+    <color name="main_red">#C20932</color>
+    <color name="main_blue_60light">#3C4B56A0</color>
 
     <!-- Text colors -->
     <color name="text_hyper_blue">#449AFF</color>

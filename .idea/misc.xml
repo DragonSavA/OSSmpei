@@ -4,7 +4,8 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/drawable/ic_profile.xml" value="0.152" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.17481884057971014" />
+        <entry key="app/src/main/res/drawable/selector_bottom_nav_ic.xml" value="0.151" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.1947411578634511" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.18206521739130435" />
         <entry key="app/src/main/res/menu/menu_bottom_navigation.xml" value="0.3098958333333333" />
         <entry key="core-android/src/main/res/drawable/backgroud_error.xml" value="0.152" />
@@ -33,7 +34,7 @@
         <entry key="feature-profile/src/main/res/drawable/ic_store.xml" value="0.166" />
         <entry key="feature-profile/src/main/res/drawable/ic_tasks.xml" value="0.166" />
         <entry key="feature-profile/src/main/res/layout/fragment_profile.xml" value="0.2743930262378138" />
-        <entry key="feature-profile/src/main/res/layout/fragment_shop.xml" value="0.22916666666666666" />
+        <entry key="feature-profile/src/main/res/layout/fragment_shop.xml" value="0.27754007975260414" />
         <entry key="feature-profile/src/main/res/layout/item_product.xml" value="0.2600390829851213" />
         <entry key="feature-timetable/src/main/res/drawable/background_calendar.xml" value="0.1995" />
         <entry key="feature-timetable/src/main/res/drawable/ic_tasks.xml" value="0.166" />

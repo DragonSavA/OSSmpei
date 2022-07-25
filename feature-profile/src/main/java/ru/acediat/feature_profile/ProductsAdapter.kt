@@ -33,6 +33,8 @@ class ProductsAdapter @Inject constructor(
                     productCost.text = item.price.toString()
                     Logger.d(OSS_TAG, item.imageUrl)
                     picasso.load(item.imageUrl)
+                        .fit()
+                        .centerInside()
                         .error(R.drawable.ic_store)//TODO: затычка, поставить что-то норм
                         .into(productImage)
                 }
