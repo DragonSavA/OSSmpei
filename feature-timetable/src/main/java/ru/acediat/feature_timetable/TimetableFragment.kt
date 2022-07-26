@@ -42,14 +42,19 @@ class TimetableFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        TimetableComponent.init().inject(this)
         binding = FragmentTimetableBinding.inflate(inflater, container, false)
+        inject()
         initViews()
         initViewModel()
 
         observeLessons()
 
         return binding.root
+    }
+
+    private fun inject() = with(TimetableComponent.init()) {
+        inject(this@TimetableFragment)
+        inject(viewModel)
     }
 
     private fun initViews() = with(binding){
@@ -79,6 +84,7 @@ class TimetableFragment : Fragment() {
 
     private fun onTimetableReceived(timetable : Timetable) = pagerAdapter.setData(timetable)
 
-    private fun onError(t : Throwable) = Toast.makeText(requireContext(), t.message, Toast.LENGTH_SHORT).show()
+    private fun onError(t : Throwable) = //TODO: Сделать нормальное уведомление о ошибке
+        Toast.makeText(requireContext(), t.message, Toast.LENGTH_SHORT).show()
 
 }

@@ -18,7 +18,7 @@ class ShopSectionsAdapter @Inject constructor(
     private var onRefresh: () -> Unit = {}
     private var onProductClick: (ProductDTO) -> Unit = {}
 
-    fun setPopularProducts(products: ArrayList<ProductDTO>){
+    fun setPopularProducts(products: ArrayList<ProductDTO>){//TODO: тихий ужас, необходим рефактор
         setData(ProductsList().apply {
             clear()
             popular.addAll(products)

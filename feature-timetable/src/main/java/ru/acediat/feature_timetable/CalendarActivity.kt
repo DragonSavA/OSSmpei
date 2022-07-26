@@ -12,7 +12,6 @@ import java.time.LocalDateTime
 
 //Здесь не используется viewBinding, потому что с ним слетает тема диалогового окна
 //потом возможно стоит поправить
-//TODO: проверить насколько работает все без viewBinding
 class CalendarActivity : AppCompatActivity() {
 
     private lateinit var okButton : Button

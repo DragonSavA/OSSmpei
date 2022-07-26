@@ -1,5 +1,6 @@
 package ru.acediat.feature_timetable
 
+import android.content.SharedPreferences
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -13,15 +14,12 @@ import javax.inject.Inject
 class TimetableViewModel : ViewModel() {
 
     @Inject lateinit var repository : TimetableRepository
+    @Inject lateinit var preferences: SharedPreferences
 
     private val timetable = MutableLiveData<Timetable>()
     private val error = MutableLiveData<Throwable>()
 
     private var currentGroup : String = ""
-
-    init{
-        TimetableComponent.init().inject(this)
-    }
 
     fun setCurrentGroup(group : String) {
         currentGroup = group
