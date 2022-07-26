@@ -9,7 +9,7 @@ import java.time.LocalDateTime
 
 class CalendarContract : ActivityResultContract<LocalDateTime, LocalDateTime>() {
 
-    override fun createIntent(context: Context, input: LocalDateTime?): Intent =
+    override fun createIntent(context: Context, input: LocalDateTime): Intent =
         Intent(context, CalendarActivity::class.java).apply {
             putExtra(CURRENT_DATE, input)
         }

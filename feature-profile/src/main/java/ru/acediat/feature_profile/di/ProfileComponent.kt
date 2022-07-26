@@ -7,6 +7,7 @@ import ru.acediat.feature_profile.ui.ProfileFragment
 import ru.acediat.feature_profile.model.ProfileViewModel
 import ru.acediat.feature_profile.ui.ShopFragment
 import ru.acediat.feature_profile.model.ShopViewModel
+import ru.acediat.feature_profile.ui.ProductDetailFragment
 import javax.inject.Singleton
 
 @Singleton
@@ -21,6 +22,7 @@ interface ProfileComponent {
 
     fun inject(profileFragment: ProfileFragment)
     fun inject(shopFragment: ShopFragment)
+    fun inject(detailFragment: ProductDetailFragment)
 
     companion object{
 

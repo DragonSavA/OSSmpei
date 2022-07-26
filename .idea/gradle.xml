@@ -14,6 +14,7 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/core-android" />
             <option value="$PROJECT_DIR$/core-db" />
+            <option value="$PROJECT_DIR$/core-navigation" />
             <option value="$PROJECT_DIR$/core-network" />
             <option value="$PROJECT_DIR$/core-res" />
             <option value="$PROJECT_DIR$/core-utils" />
@@ -23,7 +24,6 @@
             <option value="$PROJECT_DIR$/feature-timetable" />
           </set>
         </option>
-        <option name="resolveModulePerSourceSet" value="false" />
       </GradleProjectSettings>
     </option>
   </component>

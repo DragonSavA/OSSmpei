@@ -4,14 +4,19 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.lifecycle.ViewModelProvider
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import ru.acediat.feature_profile.model.dtos.ProductDTO
 import ru.acediat.feature_profile.ui.adapters.ShopSectionsAdapter
 import ru.acediat.feature_profile.model.ShopViewModel
 import ru.acediat.feature_profile.databinding.FragmentShopBinding
 import ru.acediat.feature_profile.di.ProfileComponent
+import ru.acediat.core_navigation.R as navR
 import javax.inject.Inject
+
+const val PRODUCT_BUNDLE = "product"
 
 class ShopFragment : Fragment() {
 
@@ -47,7 +52,7 @@ class ShopFragment : Fragment() {
     }
 
     private fun initViews() = with(binding){
-        backButton.setOnClickListener { requireActivity().onBackPressed() }
+        shopToolbar.backButton.setOnClickListener { requireActivity().onBackPressed() }
         sectionsAdapter.setOnProductClickListener(::onProductClick)
         sectionsAdapter.setOnRefreshListener(::onProductsRefresh)
         sectionsPager.adapter = sectionsAdapter
@@ -65,16 +70,12 @@ class ShopFragment : Fragment() {
     private fun onPopularProductsReceived(products: ArrayList<ProductDTO>) =
         sectionsAdapter.setPopularProducts(products)
 
-    private fun onProductClick(product: ProductDTO){
-        //TODO: реализовать переход на подробную информацию о товаре
-    }
+    private fun onProductClick(product: ProductDTO) = findNavController().navigate(
+        navR.id.productDetailFragment,
+        bundleOf(PRODUCT_BUNDLE to product)
+    )
 
     private fun onProductsRefresh() = refresh()
 
-    private fun onError(error : Throwable){}
-
-    companion object {
-        @JvmStatic
-        fun newInstance() = ShopFragment()
-    }
+    private fun onError(error : Throwable){}//TODO: сделать обработку ошибок
 }

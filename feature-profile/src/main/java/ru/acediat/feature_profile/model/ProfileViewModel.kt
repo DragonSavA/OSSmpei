@@ -23,11 +23,16 @@ class ProfileViewModel : ViewModel() {
         error.observe(lifecycleOwner, observer)
 
     fun authorize() = repository.authorize(
-        preferences.getInt(PROFILE_ID, 0),
-        preferences.getString(PASSWORD, "") ?: ""
+        getProfileId(),
+        getPassword()
     ).subscribe({
-            profile.postValue(it)
-        }, {
-            error.postValue(it)
-        })
+        profile.postValue(it)
+    }, {
+        error.postValue(it)
+    })
+
+    private fun getProfileId() = preferences.getInt(PROFILE_ID, 0)
+
+    private fun getPassword() = preferences.getString(PASSWORD, "") ?: ""
+
 }

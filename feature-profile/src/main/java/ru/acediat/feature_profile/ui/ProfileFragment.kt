@@ -60,9 +60,8 @@ class ProfileFragment : Fragment() {
         binding.profileRefreshLayout.isRefreshing = false
     }
 
-    private fun onShopClick(view: View){
-        findNavController().navigate("https://mpei.oss/shop".toUri())
-    }
+    private fun onShopClick(view: View) =
+        findNavController().navigate(ru.acediat.core_navigation.R.id.shopFragment)
 
     @SuppressLint("SetTextI18n")
     private fun onAuthorize(profile: Profile) = with(binding){

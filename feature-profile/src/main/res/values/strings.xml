@@ -7,4 +7,8 @@
     <string name="balance">Счет:</string>
     <string name="taken">Взятые</string>
     <string name="_new">Новые</string>
+    <string name="product_description">Описание продукта:</string>
+    <string name="buy">Купить</string>
+    <string name="product">Продукт</string>
+    <string name="description_undefined">Описание отсутствует</string>
 </resources>
