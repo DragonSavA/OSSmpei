@@ -33,7 +33,6 @@ class ProductsAdapter @Inject constructor(
                 with(binding){
                     productName.text = item.name
                     productCost.text = item.price.toString()
-                    Logger.d(OSS_TAG, item.imageUrl)
                     picasso.load(item.imageUrl)
                         .fit()
                         .centerInside()
