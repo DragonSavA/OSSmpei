@@ -20,6 +20,7 @@ class ShopSectionsAdapter @Inject constructor(
 
     fun setPopularProducts(products: ArrayList<ProductDTO>){
         setData(ProductsList().apply {
+            clear()
             popular.addAll(products)
             all.addAll(data?.all ?: listOf())
         })
@@ -28,6 +29,7 @@ class ShopSectionsAdapter @Inject constructor(
 
     fun setAllProducts(products: ArrayList<ProductDTO>){
         setData(ProductsList().apply {
+            clear()
             all.addAll(products)
             popular.addAll(data?.popular ?: listOf())
         })
@@ -75,7 +77,7 @@ class ShopSectionsAdapter @Inject constructor(
         )
         addView(gridRecyclerView(context, 2).apply {
             adapter = productsAdapter.apply {
-                addItems(list)
+                setItems(list)
                 setOnProductClick(onProductClick)
             }
         })

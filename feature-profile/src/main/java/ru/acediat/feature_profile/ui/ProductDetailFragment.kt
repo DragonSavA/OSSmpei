@@ -66,11 +66,11 @@ class ProductDetailFragment : Fragment() {
             .into(productImage)
     }
 
-    private fun onPurchaseComplete(capitalDTO: CapitalDTO){
+    private fun onPurchaseComplete(capitalDTO: CapitalDTO){//TODO: добавить уведомление о успешной покупке
         Logger.d(OSS_TAG, "balance after buying: ${capitalDTO.capital}")
     }
 
-    private fun onError(throwable: Throwable){
+    private fun onError(throwable: Throwable){ //TODO: добавить уведомление о ошибке/недостатке средств
         Logger.e(OSS_TAG, throwable.message.toString())
     }
 
