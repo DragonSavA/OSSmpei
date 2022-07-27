@@ -7,7 +7,11 @@
     <fragment
         android:id="@+id/timetable"
         android:name="ru.acediat.feature_timetable.TimetableFragment"
-        android:label="TimetableFragment"/>
+        android:label="TimetableFragment">
+        <action
+            android:id="@+id/action_timetable_to_profile"
+            app:destination="@id/profile" />
+    </fragment>
 
     <fragment
         android:id="@+id/profile"
@@ -15,11 +19,11 @@
         android:label="ProfileFragment" >
         <action
             android:id="@+id/action_profile_to_shopFragment"
-            app:destination="@id/shopFragment" />
+            app:destination="@id/shop" />
     </fragment>
 
     <fragment
-        android:id="@+id/shopFragment"
+        android:id="@+id/shop"
         android:name="ru.acediat.feature_profile.ui.ShopFragment"
         android:label="ShopFragment">
         <action

@@ -14,7 +14,6 @@ import javax.inject.Inject
 class TimetableViewModel : ViewModel() {
 
     @Inject lateinit var repository : TimetableRepository
-    @Inject lateinit var preferences: SharedPreferences
 
     private val timetable = MutableLiveData<Timetable>()
     private val error = MutableLiveData<Throwable>()

@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import ru.acediat.core_android.APP_PREFERENCES
+import ru.acediat.core_android.ext.showError
 import ru.acediat.feature_auth.AuthViewModel
 import ru.acediat.feature_auth.databinding.ActivityAuthBinding
 
@@ -25,6 +26,7 @@ class AuthActivity : AppCompatActivity() {
             startActivity(Intent(this, MainActivity::class.java))
             finish()
         }
+        viewModel.setErrorObserver(this, ::onError)
 
         binding = ActivityAuthBinding.inflate(layoutInflater)
         with(binding){
@@ -41,7 +43,10 @@ class AuthActivity : AppCompatActivity() {
         getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE)
     )
 
-    private fun registrationClick(view : View) = startActivity(Intent(this, RegistrationActivity::class.java))
+    private fun registrationClick(view : View) =
+        startActivity(Intent(this, RegistrationActivity::class.java))
 
     private fun forgotPassClick(view : View) {}
+
+    private fun onError(t: Throwable) = showError(binding.root,  t.message.toString())
 }

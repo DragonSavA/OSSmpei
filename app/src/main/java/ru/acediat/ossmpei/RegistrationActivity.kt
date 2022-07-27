@@ -26,7 +26,7 @@ class RegistrationActivity : AppCompatActivity() {
 
         with(binding){
             signUpButton.setOnClickListener(::signUpClick)
-            signInButton.setOnClickListener{ toSignIn() }
+            signInButton.setOnClickListener{ onBackPressed() }
         }
         setContentView(binding.root)
         viewModel.setRegistrationFinishedObserver(this, ::finishSignUp)
@@ -54,13 +54,8 @@ class RegistrationActivity : AppCompatActivity() {
     private fun finishSignUp(responseBody: ResponseBody) = AlertDialog.Builder(this)
         .setMessage(ru.acediat.feature_auth.R.string.finish_signup_message)
         .setPositiveButton(ru.acediat.core_res.R.string.ok) { _: DialogInterface, _: Int ->
-            toSignIn()
+            onBackPressed()
         }.create().show()
 
     private fun failSignUp(t : Throwable) = showError(binding.root, t.message.toString())
-
-    private fun toSignIn(){
-        startActivity(Intent(this, AuthActivity::class.java))
-        finish()
-    }
 }

@@ -9,17 +9,15 @@ import ru.acediat.ossmpei.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var binding : ActivityMainBinding
-    private lateinit var navController : NavController
+    private val binding : ActivityMainBinding by lazy { ActivityMainBinding.inflate(layoutInflater) }
+    private val navController : NavController by lazy { findNavController(R.id.navFragment) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        navController = findNavController(R.id.navFragment)
         binding.mainBottomNavigation.setupWithNavController(navController)
     }
+
+
 
 }
