@@ -33,7 +33,6 @@ abstract class BaseFragment<B: ViewBinding, VM: ViewModel>: Fragment() {
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
         saveState(outState)
     }
 

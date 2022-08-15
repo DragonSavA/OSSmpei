@@ -5,18 +5,16 @@ import android.os.Bundle
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import io.reactivex.rxjava3.disposables.Disposable
 import ru.acediat.core_android.PASSWORD
 import ru.acediat.core_android.PROFILE_ID
-import ru.acediat.feature_profile.ui.IMAGE_URL_BUNDLE
+import ru.acediat.feature_profile.ui.PROFILE_BUNDLE
 import javax.inject.Inject
 
 class ProfileViewModel : ViewModel() {
 
     @Inject lateinit var repository: ProfileRepository
     @Inject lateinit var preferences: SharedPreferences
-
-    var imageUrl: String = ""
-        private set
 
     private val profile = MutableLiveData<Profile>()
     private val error = MutableLiveData<Throwable>()
@@ -27,19 +25,19 @@ class ProfileViewModel : ViewModel() {
     fun setErrorObserver(lifecycleOwner: LifecycleOwner, observer: (Throwable) -> Unit) =
         error.observe(lifecycleOwner, observer)
 
-    fun authorize() = repository.authorize(
+    fun authorize(): Disposable = repository.authorize(
         getProfileId(),
         getPassword()
     ).subscribe({
         profile.postValue(it)
-        imageUrl = it.imageSrc
     }, {
         error.postValue(it)
     })
 
-    fun restoreData(data: Bundle){
-        imageUrl = data.getString(IMAGE_URL_BUNDLE) ?: ""
-    }
+    fun restoreData(data: Bundle) =
+        profile.postValue(data.getSerializable(PROFILE_BUNDLE) as Profile)
+
+    fun saveState(outState: Bundle) = outState.putSerializable(PROFILE_BUNDLE, profile.value)
 
     private fun getProfileId() = preferences.getInt(PROFILE_ID, 0)
 

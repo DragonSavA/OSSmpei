@@ -10,6 +10,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.squareup.picasso.Picasso
 import ru.acediat.core_android.BaseFragment
+import ru.acediat.core_android.Logger
+import ru.acediat.core_android.OSS_TAG
 import ru.acediat.feature_profile.model.Profile
 import ru.acediat.feature_profile.model.ProfileViewModel
 import ru.acediat.feature_profile.R
@@ -18,10 +20,7 @@ import ru.acediat.feature_profile.databinding.FragmentProfileBinding
 import ru.acediat.feature_profile.di.ProfileComponent
 import javax.inject.Inject
 
-const val FULL_NAME_BUNDLE = "fullName"
-const val GROUP_BUNDLE = "group"
-const val BALANCE_BUNDLE = "balance"
-const val IMAGE_URL_BUNDLE = "imageUrl"
+const val PROFILE_BUNDLE = "profile"
 
 class ProfileFragment : BaseFragment<FragmentProfileBinding, ProfileViewModel>() {
 
@@ -57,23 +56,14 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding, ProfileViewModel>()
         binding.profileRefreshLayout.isRefreshing = false
     }
 
-    override fun saveState(outState: Bundle) = with(outState){
-        putString(FULL_NAME_BUNDLE, binding.profileName.text.toString())
-        putString(GROUP_BUNDLE, binding.profileGroup.text.toString())
-        putString(BALANCE_BUNDLE, binding.profileScore.text.toString())
-        putString(IMAGE_URL_BUNDLE, viewModel.imageUrl)
+    override fun saveState(outState: Bundle){
+        Logger.d(OSS_TAG, "save profile state")
+        viewModel.saveState(outState)
     }
 
     override fun loadState(savedInstanceState: Bundle) = with(binding){
+        Logger.d(OSS_TAG, "load profile state")
         viewModel.restoreData(savedInstanceState)
-        profileName.text = savedInstanceState.getString(FULL_NAME_BUNDLE)
-        profileGroup.text = savedInstanceState.getString(GROUP_BUNDLE)
-        profileScore.text = savedInstanceState.getString(BALANCE_BUNDLE)
-        picasso.load(savedInstanceState.getString(IMAGE_URL_BUNDLE))
-            .error(ru.acediat.core_res.R.drawable.ic_load) //TODO: заменить на что-то норм
-            .fit()
-            .centerCrop()
-            .into(profileAvatar)
     }
 
     private fun onShopClick(view: View) = findNavController().navigate(navR.id.shop)
