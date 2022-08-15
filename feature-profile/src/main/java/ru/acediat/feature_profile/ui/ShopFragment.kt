@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.lifecycle.ViewModelProvider
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import ru.acediat.feature_profile.model.dtos.ProductDTO
 import ru.acediat.feature_profile.ui.adapters.ShopSectionsAdapter
