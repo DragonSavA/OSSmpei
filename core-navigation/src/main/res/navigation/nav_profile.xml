@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_profile"
+    app:startDestination="@id/profile">
+
+    <fragment
+        android:id="@+id/profile"
+        android:name="ru.acediat.feature_profile.ui.ProfileFragment"
+        android:label="ProfileFragment" >
+        <action
+            android:id="@+id/action_profile_to_shopFragment"
+            app:destination="@id/shop" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/shop"
+        android:name="ru.acediat.feature_profile.ui.ShopFragment"
+        android:label="ShopFragment">
+        <action
+            android:id="@+id/action_shopFragment_to_productDetailFragment"
+            app:destination="@id/productDetailFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/productDetailFragment"
+        android:name="ru.acediat.feature_profile.ui.ProductDetailFragment"
+        android:label="ProductDetailFragment">
+        <argument
+            android:name="product"
+            app:argType="ru.acediat.feature_profile.model.dtos.ProductDTO" />
+    </fragment>
+
+</navigation>

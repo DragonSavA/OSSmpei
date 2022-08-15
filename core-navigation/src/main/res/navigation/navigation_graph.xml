@@ -2,42 +2,10 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/navigation_graph"
-    app:startDestination="@id/timetable">
+    app:startDestination="@id/nav_timetable">
 
-    <fragment
-        android:id="@+id/timetable"
-        android:name="ru.acediat.feature_timetable.TimetableFragment"
-        android:label="TimetableFragment">
-        <action
-            android:id="@+id/action_timetable_to_profile"
-            app:destination="@id/profile" />
-    </fragment>
+    <include app:graph="@navigation/nav_timetable"/>
 
-    <fragment
-        android:id="@+id/profile"
-        android:name="ru.acediat.feature_profile.ui.ProfileFragment"
-        android:label="ProfileFragment" >
-        <action
-            android:id="@+id/action_profile_to_shopFragment"
-            app:destination="@id/shop" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/shop"
-        android:name="ru.acediat.feature_profile.ui.ShopFragment"
-        android:label="ShopFragment">
-        <action
-            android:id="@+id/action_shopFragment_to_productDetailFragment"
-            app:destination="@id/productDetailFragment" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/productDetailFragment"
-        android:name="ru.acediat.feature_profile.ui.ProductDetailFragment"
-        android:label="ProductDetailFragment">
-        <argument
-            android:name="product"
-            app:argType="ru.acediat.feature_profile.model.dtos.ProductDTO" />
-    </fragment>
+    <include app:graph="@navigation/nav_profile"/>
 
 </navigation>

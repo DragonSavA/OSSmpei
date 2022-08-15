@@ -35,7 +35,7 @@ class ProfileViewModel : ViewModel() {
     })
 
     fun restoreData(data: Bundle) =
-        profile.postValue(data.getSerializable(PROFILE_BUNDLE) as Profile)
+        profile.postValue(data.getSerializable(PROFILE_BUNDLE) as Profile?)
 
     fun saveState(outState: Bundle) = outState.putSerializable(PROFILE_BUNDLE, profile.value)
 
