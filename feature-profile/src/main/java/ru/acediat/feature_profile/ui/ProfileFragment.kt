@@ -10,8 +10,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.squareup.picasso.Picasso
 import ru.acediat.core_android.BaseFragment
-import ru.acediat.core_android.Logger
-import ru.acediat.core_android.OSS_TAG
 import ru.acediat.feature_profile.model.Profile
 import ru.acediat.feature_profile.model.ProfileViewModel
 import ru.acediat.feature_profile.R
@@ -33,20 +31,19 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding, ProfileViewModel>()
     override fun instanceBinding(
         inflater: LayoutInflater,
         container: ViewGroup?
-    ): FragmentProfileBinding
-        = FragmentProfileBinding.inflate(inflater, container, false)
+    ): FragmentProfileBinding = FragmentProfileBinding.inflate(inflater, container, false)
 
     override fun inject() = with(ProfileComponent.init(requireContext())){
         inject(this@ProfileFragment)
         inject(viewModel)
     }
 
-    override fun initViewModel() = with(viewModel){
+    override fun prepareViewModel() = with(viewModel){
         setProfileObserver(viewLifecycleOwner, ::onAuthorize)
         setErrorObserver(viewLifecycleOwner, ::onError)
     }
 
-    override fun bindViews() = with(binding){
+    override fun prepareViews() = with(binding){
         shopButton.setOnClickListener(::onShopClick)
         profileRefreshLayout.setOnRefreshListener { refresh() }
     }
@@ -54,16 +51,6 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding, ProfileViewModel>()
     override fun refresh() {
         viewModel.authorize()
         binding.profileRefreshLayout.isRefreshing = false
-    }
-
-    override fun saveState(outState: Bundle){
-        Logger.d(OSS_TAG, "save profile state")
-        viewModel.saveState(outState)
-    }
-
-    override fun loadState(savedInstanceState: Bundle) = with(binding){
-        Logger.d(OSS_TAG, "load profile state")
-        viewModel.restoreData(savedInstanceState)
     }
 
     private fun onShopClick(view: View) = findNavController().navigate(navR.id.shop)

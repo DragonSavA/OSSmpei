@@ -1,14 +1,11 @@
 package ru.acediat.feature_profile.ui
 
-import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.lifecycle.ViewModelProvider
-import androidx.fragment.app.Fragment
-import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
+import ru.acediat.core_android.BaseFragment
 import ru.acediat.feature_profile.model.dtos.ProductDTO
 import ru.acediat.feature_profile.ui.adapters.ShopSectionsAdapter
 import ru.acediat.feature_profile.model.ShopViewModel
@@ -19,48 +16,39 @@ import javax.inject.Inject
 
 const val PRODUCT_BUNDLE = "product"
 
-class ShopFragment : Fragment() {
+class ShopFragment : BaseFragment<FragmentShopBinding, ShopViewModel>() {
 
     @Inject lateinit var sectionsAdapter: ShopSectionsAdapter
 
-    private lateinit var binding: FragmentShopBinding
-
-    private val viewModel: ShopViewModel = ViewModelProvider
+    override val viewModel: ShopViewModel = ViewModelProvider
         .NewInstanceFactory()
         .create(ShopViewModel::class.java)
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        binding = FragmentShopBinding.inflate(inflater, container, false)
-        inject()
-        initViewModel()
-        initViews()
-        refresh()
-        return binding.root
-    }
+    override fun instanceBinding(
+        inflater: LayoutInflater,
+        container: ViewGroup?
+    ): FragmentShopBinding = FragmentShopBinding.inflate(inflater, container, false)
 
-    private fun inject() = with(ProfileComponent.init(requireContext())){
+    override fun inject() = with(ProfileComponent.init(requireContext())){
         inject(this@ShopFragment)
         inject(viewModel)
     }
 
-    private fun initViewModel() = with(viewModel){
+    override fun prepareViewModel() = with(viewModel){
         setAllProductsObserver(viewLifecycleOwner, ::onAllProductsReceived)
         setPopularProductsObserver(viewLifecycleOwner, ::onPopularProductsReceived)
         setErrorObserver(viewLifecycleOwner, ::onError)
     }
 
-    private fun initViews() = with(binding){
+    override fun prepareViews() = with(binding){
         shopToolbar.backButton.setOnClickListener { requireActivity().onBackPressed() }
         sectionsAdapter.setOnProductClickListener(::onProductClick)
-        sectionsAdapter.setOnRefreshListener(::onProductsRefresh)
+        sectionsAdapter.setOnRefreshListener(::refresh)
         sectionsPager.adapter = sectionsAdapter
         sectionTabs.setupWithViewPager(sectionsPager)
     }
 
-    private fun refresh() = with(viewModel){
+    override fun refresh(): Unit = with(viewModel){
         getAllProducts()
         getPopularProducts()
     }
@@ -75,8 +63,6 @@ class ShopFragment : Fragment() {
         navR.id.productDetailFragment,
         bundleOf(PRODUCT_BUNDLE to product)
     )
-
-    private fun onProductsRefresh() = refresh()
 
     private fun onError(error : Throwable){}//TODO: сделать обработку ошибок
 }

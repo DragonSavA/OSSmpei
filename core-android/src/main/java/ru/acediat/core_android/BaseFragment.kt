@@ -5,10 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModel
 import androidx.viewbinding.ViewBinding
 
-abstract class BaseFragment<B: ViewBinding, VM: ViewModel>: Fragment() {
+abstract class BaseFragment<B: ViewBinding, VM: BaseViewModel>: Fragment() {
 
     protected lateinit var binding: B
     protected abstract val viewModel: VM
@@ -19,9 +18,9 @@ abstract class BaseFragment<B: ViewBinding, VM: ViewModel>: Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = instanceBinding(inflater, container)
-        bindViews()
         inject()
-        initViewModel()
+        prepareViews()
+        prepareViewModel()
         return binding.root
     }
 
@@ -32,21 +31,19 @@ abstract class BaseFragment<B: ViewBinding, VM: ViewModel>: Fragment() {
             refresh()
     }
 
-    override fun onSaveInstanceState(outState: Bundle) {
-        saveState(outState)
-    }
+    override fun onSaveInstanceState(outState: Bundle) = saveState(outState)
 
-    protected abstract fun bindViews()
+    protected abstract fun prepareViews()
 
     protected abstract fun instanceBinding(inflater: LayoutInflater, container: ViewGroup?): B
-
-    protected open fun saveState(outState: Bundle){}
-
-    protected open fun loadState(savedInstanceState: Bundle){}
 
     protected open fun refresh(){}
 
     protected open fun inject(){}
 
-    protected open fun initViewModel(){}
+    protected open fun prepareViewModel(){}
+
+    private fun saveState(outState: Bundle) = viewModel.saveData(outState)
+
+    private fun loadState(savedInstanceState: Bundle) = viewModel.restoreData(savedInstanceState)
 }

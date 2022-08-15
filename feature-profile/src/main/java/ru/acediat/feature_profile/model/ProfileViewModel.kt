@@ -4,14 +4,14 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import io.reactivex.rxjava3.disposables.Disposable
+import ru.acediat.core_android.BaseViewModel
 import ru.acediat.core_android.PASSWORD
 import ru.acediat.core_android.PROFILE_ID
 import ru.acediat.feature_profile.ui.PROFILE_BUNDLE
 import javax.inject.Inject
 
-class ProfileViewModel : ViewModel() {
+class ProfileViewModel : BaseViewModel() {
 
     @Inject lateinit var repository: ProfileRepository
     @Inject lateinit var preferences: SharedPreferences
@@ -34,14 +34,15 @@ class ProfileViewModel : ViewModel() {
         error.postValue(it)
     })
 
-    fun restoreData(data: Bundle): Unit = with(data.getSerializable(PROFILE_BUNDLE) as Profile?){
-        if(this != null)
-            profile.postValue(this)
-        else
-            authorize()
-    }
+    override fun restoreData(savedInstanceState: Bundle): Unit =
+        with(savedInstanceState.getSerializable(PROFILE_BUNDLE) as Profile?){
+            if(this != null)
+                profile.postValue(this)
+            else
+                authorize()
+        }
 
-    fun saveState(outState: Bundle) = outState.putSerializable(PROFILE_BUNDLE, profile.value)
+    override fun saveData(outState: Bundle) = outState.putSerializable(PROFILE_BUNDLE, profile.value)
 
     private fun getProfileId() = preferences.getInt(PROFILE_ID, 0)
 
