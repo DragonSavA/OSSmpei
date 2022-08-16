@@ -44,7 +44,8 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding, ProfileViewModel>()
     }
 
     override fun prepareViews() = with(binding){
-        shopButton.setOnClickListener(::onShopClick)
+        shopButton.setOnClickListener { onShopClick() }
+        newTasksButton.setOnClickListener { onNewTasksClick() }
         profileRefreshLayout.setOnRefreshListener { refresh() }
     }
 
@@ -53,7 +54,9 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding, ProfileViewModel>()
         binding.profileRefreshLayout.isRefreshing = false
     }
 
-    private fun onShopClick(view: View) = findNavController().navigate(navR.id.shop)
+    private fun onShopClick() = findNavController().navigate(navR.id.shop)
+
+    private fun onNewTasksClick() = findNavController().navigate(navR.id.newTasks)
 
     @SuppressLint("SetTextI18n")
     private fun onAuthorize(profile: Profile) = with(binding){

@@ -11,4 +11,6 @@
     <string name="buy">Купить</string>
     <string name="product">Продукт</string>
     <string name="description_undefined">Описание отсутствует</string>
+    <string name="reward">Награда:</string>
+    <string name="new_tasks">Новые задания</string>
 </resources>

@@ -11,6 +11,9 @@
         <action
             android:id="@+id/action_profile_to_shopFragment"
             app:destination="@id/shop" />
+        <action
+            android:id="@+id/action_profile_to_newTasksFragment"
+            app:destination="@id/newTasks"/>
     </fragment>
 
     <fragment
@@ -29,6 +32,12 @@
         <argument
             android:name="product"
             app:argType="ru.acediat.feature_profile.model.dtos.ProductDTO" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/newTasks"
+        android:name="ru.acediat.feature_profile.ui.NewTasksFragment"
+        android:label="NewTasksFragment">
     </fragment>
 
 </navigation>
