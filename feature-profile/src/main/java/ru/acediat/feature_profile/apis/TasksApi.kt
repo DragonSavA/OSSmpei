@@ -27,6 +27,6 @@ interface TasksApi {
     fun take(
         @Query("task_id") taskId : Int,
         @Query("user_id") userId : Int
-    ): Completable//: Single<ResponseBody>
+    ): Completable
 
 }

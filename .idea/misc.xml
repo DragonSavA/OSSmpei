@@ -14,6 +14,7 @@
         <entry key="core-res/src/main/res/drawable/backgroud_error.xml" value="0.152" />
         <entry key="core-res/src/main/res/drawable/background_button.xml" value="0.1995" />
         <entry key="core-res/src/main/res/drawable/background_profile_button.xml" value="0.166" />
+        <entry key="core-res/src/main/res/drawable/background_secondary_button.xml" value="0.2155" />
         <entry key="core-res/src/main/res/drawable/background_subject.xml" value="0.1975" />
         <entry key="core-res/src/main/res/drawable/background_tab.xml" value="0.1975" />
         <entry key="core-res/src/main/res/drawable/ic_back.xml" value="0.1595" />
@@ -22,6 +23,7 @@
         <entry key="core-res/src/main/res/drawable/shape_green_rectangle.xml" value="0.2155" />
         <entry key="core-res/src/main/res/drawable/shape_red_rectangle.xml" value="0.2155" />
         <entry key="core-res/src/main/res/drawable/shape_white_rectangle.xml" value="0.2155" />
+        <entry key="core-res/src/main/res/drawable/shape_yellow_rectangle.xml" value="0.2155" />
         <entry key="core-res/src/main/res/layout/frame_loading.xml" value="0.2649169921875" />
         <entry key="core-res/src/main/res/layout/item_event.xml" value="0.44768718774767896" />
         <entry key="core-res/src/main/res/layout/item_lesson.xml" value="0.48802585325379294" />

@@ -42,6 +42,12 @@ class TaskViewModel: BaseViewModel() {
 
     fun getTaskPenalty() = task!!.penalty
 
+    fun getTaskStatus() = task!!.status
+
+    fun getTaskAdminComment() = task!!.adminComment
+
+    fun getTaskComment() = task!!.comment
+
     fun takeTask() = task!!.id?.let {
         repository.takeTask(it, getUserId()).subscribe({
             onTaskTaken()
@@ -49,6 +55,10 @@ class TaskViewModel: BaseViewModel() {
             error.postValue(it)
         })
     }
+
+    fun sendTaskToChecking(){}
+
+    fun refuseTask(){}
 
     private fun getUserId() = preferences.getInt(PROFILE_ID, 0)
 

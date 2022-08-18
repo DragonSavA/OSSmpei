@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg_blue"
@@ -151,6 +152,121 @@
                 android:layout_margin="7dp"
                 android:text="@string/take" />
 
+            <Button
+                style="@style/DefaultButton"
+                android:id="@+id/sendButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="7dp"
+                android:text="@string/send_to_check" />
+
+            <Button
+                style="@style/SecondaryButton"
+                android:id="@+id/giveUpButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="7dp"
+                android:text="@string/refuse_task" />
+
+            <LinearLayout
+                android:id="@+id/reportLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="7dp"
+                android:padding="10dp"
+                android:orientation="vertical"
+                android:background="@drawable/shape_white_rectangle">
+
+                <TextView
+                    style="@style/MainText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="7dp"
+                    android:textSize="20sp"
+                    android:text="@string/your_report" />
+
+                <TextView
+                    style="@style/MainText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="7dp"
+                    android:text="@string/comment" />
+
+                <TextView
+                    style="@style/SecondaryText"
+                    android:id="@+id/reportComment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="7dp"
+                    android:text="report" />
+
+                <TextView
+                    style="@style/MainText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="7dp"
+                    android:text="@string/photo" />
+
+                <ImageView
+                    android:id="@+id/reportPhoto"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:scaleType="centerInside"
+                    tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+            </LinearLayout>
+
+            <Button
+                style="@style/DefaultButton"
+                android:id="@+id/redactReportButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="7dp"
+                android:text="@string/redact" />
+
+            <LinearLayout
+                android:id="@+id/adminLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="7dp"
+                android:padding="10dp"
+                android:orientation="vertical"
+                android:background="@drawable/shape_white_rectangle">
+
+                <TextView
+                    style="@style/MainText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="7dp"
+                    android:textSize="20sp"
+                    android:text="@string/admin_answer" />
+
+                <TextView
+                    style="@style/MainText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="5dp"
+                    android:paddingHorizontal="7dp"
+                    android:layout_marginBottom="7dp"
+                    android:background="@drawable/shape_green_rectangle"
+                    android:text="@string/accepted" />
+
+                <TextView
+                    style="@style/MainText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="7dp"
+                    android:text="@string/comment" />
+
+                <TextView
+                    style="@style/SecondaryText"
+                    android:id="@+id/adminComment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="7dp"
+                    android:text="report" />
+
+            </LinearLayout>
         </LinearLayout>
 
     </ScrollView>

@@ -48,6 +48,9 @@ data class TaskDTO(
     @SerializedName("coment_admin")
     var adminComment: String? = null,
 
+    @SerializedName("comment")
+    var comment: String? = null
+
 ): Serializable{
     override fun toString(): String = "$id: $shortDescription"
 }

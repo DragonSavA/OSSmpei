@@ -22,4 +22,14 @@
     <string name="place">Место:</string>
     <string name="my_tasks">Мои задания</string>
     <string name="admin_comment">Комментарий администрации:</string>
+    <string name="your_report">Ваш отчёт</string>
+    <string name="comment">Комментарий:</string>
+    <string name="photo">Фото:</string>
+    <string name="send_to_check">Отправить на проверку</string>
+    <string name="refuse_task">Отказаться от задания</string>
+    <string name="redact">Отредактировать</string>
+    <string name="admin_answer">Ответ администрации</string>
+    <string name="accepted">Принято! Бонусы начислены</string>
+    <string name="canceled">Отклонено. Штраф не начислен</string>
+    <string name="penalized">Отклонено. Начислен штраф</string>
 </resources>
