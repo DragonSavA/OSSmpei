@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.Toolbar
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="45dp"
+    android:layout_marginVertical="2dp"
+    android:background="@color/bg_blue">
+
+    <ImageButton
+        android:id="@+id/backButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/empty"
+        android:layout_marginHorizontal="10dp"
+        android:paddingHorizontal="10dp"
+        android:src="@drawable/ic_back" />
+
+    <TextView
+        style="@style/MainText"
+        android:id="@+id/shopTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/main_blue"
+        android:textSize="22sp"
+        android:layout_marginHorizontal="10dp"
+        android:text="@string/my_tasks"/>
+
+</androidx.appcompat.widget.Toolbar>

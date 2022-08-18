@@ -29,11 +29,18 @@ data class TaskDTO(
     @SerializedName("reward")
     var reward: String,
 
+    @SerializedName("status")
     var status: String? = null,
 
+    @SerializedName("edit_before")
     var changeBefore: String? = null,
 
-    var penalty: String? = null
+    @SerializedName("penalty")
+    var penalty: String? = null,
+
+    @SerializedName("coment_admin")
+    var adminComment: String? = null
+
 ): Serializable{
     override fun toString(): String = "$id: $shortDescription"
 }

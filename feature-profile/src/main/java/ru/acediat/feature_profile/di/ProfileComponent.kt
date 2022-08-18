@@ -4,10 +4,7 @@ import android.content.Context
 import dagger.Component
 import ru.acediat.core_android.di.AndroidModule
 import ru.acediat.feature_profile.model.*
-import ru.acediat.feature_profile.ui.ProfileFragment
-import ru.acediat.feature_profile.ui.ShopFragment
-import ru.acediat.feature_profile.ui.NewTasksFragment
-import ru.acediat.feature_profile.ui.ProductDetailFragment
+import ru.acediat.feature_profile.ui.*
 import javax.inject.Singleton
 
 @Singleton
@@ -23,11 +20,13 @@ interface ProfileComponent {
     fun inject(model: ProductDetailViewModel)
     fun inject(model: NewTasksViewModel)
     fun inject(model: TaskViewModel)
+    fun inject(model: TakenTasksViewModel)
 
     fun inject(profileFragment: ProfileFragment)
     fun inject(shopFragment: ShopFragment)
     fun inject(detailFragment: ProductDetailFragment)
     fun inject(newTasksFragment: NewTasksFragment)
+    fun inject(takenTasksFragment: TakenTasksFragment)
 
     companion object{
 

@@ -14,6 +14,9 @@
         <action
             android:id="@+id/action_profile_to_newTasksFragment"
             app:destination="@id/newTasks"/>
+        <action
+            android:id="@+id/action_profile_to_takenTasks"
+            app:destination="@id/takenTasks" />
     </fragment>
 
     <fragment
@@ -40,6 +43,15 @@
         android:label="NewTasksFragment">
         <action
             android:id="@+id/action_NewTasksFragment_to_TaskFragment"
+            app:destination="@id/taskFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/takenTasks"
+        android:name="ru.acediat.feature_profile.ui.TakenTasksFragment"
+        android:label="TakenTasksFragment">
+        <action
+            android:id="@+id/action_takenTasks_to_taskFragment"
             app:destination="@id/taskFragment" />
     </fragment>
 

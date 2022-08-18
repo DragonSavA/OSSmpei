@@ -45,6 +45,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding, ProfileViewModel>()
 
     override fun prepareViews() = with(binding){
         shopButton.setOnClickListener { onShopClick() }
+        takenTasksButton.setOnClickListener { onTakenTasks() }
         newTasksButton.setOnClickListener { onNewTasksClick() }
         profileRefreshLayout.setOnRefreshListener { refresh() }
     }
@@ -55,6 +56,8 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding, ProfileViewModel>()
     }
 
     private fun onShopClick() = findNavController().navigate(navR.id.shop)
+
+    private fun onTakenTasks() = findNavController().navigate(navR.id.takenTasks)
 
     private fun onNewTasksClick() = findNavController().navigate(navR.id.newTasks)
 

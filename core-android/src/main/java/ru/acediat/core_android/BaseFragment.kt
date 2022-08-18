@@ -33,7 +33,7 @@ abstract class BaseFragment<B: ViewBinding, VM: BaseViewModel>: Fragment() {
 
     override fun onSaveInstanceState(outState: Bundle) = saveState(outState)
 
-    protected abstract fun prepareViews()
+    protected abstract fun prepareViews(): Unit
 
     protected abstract fun instanceBinding(inflater: LayoutInflater, container: ViewGroup?): B
 

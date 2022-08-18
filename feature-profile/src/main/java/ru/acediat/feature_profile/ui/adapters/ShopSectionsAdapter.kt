@@ -46,6 +46,7 @@ class ShopSectionsAdapter @Inject constructor(
 
     override fun getCount(): Int = 2
 
+    //TODO: вот это просто пиздец, надо поправить
     override fun getPageTitle(position: Int): CharSequence = when(position){
         0 -> "Популярные"
         1 -> "Все"
