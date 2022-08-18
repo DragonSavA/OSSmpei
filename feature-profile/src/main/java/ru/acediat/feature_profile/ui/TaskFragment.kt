@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import ru.acediat.core_android.BaseFragment
 import ru.acediat.feature_profile.databinding.FragmentTaskBinding
+import ru.acediat.feature_profile.di.ProfileComponent
 import ru.acediat.feature_profile.model.TaskViewModel
 import ru.acediat.feature_profile.model.dtos.TaskDTO
 
@@ -19,9 +20,13 @@ class TaskFragment: BaseFragment<FragmentTaskBinding, TaskViewModel>() {
         container: ViewGroup?
     ): FragmentTaskBinding = FragmentTaskBinding.inflate(inflater, container, false)
 
+    override fun inject() = with(ProfileComponent.init(requireContext())){
+        inject(viewModel)
+    }
+
     override fun prepareViewModel() = with(viewModel){
         setTask(arguments?.get(TASK_BUNDLE) as TaskDTO)
-        setOnTaskTakenCallback { requireActivity().onBackPressed() }//TODO: добавить сообщение о успешном взятии задания
+        setOnTaskTakenCallback {  }//TODO: добавить сообщение о успешном взятии задания
         setErrorObserver(viewLifecycleOwner, ::onError)
     }
 
