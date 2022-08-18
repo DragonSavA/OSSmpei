@@ -13,4 +13,10 @@
     <string name="description_undefined">Описание отсутствует</string>
     <string name="reward">Награда:</string>
     <string name="new_tasks">Новые задания</string>
+    <string name="task">Задание</string>
+    <string name="deadlines">Сроки:</string>
+    <string name="refuse_before">Можно отказаться без штрафа до:</string>
+    <string name="penalty">Штраф:</string>
+    <string name="vacant_places">Осталось мест:</string>
+    <string name="take">Взять</string>
 </resources>

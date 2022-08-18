@@ -6,7 +6,9 @@
     android:orientation="vertical"
     android:background="@color/bg_blue">
 
-    <include layout="@layout/layout_new_tasks_toolbar"/>
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/layout_new_tasks_toolbar"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/tasksRecycler"

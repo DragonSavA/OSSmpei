@@ -38,6 +38,18 @@
         android:id="@+id/newTasks"
         android:name="ru.acediat.feature_profile.ui.NewTasksFragment"
         android:label="NewTasksFragment">
+        <action
+            android:id="@+id/action_NewTasksFragment_to_TaskFragment"
+            app:destination="@id/taskFragment" />
+    </fragment>
+
+     <fragment
+        android:id="@+id/taskFragment"
+        android:name="ru.acediat.feature_profile.ui.TaskFragment"
+        android:label="TaskFragment">
+        <argument
+            android:name="task"
+            app:argType="ru.acediat.feature_profile.model.dtos.TaskDTO" />
     </fragment>
 
 </navigation>

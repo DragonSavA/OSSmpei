@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/drawable/ic_profile.xml" value="0.152" />
+        <entry key="app/src/main/res/drawable/ic_timetable.xml" value="0.1865" />
         <entry key="app/src/main/res/drawable/selector_bottom_nav_ic.xml" value="0.151" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1947411578634511" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.18206521739130435" />
@@ -37,11 +38,13 @@
         <entry key="feature-profile/src/main/res/layout/fragment_product_detail.xml" value="0.24951782226562502" />
         <entry key="feature-profile/src/main/res/layout/fragment_profile.xml" value="0.2743930262378138" />
         <entry key="feature-profile/src/main/res/layout/fragment_shop.xml" value="0.27754007975260414" />
+        <entry key="feature-profile/src/main/res/layout/fragment_task.xml" value="0.27816925048828123" />
         <entry key="feature-profile/src/main/res/layout/fragment_tasks.xml" value="0.30885416666666665" />
         <entry key="feature-profile/src/main/res/layout/item_product.xml" value="0.2600390829851213" />
         <entry key="feature-profile/src/main/res/layout/item_task.xml" value="0.3098958333333333" />
         <entry key="feature-profile/src/main/res/layout/layout_new_tasks_toolbar.xml" value="0.30885416666666665" />
         <entry key="feature-profile/src/main/res/layout/layout_shop_toolbar.xml" value="0.3098958333333333" />
+        <entry key="feature-profile/src/main/res/layout/layout_task_toolbar.xml" value="0.30885416666666665" />
         <entry key="feature-timetable/src/main/res/drawable/background_calendar.xml" value="0.1995" />
         <entry key="feature-timetable/src/main/res/drawable/ic_tasks.xml" value="0.166" />
         <entry key="feature-timetable/src/main/res/drawable/selector_calendar_text.xml" value="0.17" />

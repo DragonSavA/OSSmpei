@@ -19,8 +19,8 @@ abstract class BaseFragment<B: ViewBinding, VM: BaseViewModel>: Fragment() {
     ): View? {
         binding = instanceBinding(inflater, container)
         inject()
-        prepareViews()
         prepareViewModel()
+        prepareViews()
         return binding.root
     }
 

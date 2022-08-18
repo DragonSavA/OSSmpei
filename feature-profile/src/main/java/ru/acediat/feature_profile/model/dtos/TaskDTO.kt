@@ -1,6 +1,7 @@
 package ru.acediat.feature_profile.model.dtos
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class TaskDTO(
 
@@ -33,6 +34,6 @@ data class TaskDTO(
     var changeBefore: String? = null,
 
     var penalty: String? = null
-){
+): Serializable{
     override fun toString(): String = "$id: $shortDescription"
 }
