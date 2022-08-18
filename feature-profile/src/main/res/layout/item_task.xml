@@ -2,66 +2,75 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:layout_margin="8dp"
-    android:padding="12dp"
-    android:background="@drawable/shape_white_rectangle">
+    android:layout_margin="8dp">
 
     <LinearLayout
+        android:id="@+id/mainContent"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            style="@style/MainText"
-            android:id="@+id/shortDescription"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="TextView" />
-
-    </LinearLayout>
-
-    <TextView
-        style="@style/SecondaryText"
-        android:id="@+id/description"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="5dp"
-        android:text="TextView" />
-
-    <LinearLayout
-        android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_gravity="end"
-        android:orientation="horizontal">
+        android:orientation="vertical"
+        android:padding="12dp"
+        android:background="@drawable/shape_white_rectangle">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/MainText"
+                android:id="@+id/shortDescription"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="TextView" />
+
+        </LinearLayout>
 
         <TextView
             style="@style/SecondaryText"
-            android:id="@+id/reward"
-            android:layout_width="wrap_content"
+            android:id="@+id/description"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Награда: 1000" />
+            android:layout_marginVertical="5dp"
+            android:text="TextView" />
 
-        <ImageView
-            android:layout_marginHorizontal="3dp"
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="end"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/SecondaryText"
+                android:id="@+id/reward"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Награда: 1000" />
+
+            <ImageView
+                android:layout_marginHorizontal="3dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/ic_coin" />
+
+        </LinearLayout>
+
+        <TextView
+            style="@style/SecondaryText"
+            android:id="@+id/deadlines"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/ic_coin" />
+            android:layout_gravity="center|end"
+            android:layout_marginBottom="5dp"
+            android:textSize="12sp"
+            android:text="09.04.2022 11:00 - 09.04.2022 19:00" />
 
     </LinearLayout>
-
-    <TextView
-        style="@style/SecondaryText"
-        android:id="@+id/deadlines"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center|end"
-        android:layout_marginBottom="5dp"
-        android:textSize="12sp"
-        android:text="09.04.2022 11:00 - 09.04.2022 19:00" />
 
 </LinearLayout>

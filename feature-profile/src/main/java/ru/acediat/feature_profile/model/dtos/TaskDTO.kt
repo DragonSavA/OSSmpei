@@ -3,6 +3,13 @@ package ru.acediat.feature_profile.model.dtos
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
+const val ONGOING = "ongoing"
+const val IN_CHECKING = "IN_CHECK"
+const val PAYED = "payed"
+const val CANCELED = "canceled"
+const val PENALIZED = "penalized"
+const val REFUSED = "refused"
+
 data class TaskDTO(
 
     @SerializedName("id")
@@ -39,7 +46,7 @@ data class TaskDTO(
     var penalty: String? = null,
 
     @SerializedName("coment_admin")
-    var adminComment: String? = null
+    var adminComment: String? = null,
 
 ): Serializable{
     override fun toString(): String = "$id: $shortDescription"

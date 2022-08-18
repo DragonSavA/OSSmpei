@@ -21,4 +21,5 @@
     <string name="take">Взять</string>
     <string name="place">Место:</string>
     <string name="my_tasks">Мои задания</string>
+    <string name="admin_comment">Комментарий администрации:</string>
 </resources>
