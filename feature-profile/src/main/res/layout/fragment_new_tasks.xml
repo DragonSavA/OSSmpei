@@ -10,11 +10,8 @@
         android:id="@+id/toolbar"
         layout="@layout/layout_new_tasks_toolbar"/>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/tasksRecycler"
+    <FrameLayout
+        android:id="@+id/container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
-
-
+        android:layout_height="match_parent"/>
 </LinearLayout>

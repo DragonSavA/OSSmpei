@@ -48,6 +48,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center_vertical"
+                    android:layout_marginBottom="7dp"
                     android:orientation="horizontal">
 
                     <TextView
@@ -70,6 +71,20 @@
                         app:srcCompat="@drawable/ic_coin" />
 
                 </LinearLayout>
+
+                <TextView
+                    style="@style/MainText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/place" />
+
+                <TextView
+                    style="@style/SecondaryText"
+                    android:id="@+id/place"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="7dp"
+                    android:text="TextView" />
 
                 <TextView
                     style="@style/MainText"

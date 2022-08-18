@@ -7,6 +7,8 @@ import androidx.core.os.bundleOf
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import ru.acediat.core_android.BaseFragment
+import ru.acediat.core_android.ext.linearRecyclerView
+import ru.acediat.core_res.loadingFrame
 import ru.acediat.feature_profile.databinding.FragmentNewTasksBinding
 import ru.acediat.feature_profile.di.ProfileComponent
 import ru.acediat.feature_profile.model.NewTasksViewModel
@@ -35,9 +37,10 @@ class NewTasksFragment: BaseFragment<FragmentNewTasksBinding, NewTasksViewModel>
         container: ViewGroup?
     ): FragmentNewTasksBinding = FragmentNewTasksBinding.inflate(inflater, container, false)
 
-    override fun prepareViews() = with(binding){
+    override fun prepareViews(): Unit = with(binding){
+        container.addView(loadingFrame(container))
         toolbar.backButton.setOnClickListener { requireActivity().onBackPressed() }
-        tasksRecycler.adapter = tasksAdapter.apply { setOnTaskClickListener(::onTaskClick) }
+        tasksAdapter.setOnTaskClickListener(::onTaskClick)
     }
 
     override fun prepareViewModel() = with(viewModel){
@@ -54,7 +57,10 @@ class NewTasksFragment: BaseFragment<FragmentNewTasksBinding, NewTasksViewModel>
         bundleOf(TASK_BUNDLE to task)
     )
 
-    private fun onTasksReceived(tasks: ArrayList<TaskDTO>) = tasksAdapter.setItems(tasks)
+    private fun onTasksReceived(tasks: ArrayList<TaskDTO>) = with(binding.container){
+        removeAllViews()
+        addView(linearRecyclerView(tasksAdapter.apply { setItems(tasks) }))
+    }
 
     private fun onError(t: Throwable) = Toast.makeText(requireContext(), "error", Toast.LENGTH_SHORT).show()
 

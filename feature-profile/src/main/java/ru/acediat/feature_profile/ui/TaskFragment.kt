@@ -40,6 +40,7 @@ class TaskFragment: BaseFragment<FragmentTaskBinding, TaskViewModel>() {
             deadlines.text = getTaskDeadlines()
             refuseBefore.text = getTaskRefuseBeforeDate()
             penalty.text = getTaskPenalty()
+            place.text = getTaskPlace()
         }
     }
 
