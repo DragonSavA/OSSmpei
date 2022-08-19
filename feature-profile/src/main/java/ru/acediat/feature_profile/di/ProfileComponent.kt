@@ -27,6 +27,7 @@ interface ProfileComponent {
     fun inject(detailFragment: ProductDetailFragment)
     fun inject(newTasksFragment: NewTasksFragment)
     fun inject(takenTasksFragment: TakenTasksFragment)
+    fun inject(taskFragment: TaskFragment)
 
     companion object{
 

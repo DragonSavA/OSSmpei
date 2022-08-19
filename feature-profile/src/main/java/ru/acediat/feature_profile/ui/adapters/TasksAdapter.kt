@@ -37,7 +37,10 @@ class TasksAdapter: RecyclerViewAdapter<TaskDTO, ItemTaskBinding>() {
                 reward.text = root.context.getString(R.string.reward) + " " + item.reward
                 if(item.status == PAYED && item.adminComment != null) {
                     addBottomAddition(container, item, resR.drawable.shape_green_rectangle)
-                }else if((item.status == PENALIZED || item.status == REFUSED) && item.adminComment != null){
+                }else if(
+                    (item.status == PENALIZED || item.status == REFUSED)
+                    && item.adminComment != null
+                ){
                     addBottomAddition(container, item, resR.drawable.shape_red_rectangle)
                 }
             }

@@ -118,6 +118,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
+                    android:layout_marginBottom="7dp"
                     android:orientation="horizontal">
 
                     <TextView
@@ -211,6 +212,7 @@
                     android:id="@+id/reportPhoto"
                     android:layout_width="match_parent"
                     android:layout_height="300dp"
+                    android:layout_marginBottom="7dp"
                     android:scaleType="centerInside"
                     tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
@@ -243,6 +245,7 @@
 
                 <TextView
                     style="@style/MainText"
+                    android:id="@+id/result"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingVertical="5dp"
