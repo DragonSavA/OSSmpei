@@ -21,8 +21,10 @@ class TaskViewModel: BaseViewModel() {
     private var onTaskTaken: () -> Unit = {}
     private var error = MutableLiveData<Throwable>()
 
+    fun getTask() = task
+
     fun setTask(task: TaskDTO){
-        Logger.d(OSS_TAG, "task: $task ")
+        Logger.d(OSS_TAG, task.toString())
         this.task = task
     }
 
@@ -62,8 +64,6 @@ class TaskViewModel: BaseViewModel() {
             error.postValue(it)
         })
     }
-
-    fun sendTaskToChecking(){}
 
     fun refuseTask(){}
 

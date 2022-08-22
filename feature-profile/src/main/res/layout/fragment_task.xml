@@ -155,11 +155,11 @@
 
             <Button
                 style="@style/DefaultButton"
-                android:id="@+id/sendButton"
+                android:id="@+id/createReportButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="7dp"
-                android:text="@string/send_to_check" />
+                android:text="@string/create_report" />
 
             <Button
                 style="@style/SecondaryButton"

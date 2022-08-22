@@ -21,6 +21,7 @@ interface ProfileComponent {
     fun inject(model: NewTasksViewModel)
     fun inject(model: TaskViewModel)
     fun inject(model: TakenTasksViewModel)
+    fun inject(model: EditReportViewModel)
 
     fun inject(profileFragment: ProfileFragment)
     fun inject(shopFragment: ShopFragment)
@@ -28,6 +29,7 @@ interface ProfileComponent {
     fun inject(newTasksFragment: NewTasksFragment)
     fun inject(takenTasksFragment: TakenTasksFragment)
     fun inject(taskFragment: TaskFragment)
+    fun inject(editReportFragment: EditReportFragment)
 
     companion object{
 

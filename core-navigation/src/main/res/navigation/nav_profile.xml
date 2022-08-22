@@ -62,6 +62,18 @@
         <argument
             android:name="task"
             app:argType="ru.acediat.feature_profile.model.dtos.TaskDTO" />
+         <action
+             android:id="@+id/action_taskFragment_to_sendReportFragment"
+             app:destination="@id/editReportFragment" />
+     </fragment>
+
+    <fragment
+        android:id="@+id/editReportFragment"
+        android:name="ru.acediat.feature_profile.ui.EditReportFragment"
+        android:label="EditReportFragment">
+        <argument
+            android:name="task"
+            app:argType="ru.acediat.feature_profile.model.dtos.TaskDTO" />
     </fragment>
 
 </navigation>

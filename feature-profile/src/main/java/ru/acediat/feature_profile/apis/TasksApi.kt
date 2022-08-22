@@ -2,8 +2,10 @@ package ru.acediat.feature_profile.apis
 
 import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Single
-import retrofit2.http.GET
-import retrofit2.http.Query
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
+import okhttp3.ResponseBody
+import retrofit2.http.*
 import ru.acediat.core_network.EndpointUrl
 import ru.acediat.core_network.OSS_URL
 import ru.acediat.feature_profile.model.dtos.TaskDTO
@@ -27,6 +29,16 @@ interface TasksApi {
     fun take(
         @Query("task_id") taskId : Int,
         @Query("user_id") userId : Int
+    ): Completable
+
+    @Multipart
+    @POST("Android/edit_report.php")
+    fun sendReport(
+        @Part("comment") comment: RequestBody,
+        @Part("task_id") task_id: RequestBody,
+        @Part("user_id") user_id: RequestBody,
+        @Part("file_name") file_name: RequestBody,
+        @Part image: MultipartBody.Part?
     ): Completable
 
 }

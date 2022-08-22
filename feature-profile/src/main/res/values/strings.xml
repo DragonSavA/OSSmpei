@@ -32,4 +32,11 @@
     <string name="accepted">Принято! Бонусы начислены</string>
     <string name="canceled">Отклонено. Штраф не начислен</string>
     <string name="penalized">Отклонено. Начислен штраф</string>
+    <string name="report">Отчет</string>
+    <string name="write_comment">Напишите ваш комметарий</string>
+    <string name="attach_photo">Прикрепить фотографию из галереи</string>
+    <string name="create_photo">Сделать новую фотографию</string>
+    <string name="send_report">Отправить отчет</string>
+    <string name="create_report">Сформировать отчет</string>
+    <string name="delete_image">Удалить фотографию</string>
 </resources>

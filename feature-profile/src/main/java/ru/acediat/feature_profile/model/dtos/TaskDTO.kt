@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
 const val ONGOING = "ongoing"
-const val IN_CHECKING = "IN_CHECK"
+const val IN_CHECKING = "onchecking"
 const val PAYED = "payed"
 const val CANCELED = "canceled"
 const val PENALIZED = "penalized"

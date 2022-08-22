@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/bg_blue">
+
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginVertical="2dp"
+        android:background="@color/bg_blue">
+
+        <ImageButton
+            android:id="@+id/backButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/empty"
+            android:layout_marginHorizontal="10dp"
+            android:paddingHorizontal="10dp"
+            android:src="@drawable/ic_back" />
+
+        <TextView
+            style="@style/MainText"
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/main_blue"
+            android:textSize="22sp"
+            android:layout_marginHorizontal="10dp"
+            android:text="@string/report"/>
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="7dp"
+        android:padding="10dp"
+        android:background="@drawable/shape_white_rectangle">
+
+        <TextView
+            style="@style/MainText"
+            android:id="@+id/taskName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:layout_marginBottom="5dp"
+            android:text="TextView" />
+
+        <TextView
+            style="@style/MainText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/comment" />
+
+        <EditText
+            style="@style/PrimaryEditText"
+            android:id="@+id/comment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="7dp"
+            android:hint="@string/write_comment" />
+
+        <Button
+            style="@style/ProfileButton"
+            android:id="@+id/addPhoto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="7dp"
+            android:drawableStart="@drawable/ic_add_photo"
+            android:text="@string/attach_photo"/>
+
+        <Button
+            style="@style/ProfileButton"
+            android:id="@+id/createPhoto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_create_photo"
+            android:text="@string/create_photo"/>
+
+        <ImageView
+            android:id="@+id/reportImage"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_marginVertical="7dp"
+            android:scaleType="centerCrop"
+            tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+        <Button
+            style="@style/ProfileButton"
+            android:id="@+id/deleteImage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_cross"
+            android:layout_marginBottom="4dp"
+            android:text="@string/delete_image" />
+    </LinearLayout>
+
+    <Button
+        style="@style/DefaultButton"
+        android:id="@+id/sendReport"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="7dp"
+        android:padding="10dp"
+        android:text="@string/send_report" />
+
+</LinearLayout>

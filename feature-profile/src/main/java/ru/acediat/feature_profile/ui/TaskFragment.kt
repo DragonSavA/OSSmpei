@@ -4,12 +4,16 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.annotation.IdRes
 import androidx.appcompat.content.res.AppCompatResources
+import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.squareup.picasso.Picasso
 import ru.acediat.core_android.BaseFragment
 import ru.acediat.feature_profile.R
+import ru.acediat.feature_profile.apis.IN_CHECK
 import ru.acediat.core_res.R as resR
+import ru.acediat.core_navigation.R as navR
 import ru.acediat.feature_profile.databinding.FragmentTaskBinding
 import ru.acediat.feature_profile.di.ProfileComponent
 import ru.acediat.feature_profile.model.TaskViewModel
@@ -42,7 +46,8 @@ class TaskFragment: BaseFragment<FragmentTaskBinding, TaskViewModel>() {
 
     override fun prepareViews() = with(binding){
         toolbar.backButton.setOnClickListener { requireActivity().onBackPressed() }
-        takeButton.setOnClickListener{ onTakeButtonClick() }
+        takeButton.setOnClickListener { onTakeButtonClick() }
+        createReportButton.setOnClickListener { onCreateReportButtonClick() }
         viewModel.getTaskStatus()?.let { hideViews(it) }
         with(viewModel){
             shortDescription.text = getTaskShortDescription()
@@ -59,6 +64,13 @@ class TaskFragment: BaseFragment<FragmentTaskBinding, TaskViewModel>() {
 
     private fun onTakeButtonClick() = viewModel.takeTask()
 
+    private fun onCreateReportButtonClick() = findNavController().navigate(
+        navR.id.editReportFragment,
+        bundleOf(
+            TASK_BUNDLE to viewModel.getTask(),
+        )
+    )
+
     private fun onError(t: Throwable){}//TODO: добавить сообщение об ошибке
 
     private fun hideViews(status: String) = with(binding){
@@ -70,7 +82,7 @@ class TaskFragment: BaseFragment<FragmentTaskBinding, TaskViewModel>() {
                 adminLayout.isVisible = false
             }
             IN_CHECKING -> {
-                sendButton.isVisible = false
+                createReportButton.isVisible = false
                 giveUpButton.isVisible = false
                 adminLayout.isVisible = false
                 bindReportLayout()
@@ -88,7 +100,7 @@ class TaskFragment: BaseFragment<FragmentTaskBinding, TaskViewModel>() {
     }
 
     private fun whenCheckedComplete() = with(binding){
-        sendButton.isVisible = false
+        createReportButton.isVisible = false
         giveUpButton.isVisible = false
         redactReportButton.isVisible = false
         adminComment.text = viewModel.getTaskAdminComment() ?: "Остутствует"//TODO: заменить на строковый ресурс

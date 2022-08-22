@@ -1,7 +1,11 @@
 package ru.acediat.feature_profile.model
 
 import io.reactivex.rxjava3.core.Completable
+import io.reactivex.rxjava3.disposables.Disposable
 import io.reactivex.rxjava3.schedulers.Schedulers
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.MultipartBody
+import okhttp3.RequestBody.Companion.toRequestBody
 import ru.acediat.feature_profile.apis.TasksApi
 import javax.inject.Inject
 
@@ -14,4 +18,17 @@ class TasksRepository @Inject constructor(
             .subscribeOn(Schedulers.io())
             .observeOn(Schedulers.io())
 
+    fun sendReport(
+        taskId: Int, userId: Int,
+        comment: String,
+        fileName: String,
+        image: MultipartBody.Part?
+    ): Completable = api.sendReport(
+        comment.toRequestBody("multipart/form-data".toMediaTypeOrNull()),
+        taskId.toString().toRequestBody("multipart/form-data".toMediaTypeOrNull()),
+        userId.toString().toRequestBody("multipart/form-data".toMediaTypeOrNull()),
+        fileName.toRequestBody("multipart/form-data".toMediaTypeOrNull()),
+        image
+    ).subscribeOn(Schedulers.io())
+        .observeOn(Schedulers.io())
 }

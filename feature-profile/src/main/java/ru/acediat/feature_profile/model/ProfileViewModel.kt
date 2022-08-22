@@ -34,13 +34,13 @@ class ProfileViewModel : BaseViewModel() {
         error.postValue(it)
     })
 
-    override fun restoreData(savedInstanceState: Bundle): Unit =
-        with(savedInstanceState.getSerializable(PROFILE_BUNDLE) as Profile?){
-            if(this != null)
-                profile.postValue(this)
-            else
-                authorize()
+    override fun restoreData(savedInstanceState: Bundle): Unit {
+        (savedInstanceState.getSerializable(PROFILE_BUNDLE) as Profile?)?.let {
+            profile.postValue(it)
+        } ?: run {
+            authorize()
         }
+    }
 
     override fun saveData(outState: Bundle) = outState.putSerializable(PROFILE_BUNDLE, profile.value)
 
