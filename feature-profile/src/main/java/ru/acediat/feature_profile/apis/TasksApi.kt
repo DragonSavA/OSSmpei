@@ -8,6 +8,7 @@ import okhttp3.ResponseBody
 import retrofit2.http.*
 import ru.acediat.core_network.EndpointUrl
 import ru.acediat.core_network.OSS_URL
+import ru.acediat.feature_profile.model.dtos.RefuseTaskBody
 import ru.acediat.feature_profile.model.dtos.TaskDTO
 
 const val AVAILABLE = "available"
@@ -29,6 +30,11 @@ interface TasksApi {
     fun take(
         @Query("task_id") taskId : Int,
         @Query("user_id") userId : Int
+    ): Completable
+
+    @POST("/Android/refuse_task.php")
+    fun refuseTask(
+        @Body body: RefuseTaskBody
     ): Completable
 
     @Multipart

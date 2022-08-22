@@ -57,7 +57,7 @@ class TaskViewModel: BaseViewModel() {
 
     fun getImageUrl() = task!!.imageUrl?.let{ TASK_IMAGES_URL + it }
 
-    fun takeTask() = task!!.id?.let {
+    fun takeTask() = task?.id?.let {
         repository.takeTask(it, getUserId()).subscribe({
             onTaskTaken()
         }, {
@@ -65,7 +65,14 @@ class TaskViewModel: BaseViewModel() {
         })
     }
 
-    fun refuseTask(){}
+    fun refuseTask() = task?.let{
+        repository.refuseTask(getUserId(), it.id!!)
+            .subscribe({
+
+            }, {
+                Logger.e(OSS_TAG, "ERROR", it)
+            })
+    }
 
     private fun getUserId() = preferences.getInt(PROFILE_ID, 0)
 

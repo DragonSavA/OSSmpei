@@ -11,7 +11,6 @@ import androidx.navigation.fragment.findNavController
 import com.squareup.picasso.Picasso
 import ru.acediat.core_android.BaseFragment
 import ru.acediat.feature_profile.R
-import ru.acediat.feature_profile.apis.IN_CHECK
 import ru.acediat.core_res.R as resR
 import ru.acediat.core_navigation.R as navR
 import ru.acediat.feature_profile.databinding.FragmentTaskBinding
@@ -47,8 +46,10 @@ class TaskFragment: BaseFragment<FragmentTaskBinding, TaskViewModel>() {
     override fun prepareViews() = with(binding){
         toolbar.backButton.setOnClickListener { requireActivity().onBackPressed() }
         takeButton.setOnClickListener { onTakeButtonClick() }
-        createReportButton.setOnClickListener { onCreateReportButtonClick() }
-        viewModel.getTaskStatus()?.let { hideViews(it) }
+        createReportButton.setOnClickListener { startEditTaskReport() }
+        giveUpButton.setOnClickListener { onGiveUpButtonClick() }
+        redactReportButton.setOnClickListener { startEditTaskReport() }
+        hideViews(viewModel.getTaskStatus())
         with(viewModel){
             shortDescription.text = getTaskShortDescription()
             fullDescription.text = getTaskDescription()
@@ -64,7 +65,9 @@ class TaskFragment: BaseFragment<FragmentTaskBinding, TaskViewModel>() {
 
     private fun onTakeButtonClick() = viewModel.takeTask()
 
-    private fun onCreateReportButtonClick() = findNavController().navigate(
+    private fun onGiveUpButtonClick() = viewModel.refuseTask()
+
+    private fun startEditTaskReport() = findNavController().navigate(
         navR.id.editReportFragment,
         bundleOf(
             TASK_BUNDLE to viewModel.getTask(),
@@ -73,7 +76,7 @@ class TaskFragment: BaseFragment<FragmentTaskBinding, TaskViewModel>() {
 
     private fun onError(t: Throwable){}//TODO: добавить сообщение об ошибке
 
-    private fun hideViews(status: String) = with(binding){
+    private fun hideViews(status: String?) = with(binding){
         takeButton.isVisible = false
         when(status){
             ONGOING -> {
@@ -90,6 +93,14 @@ class TaskFragment: BaseFragment<FragmentTaskBinding, TaskViewModel>() {
             PAYED -> bindCheckedComplete(R.string.accepted, resR.drawable.shape_green_rectangle)
             CANCELED -> bindCheckedComplete(R.string.canceled, resR.drawable.shape_yellow_rectangle)
             PENALIZED -> bindCheckedComplete(R.string.penalized, resR.drawable.shape_red_rectangle)
+            null -> {
+                takeButton.isVisible = true
+                reportLayout.isVisible = false
+                redactReportButton.isVisible = false
+                adminLayout.isVisible = false
+                createReportButton.isVisible = false
+                giveUpButton.isVisible = false
+            }
         }
     }
 
