@@ -17,6 +17,9 @@
         <action
             android:id="@+id/action_profile_to_takenTasks"
             app:destination="@id/takenTasks" />
+        <action
+            android:id="@+id/action_profile_to_photoViewFragment"
+            app:destination="@id/photoViewFragment" />
     </fragment>
 
     <fragment
@@ -35,6 +38,9 @@
         <argument
             android:name="product"
             app:argType="ru.acediat.feature_profile.model.dtos.ProductDTO" />
+        <action
+            android:id="@+id/action_productDetailFragment_to_photoViewFragment"
+            app:destination="@id/photoViewFragment" />
     </fragment>
 
     <fragment
@@ -65,6 +71,9 @@
          <action
              android:id="@+id/action_taskFragment_to_sendReportFragment"
              app:destination="@id/editReportFragment" />
+         <action
+             android:id="@+id/action_taskFragment_to_photoViewFragment"
+             app:destination="@id/photoViewFragment" />
      </fragment>
 
     <fragment
@@ -74,6 +83,18 @@
         <argument
             android:name="task"
             app:argType="ru.acediat.feature_profile.model.dtos.TaskDTO" />
+        <action
+            android:id="@+id/action_editReportFragment_to_photoViewFragment"
+            app:destination="@id/photoViewFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/photoViewFragment"
+        android:name="ru.acediat.core_android.PhotoViewFragment"
+        android:label="PhotoViewFragment">
+        <argument
+            android:name="imageUrl"
+            app:argType="string"/>
     </fragment>
 
 </navigation>

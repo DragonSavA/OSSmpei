@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.squareup.picasso.Picasso
 import ru.acediat.core_android.BaseFragment
+import ru.acediat.core_android.PHOTO_URL
 import ru.acediat.feature_profile.R
 import ru.acediat.core_res.R as resR
 import ru.acediat.core_navigation.R as navR
@@ -49,6 +50,7 @@ class TaskFragment: BaseFragment<FragmentTaskBinding, TaskViewModel>() {
         createReportButton.setOnClickListener { startEditTaskReport() }
         giveUpButton.setOnClickListener { onGiveUpButtonClick() }
         redactReportButton.setOnClickListener { startEditTaskReport() }
+        reportPhoto.setOnClickListener { onPhotoClick() }
         hideViews(viewModel.getTaskStatus())
         with(viewModel){
             shortDescription.text = getTaskShortDescription()
@@ -66,6 +68,11 @@ class TaskFragment: BaseFragment<FragmentTaskBinding, TaskViewModel>() {
     private fun onTakeButtonClick() = viewModel.takeTask()
 
     private fun onGiveUpButtonClick() = viewModel.refuseTask()
+
+    private fun onPhotoClick() = findNavController().navigate(
+        navR.id.photoViewFragment,
+        bundleOf(PHOTO_URL to viewModel.getImageUrl()!!)
+    )
 
     private fun startEditTaskReport() = findNavController().navigate(
         navR.id.editReportFragment,

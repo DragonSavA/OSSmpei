@@ -3,15 +3,15 @@ package ru.acediat.feature_profile.ui
 import android.Manifest
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.squareup.picasso.Picasso
-import ru.acediat.core_android.BaseFragment
-import ru.acediat.core_android.FileUtil
-import ru.acediat.core_android.Logger
-import ru.acediat.core_android.OSS_TAG
+import ru.acediat.core_android.*
 import ru.acediat.core_android.ext.checkPermission
 import ru.acediat.core_android.ext.requestPermission
+import ru.acediat.core_navigation.R
 import ru.acediat.feature_profile.databinding.FragmentEditReportBinding
 import ru.acediat.feature_profile.di.ProfileComponent
 import ru.acediat.feature_profile.model.EditReportViewModel
@@ -63,7 +63,7 @@ class EditReportFragment: BaseFragment<FragmentEditReportBinding, EditReportView
         deleteImage.setOnClickListener { deleteImage() }
         backButton.setOnClickListener { requireActivity().onBackPressed() }
         sendReport.setOnClickListener { onSendReportClick() }
-
+        reportImage.setOnClickListener { onPhotoClick() }
         taskName.text = viewModel.task?.shortDescription
         comment.setText(viewModel.task?.comment)
         setImageViewsVisible(false)
@@ -80,6 +80,11 @@ class EditReportFragment: BaseFragment<FragmentEditReportBinding, EditReportView
         CHOOSE_PHOTO_CODE -> launchSelection()
         else -> {}
     }
+
+    private fun onPhotoClick() = findNavController().navigate(
+        R.id.photoViewFragment,
+        bundleOf(PHOTO_URL to viewModel.task?.getImageUrl()!!)
+    )
 
     private fun onSendReportClick() = viewModel.getUri()?.let{
         viewModel.sendReport(

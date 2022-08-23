@@ -5,10 +5,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.squareup.picasso.Picasso
 import ru.acediat.core_android.Logger
 import ru.acediat.core_android.OSS_TAG
+import ru.acediat.core_android.PHOTO_URL
 import ru.acediat.feature_profile.R
 import ru.acediat.feature_profile.databinding.FragmentProductDetailBinding
 import ru.acediat.feature_profile.di.ProfileComponent
@@ -60,11 +63,17 @@ class ProductDetailFragment : Fragment() {
                 getString(R.string.description_undefined)
         toolbar.backButton.setOnClickListener { requireActivity().onBackPressed() }
         buy.setOnClickListener { viewModel.buyProduct() }
+        productImage.setOnClickListener { onPhotoClick() }
         picasso.load(viewModel.getImageUrl())
             .fit()
             .centerCrop()
             .into(productImage)
     }
+
+    private fun onPhotoClick() = findNavController().navigate(
+        ru.acediat.core_navigation.R.id.photoViewFragment,
+        bundleOf(PHOTO_URL to viewModel.getImageUrl())
+    )
 
     private fun onPurchaseComplete(capitalDTO: CapitalDTO){//TODO: добавить уведомление о успешной покупке
         Logger.d(OSS_TAG, "balance after buying: ${capitalDTO.capital}")

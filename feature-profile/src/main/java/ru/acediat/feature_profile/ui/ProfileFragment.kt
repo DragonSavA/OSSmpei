@@ -6,10 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.squareup.picasso.Picasso
 import ru.acediat.core_android.BaseFragment
+import ru.acediat.core_android.PHOTO_URL
 import ru.acediat.feature_profile.model.Profile
 import ru.acediat.feature_profile.model.ProfileViewModel
 import ru.acediat.feature_profile.R
@@ -55,6 +57,11 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding, ProfileViewModel>()
         binding.profileRefreshLayout.isRefreshing = false
     }
 
+    private fun onPhotoClick(imageUrl: String) = findNavController().navigate(
+        navR.id.photoViewFragment,
+        bundleOf(PHOTO_URL to imageUrl)
+    )
+
     private fun onShopClick() = findNavController().navigate(navR.id.shop)
 
     private fun onTakenTasks() = findNavController().navigate(navR.id.takenTasks)
@@ -66,6 +73,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding, ProfileViewModel>()
         profileName.text = profile.name + " " + profile.surname
         profileGroup.text = getString(R.string.group) + " " + profile.group
         profileScore.text = getString(R.string.balance) + " " + profile.capital
+        profileAvatar.setOnClickListener { onPhotoClick(profile.imageSrc) }
         picasso.load(profile.imageSrc)
             .fit()
             .centerCrop()
