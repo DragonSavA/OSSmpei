@@ -6,6 +6,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import ru.acediat.core_android.BasePagerAdapter
 import ru.acediat.core_res.loadingFrame
 import ru.acediat.core_res.linearRecyclerView
+import ru.acediat.core_res.notifyScreen
 import java.time.LocalDateTime
 import javax.inject.Inject
 
@@ -37,6 +38,8 @@ class DaysAdapter @Inject constructor(
     override fun instantiateItem(container: ViewGroup, position: Int) =
         if(data == null)
             instantiateLoading(container)
+        else if(data!![position].isEmpty())
+            instantiateEmptyDay(container)
         else
             instantiateDayTimetable(container, position)
 
@@ -45,6 +48,16 @@ class DaysAdapter @Inject constructor(
     override fun instantiateLoading(container : ViewGroup) : View = with(loadingFrame(container)) {
         container.addView(this)
         return this
+    }
+
+    private fun instantiateEmptyDay(container: ViewGroup) : View = with(
+        notifyScreen(
+            container, R.drawable.ic_education,
+            R.string.self_education_day, R.string.self_education_descripton
+        )
+    ){
+        container.addView(this)
+        return@with this
     }
 
     private fun instantiateDayTimetable(container : ViewGroup, position: Int) : View =

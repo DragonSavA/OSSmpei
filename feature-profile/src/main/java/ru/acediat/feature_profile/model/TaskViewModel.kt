@@ -18,7 +18,7 @@ class TaskViewModel: BaseViewModel() {
     @Inject lateinit var preferences: SharedPreferences
 
     private var task: TaskDTO? = null
-    private var onTaskTaken: () -> Unit = {}
+    private var taskTaken = MutableLiveData<Boolean>()
     private var error = MutableLiveData<Throwable>()
 
     fun getTask() = task
@@ -28,12 +28,11 @@ class TaskViewModel: BaseViewModel() {
         this.task = task
     }
 
+    fun setTaskTakenObserver(lifecycleOwner: LifecycleOwner, observer: (Boolean) -> Unit) =
+        taskTaken.observe(lifecycleOwner, observer)
+
     fun setErrorObserver(lifecycleOwner: LifecycleOwner, observer: (Throwable) -> Unit) =
         error.observe(lifecycleOwner, observer)
-
-    fun setOnTaskTakenCallback(callback: () -> Unit){
-        onTaskTaken = callback
-    }
 
     fun getTaskShortDescription() = task!!.shortDescription
 
@@ -59,7 +58,7 @@ class TaskViewModel: BaseViewModel() {
 
     fun takeTask() = task?.id?.let {
         repository.takeTask(it, getUserId()).subscribe({
-            onTaskTaken()
+            taskTaken.postValue(true)
         }, {
             error.postValue(it)
         })

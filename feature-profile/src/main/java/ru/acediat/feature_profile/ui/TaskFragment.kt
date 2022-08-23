@@ -39,7 +39,7 @@ class TaskFragment: BaseFragment<FragmentTaskBinding, TaskViewModel>() {
 
     override fun prepareViewModel() = with(viewModel){
         setTask(arguments?.get(TASK_BUNDLE) as TaskDTO)
-        setOnTaskTakenCallback {  }//TODO: добавить сообщение о успешном взятии задания
+        setTaskTakenObserver(viewLifecycleOwner, ::onTaskTaken)
         setErrorObserver(viewLifecycleOwner, ::onError)
     }
 
@@ -73,6 +73,11 @@ class TaskFragment: BaseFragment<FragmentTaskBinding, TaskViewModel>() {
             TASK_BUNDLE to viewModel.getTask(),
         )
     )
+
+    //TODO: добавить сообщение о успешном взятии задания
+    private fun onTaskTaken(b: Boolean){
+        requireActivity().onBackPressed()
+    }
 
     private fun onError(t: Throwable){}//TODO: добавить сообщение об ошибке
 
@@ -114,11 +119,13 @@ class TaskFragment: BaseFragment<FragmentTaskBinding, TaskViewModel>() {
         createReportButton.isVisible = false
         giveUpButton.isVisible = false
         redactReportButton.isVisible = false
-        adminComment.text = viewModel.getTaskAdminComment() ?: "Остутствует"//TODO: заменить на строковый ресурс
+        //TODO: заменить на строковый ресурс и добавить проверку на пустоту строки
+        adminComment.text = viewModel.getTaskAdminComment() ?: "Остутствует"
     }
 
     private fun bindReportLayout(): Unit = with(binding){
-        reportComment.text = viewModel.getTaskComment() ?: "Остутствует"//TODO: заменить на строковый ресурс
+        //TODO: заменить на строковый ресурс и добавить проверку на пустоту строки
+        reportComment.text = viewModel.getTaskComment() ?: "Остутствует"
         viewModel.getImageUrl()?.let{
             picasso.load(it)
                 .fit()

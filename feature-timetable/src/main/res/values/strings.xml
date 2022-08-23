@@ -21,4 +21,9 @@
     <string name="of_october">октября</string>
     <string name="of_november">ноября</string>
     <string name="of_december">декабря</string>
+
+    <string name="self_education_day">День самостоятельных занятий</string>
+    <string name="self_education_descripton">
+        В этот день нет занятий, вы можете заняться выполнением долгов или отдохнуть
+    </string>
 </resources>

@@ -29,7 +29,7 @@ class EditReportViewModel : BaseViewModel() {
     @Inject lateinit var preferences: SharedPreferences
 
     private var imageUri: Uri? = null
-    private var onCompleteReportSend: () -> Unit = {}
+    private val completeReportSend = MutableLiveData<Boolean>()
     private val error = MutableLiveData<Throwable>()
 
     var task: TaskDTO? = null
@@ -44,9 +44,10 @@ class EditReportViewModel : BaseViewModel() {
         imageUri = null
     }
 
-    fun setOnCompleteSendReport(callback: () -> Unit){
-        onCompleteReportSend = callback
-    }
+    fun setOnCompleteReportSendObserver(
+        lifecycleOwner: LifecycleOwner,
+        observer: (Boolean) -> Unit
+    ) = completeReportSend.observe(lifecycleOwner, observer)
 
     fun setOnErrorObserver(lifecycleOwner: LifecycleOwner, observer: (Throwable) -> Unit) =
         error.observe(lifecycleOwner, observer)
@@ -56,7 +57,7 @@ class EditReportViewModel : BaseViewModel() {
         val imageFileBody = MultipartBody.Part.createFormData("image", imageFile.name, requestBody)
         repository.sendReport(it.id!!, getUserId(), comment, imageFile.name, imageFileBody)
             .subscribe({
-                onCompleteReportSend()
+                completeReportSend.postValue(true)
             }, {
                 error.postValue(it)
             })

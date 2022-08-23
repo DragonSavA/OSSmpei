@@ -30,6 +30,7 @@
         <entry key="core-res/src/main/res/layout/item_event.xml" value="0.44768718774767896" />
         <entry key="core-res/src/main/res/layout/item_lesson.xml" value="0.48802585325379294" />
         <entry key="core-res/src/main/res/layout/layout_error.xml" value="0.29789123535156253" />
+        <entry key="core-res/src/main/res/layout/layout_notify_screen.xml" value="0.26757496364507066" />
         <entry key="feature-auth/src/main/res/drawable/button_auth.xml" value="0.1995" />
         <entry key="feature-auth/src/main/res/drawable/button_reg.xml" value="0.152" />
         <entry key="feature-auth/src/main/res/drawable/edit_text_auth.xml" value="0.2155" />

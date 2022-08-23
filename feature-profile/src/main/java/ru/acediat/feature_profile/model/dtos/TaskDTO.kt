@@ -1,6 +1,7 @@
 package ru.acediat.feature_profile.model.dtos
 
 import com.google.gson.annotations.SerializedName
+import ru.acediat.core_network.TASK_IMAGES_URL
 import java.io.Serializable
 
 const val ONGOING = "ongoing"
@@ -54,4 +55,8 @@ data class TaskDTO(
     @SerializedName("photo")
     var imageUrl: String? = null
 
-): Serializable
+): Serializable {
+
+    @JvmName("getImageUrl1")
+    fun getImageUrl() = imageUrl?.let{ TASK_IMAGES_URL + it }
+}

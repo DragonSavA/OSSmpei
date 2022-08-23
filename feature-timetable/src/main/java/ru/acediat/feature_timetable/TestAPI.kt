@@ -15,11 +15,6 @@ class TestAPI : TimetableApi {
         Thread.sleep(500)
         return@fromCallable arrayListOf(
             LessonDTO(
-                lessonOId = 0, beginLesson = "9:20", endLesson = "10:55",
-                dayOfWeek = 1,discipline = "Хуета раз", auditorium = "A-100",
-                kindOfWork = "Лекция", lecturer = "Сосиби Б. У."
-            ),
-            LessonDTO(
                 lessonOId = 1, beginLesson = "9:20", endLesson = "10:55",
                 dayOfWeek = 2,discipline = "Хуета раз", auditorium = "A-100",
                 kindOfWork = "Лекция", lecturer = "Сосиби Б. У."

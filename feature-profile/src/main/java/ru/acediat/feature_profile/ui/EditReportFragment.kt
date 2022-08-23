@@ -3,7 +3,6 @@ package ru.acediat.feature_profile.ui
 import android.Manifest
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import com.squareup.picasso.Picasso
@@ -54,8 +53,8 @@ class EditReportFragment: BaseFragment<FragmentEditReportBinding, EditReportView
 
     override fun prepareViewModel() = with(viewModel){
         task = arguments?.get(TASK_BUNDLE) as TaskDTO
+        setOnCompleteReportSendObserver(viewLifecycleOwner){ requireActivity().onBackPressed() }
         setOnErrorObserver(viewLifecycleOwner, ::onError)
-        setOnCompleteSendReport { }
     }
 
     override fun prepareViews(): Unit = with(binding){
@@ -67,12 +66,7 @@ class EditReportFragment: BaseFragment<FragmentEditReportBinding, EditReportView
 
         taskName.text = viewModel.task?.shortDescription
         comment.setText(viewModel.task?.comment)
-        viewModel.task?.imageUrl?.let{
-            setAddPhotoViewsVisible(false)
-            loadReportImage(it)
-        } ?: run{
-            setImageViewsVisible(false)
-        }
+        setImageViewsVisible(false)
     }
 
     override fun refresh() { }
@@ -87,10 +81,14 @@ class EditReportFragment: BaseFragment<FragmentEditReportBinding, EditReportView
         else -> {}
     }
 
-    private fun onSendReportClick() = viewModel.sendReport(
-        binding.comment.text.toString(),
-        FileUtil.from(requireContext(), viewModel.getUri()!!)
-    )
+    private fun onSendReportClick() = viewModel.getUri()?.let{
+        viewModel.sendReport(
+            binding.comment.text.toString(),
+            FileUtil.from(requireContext(), it)
+        )
+    } ?: run{
+        //TODO: сделать уведомление о том, что картинку нужно установить вообще-то
+    }
 
     private fun onPhotoTaken(){
         setAddPhotoViewsVisible(false)
@@ -114,11 +112,6 @@ class EditReportFragment: BaseFragment<FragmentEditReportBinding, EditReportView
         deleteImage.isVisible = isVisible
     }
 
-    private fun loadReportImage(path: String) = picasso.load(path)
-        .fit()
-        .centerCrop()
-        .into(binding.reportImage)
-
     private fun launchCamera(){
         if (checkPermission(Manifest.permission.CAMERA))
             requestPermission(Manifest.permission.CAMERA, CAMERA_CODE)
@@ -131,7 +124,7 @@ class EditReportFragment: BaseFragment<FragmentEditReportBinding, EditReportView
         choosePhotoLauncher.launch(0)
     }
 
-    private fun onError(t: Throwable){
+    private fun onError(t: Throwable){//TODO: уведомление об ошибке
         Logger.e(OSS_TAG, "ERROR", t)
     }
 }
