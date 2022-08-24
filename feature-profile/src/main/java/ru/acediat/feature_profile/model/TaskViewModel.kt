@@ -67,9 +67,9 @@ class TaskViewModel: BaseViewModel() {
     fun refuseTask() = task?.let{
         repository.refuseTask(getUserId(), it.id!!)
             .subscribe({
-
+                //TODO: сделать возврат к списку
             }, {
-                Logger.e(OSS_TAG, "ERROR", it)
+                error.postValue(it)
             })
     }
 

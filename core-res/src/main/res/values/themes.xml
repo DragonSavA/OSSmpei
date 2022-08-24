@@ -2,6 +2,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
     <style name="Theme.OSSmpei" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorAccent">@color/main_blue</item>
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/main_blue</item>
         <item name="colorPrimaryVariant">@color/main_blue</item>

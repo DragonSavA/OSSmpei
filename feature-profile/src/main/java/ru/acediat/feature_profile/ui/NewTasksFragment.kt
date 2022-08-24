@@ -65,7 +65,7 @@ class NewTasksFragment: BaseFragment<FragmentNewTasksBinding, NewTasksViewModel>
         if(tasks.isEmpty())
             addView(notifyScreen(
                 this, resR.drawable.ic_sad,
-                R.string.no_taken_tasks, R.string.no_taken_tasks_description
+                R.string.no_new_tasks, R.string.no_taken_tasks_description
             ))
         else
             addView(linearRecyclerView(tasksAdapter.apply { setItems(tasks) }))

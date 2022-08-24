@@ -19,7 +19,7 @@ import javax.inject.Inject
 class TasksSectionsAdapter @Inject constructor(
     private val titles: Array<String>,
     private val adapters: Array<TasksAdapter>
-): BasePagerAdapter<ArrayList<ArrayList<TaskDTO>>>() {
+): BasePagerAdapter<ArrayList<ArrayList<TaskDTO>?>>() {
 
     companion object{
         const val TAKEN_SECTION = 0
@@ -54,15 +54,15 @@ class TasksSectionsAdapter @Inject constructor(
 
     private fun setTasks(section: Int, list: ArrayList<TaskDTO>){
         if(data == null)
-            data = arrayListOf(arrayListOf(), arrayListOf(), arrayListOf(), arrayListOf())
+            data = arrayListOf(null, null, null, null)
         adapters[section].setItems(list)
         data!![section] = list
         notifyDataSetChanged()
     }
 
-    override fun instantiateItem(container: ViewGroup, position: Int): Any = data?.let{
-        if(it[position].isNotEmpty())
-            instantiateTasksList(container, data!![position], adapters[position])
+    override fun instantiateItem(container: ViewGroup, position: Int): Any = data?.get(position)?.let{
+        if(it.isNotEmpty())
+            instantiateTasksList(container, it, adapters[position])
         else
             instantiateEmpty(container, position)
 
