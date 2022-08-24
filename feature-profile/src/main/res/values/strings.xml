@@ -39,4 +39,11 @@
     <string name="send_report">Отправить отчет</string>
     <string name="create_report">Сформировать отчет</string>
     <string name="delete_image">Удалить фотографию</string>
+    <string name="no_new_tasks">Новых заданий пока нет…</string>
+    <string name="no_taken_tasks">Нет взятых заданий</string>
+    <string name="no_incheck_tasks">Ни одно ваше задание не находится на проверке</string>
+    <string name="no_accepted_tasks">Нет выполненных заданий</string>
+    <string name="no_refused_tasks">Нет не принятых заданий</string>
+    <string name="take_task">Взять новое задание</string>
+    <string name="no_taken_tasks_description">Но они обязательно скоро появятся</string>
 </resources>

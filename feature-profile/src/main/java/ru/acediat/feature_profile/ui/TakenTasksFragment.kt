@@ -51,6 +51,7 @@ class TakenTasksFragment: BaseFragment<FragmentTakenTasksBinding, TakenTasksView
                     bundleOf(TASK_BUNDLE to it)
                 )
             }
+            setNavController(findNavController())
             setOnRefresh { refresh() }
         }
         sectionTabs.setupWithViewPager(sectionsPager)

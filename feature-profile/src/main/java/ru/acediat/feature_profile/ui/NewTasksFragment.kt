@@ -9,12 +9,15 @@ import androidx.navigation.fragment.findNavController
 import ru.acediat.core_android.BaseFragment
 import ru.acediat.core_android.ext.linearRecyclerView
 import ru.acediat.core_res.loadingFrame
+import ru.acediat.core_res.notifyScreen
+import ru.acediat.feature_profile.R
 import ru.acediat.feature_profile.databinding.FragmentNewTasksBinding
 import ru.acediat.feature_profile.di.ProfileComponent
 import ru.acediat.feature_profile.model.NewTasksViewModel
 import ru.acediat.feature_profile.model.dtos.TaskDTO
 import ru.acediat.feature_profile.ui.adapters.TasksAdapter
 import ru.acediat.core_navigation.R as navR
+import ru.acediat.core_res.R as resR
 import javax.inject.Inject
 
 const val TASK_BUNDLE = "task_bundle"
@@ -59,7 +62,13 @@ class NewTasksFragment: BaseFragment<FragmentNewTasksBinding, NewTasksViewModel>
 
     private fun onTasksReceived(tasks: ArrayList<TaskDTO>) = with(binding.container){
         removeAllViews()
-        addView(linearRecyclerView(tasksAdapter.apply { setItems(tasks) }))
+        if(tasks.isEmpty())
+            addView(notifyScreen(
+                this, resR.drawable.ic_sad,
+                R.string.no_taken_tasks, R.string.no_taken_tasks_description
+            ))
+        else
+            addView(linearRecyclerView(tasksAdapter.apply { setItems(tasks) }))
     }
 
     private fun onError(t: Throwable) = Toast.makeText(requireContext(), "error", Toast.LENGTH_SHORT).show()

@@ -34,7 +34,7 @@ fun notifyScreen(
     parent: ViewGroup,
     @DrawableRes drawableId: Int,
     @StringRes messageId: Int,
-    @StringRes descriptionId: Int,
+    @StringRes descriptionId: Int = -1,
     @StringRes buttonTitleId: Int? = null,
     onClick: (View) -> Unit = {},
 ): View = with(
@@ -44,7 +44,10 @@ fun notifyScreen(
 ){
     image.setImageDrawable(AppCompatResources.getDrawable(parent.context, drawableId))
     notifyTitle.text = parent.context.getString(messageId)
-    description.text = parent.context.getString(descriptionId)
+    if(descriptionId != -1)
+        description.text = parent.context.getString(descriptionId)
+    else
+        description.isVisible = false
     buttonTitleId?.let{
         button.text = parent.context.getString(buttonTitleId)
         button.setOnClickListener { onClick(it) }
