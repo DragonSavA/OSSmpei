@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1085266573956",
+    "project_id": "ossmpei-11734",
+    "storage_bucket": "ossmpei-11734.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1085266573956:android:090fd1fbf33f26375220d1",
+        "android_client_info": {
+          "package_name": "ru.acediat.ossmpei"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1085266573956-ser03puu0pgo6qqnp7msta9d6ullusd7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAae-FkuC-AmnaqTd9g54TnRbhUjIa5kJ8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1085266573956-ser03puu0pgo6qqnp7msta9d6ullusd7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

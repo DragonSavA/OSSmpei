@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">OSSmpei</string>
+    <string name="default_notification_channel_id">oss mpei channel</string>
 </resources>
