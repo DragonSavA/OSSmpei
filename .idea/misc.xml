@@ -22,6 +22,7 @@
         <entry key="core-res/src/main/res/drawable/ic_cross.xml" value="0.2075" />
         <entry key="core-res/src/main/res/drawable/ic_load.xml" value="0.1995" />
         <entry key="core-res/src/main/res/drawable/ic_oss.xml" value="0.17" />
+        <entry key="core-res/src/main/res/drawable/ic_oss_mpei.xml" value="0.2075" />
         <entry key="core-res/src/main/res/drawable/shape_green_rectangle.xml" value="0.2155" />
         <entry key="core-res/src/main/res/drawable/shape_primary_edit_text.xml" value="0.2155" />
         <entry key="core-res/src/main/res/drawable/shape_red_rectangle.xml" value="0.2155" />

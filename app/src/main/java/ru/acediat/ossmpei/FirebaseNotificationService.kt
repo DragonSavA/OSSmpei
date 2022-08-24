@@ -1,10 +1,11 @@
 package ru.acediat.ossmpei
 
+import android.app.Notification
 import android.app.NotificationChannel
 import android.app.NotificationManager
+import android.content.Context
 import android.util.Log
 import androidx.core.app.NotificationCompat
-import androidx.core.app.NotificationManagerCompat
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.messaging.FirebaseMessaging
 import com.google.firebase.messaging.FirebaseMessagingService
@@ -16,11 +17,15 @@ import kotlin.random.Random
 class FirebaseNotificationService : FirebaseMessagingService() {
 
     private val SENDER_LOG = "OSS_TAG_SENDER"
+    private val CHANNEL_ID = "oss mpei channel"
 
     private val channel = NotificationChannel(
-        "oss mpei channel", "oss",
-        NotificationManager.IMPORTANCE_DEFAULT
-    )
+        CHANNEL_ID, "oss",
+        NotificationManager.IMPORTANCE_HIGH
+    ).apply {
+        enableVibration(true)
+        lockscreenVisibility = Notification.VISIBILITY_PUBLIC
+    }
 
     override fun onNewToken(token: String) {
         Log.d(SENDER_LOG, "Refreshed token: $token")
@@ -46,15 +51,14 @@ class FirebaseNotificationService : FirebaseMessagingService() {
 
 
     private fun sendNotification(title : String, body : String){
-        val manager = NotificationManagerCompat.from(baseContext)
-        manager.createNotificationChannel(channel)
-        val builder = NotificationCompat.Builder(baseContext, "oss mpei channel")
+        val builder = NotificationCompat.Builder(baseContext, CHANNEL_ID)
             .setAutoCancel(true)
             .setSmallIcon(resR.drawable.ic_mpei)
             .setContentTitle(title)
             .setContentText(body)
             .setStyle(NotificationCompat.BigTextStyle().bigText(body))
-            .setPriority(NotificationCompat.PRIORITY_HIGH)
-        manager.notify(Random(Date().time).nextInt(), builder.build())
+        (getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager).apply {
+            createNotificationChannel(channel)
+        }.notify(Random(Date().time).nextInt(), builder.build())
     }
 }
