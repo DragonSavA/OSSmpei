@@ -65,6 +65,7 @@
         <entry key="feature-profile/src/main/res/layout/layout_task_toolbar.xml" value="0.30885416666666665" />
         <entry key="feature-profile/src/main/res/xml/file_path.xml" value="0.2535271483539974" />
         <entry key="feature-timetable/src/main/res/drawable/background_calendar.xml" value="0.1995" />
+        <entry key="feature-timetable/src/main/res/drawable/ic_calendar.xml" value="0.2075" />
         <entry key="feature-timetable/src/main/res/drawable/ic_tasks.xml" value="0.166" />
         <entry key="feature-timetable/src/main/res/drawable/selector_calendar_text.xml" value="0.17" />
         <entry key="feature-timetable/src/main/res/layout/activity_calendar.xml" value="0.18370513916015624" />
