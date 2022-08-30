@@ -26,6 +26,7 @@ class TimetableFragment : Fragment() {
 
     private val calendarLauncher = registerForActivityResult(CalendarContract()){
         pagerAdapter.changeDays(it)
+        observeLessons()
         binding.daysPager.currentItem = it.dayOfWeek.value - 1
         binding.dateText.text = buildDateText(it)
     }
@@ -70,7 +71,7 @@ class TimetableFragment : Fragment() {
     private fun initViewModel() = with(viewModel) {
         setTimetableObserver(viewLifecycleOwner, ::onTimetableReceived)
         setErrorObserver(viewLifecycleOwner, ::onError)
-        setCurrentGroup("A-07-20")//TODO: Поменять на группу из сохраненных данных
+        setCurrentGroup("А-07-20")//TODO: Поменять на группу из сохраненных данных
     }
 
     private fun buildDateText(date : LocalDateTime) =

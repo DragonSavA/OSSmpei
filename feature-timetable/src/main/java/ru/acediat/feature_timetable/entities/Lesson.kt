@@ -14,16 +14,22 @@ class Lesson(
     val teacher : String,
 ) : Event(id, startTime, endTime, dayOfWeek, name, place){
 
-    val colorId : Int by lazy {
-        when(name){
-            "Лекция" -> R.color.red_indicator
-            "Практическое занятие" -> R.color.yellow_indicator
-            "Лабораторная работа" -> R.color.green_indicator
-            else -> R.color.blue_indicator
+    val indicatorId : Int by lazy {
+        when(type){
+            LECTURE -> R.drawable.shape_indicator_red
+            PRACTICE -> R.drawable.shape_indicator_yellow
+            LABORATORY -> R.drawable.shape_indicator_green
+            else -> R.drawable.shape_indicator_blue
         }
     }
 
     companion object {
+
+        const val LECTURE = "Лекция"
+        const val PRACTICE = "Практическое занятие"
+        const val LABORATORY = "Лабораторная работа"
+
+        const val VACANT = "!Не определена !Вакансия "
 
         @JvmStatic
         fun buildFromDTO(dto : LessonDTO) : Lesson = with(dto){
