@@ -1,11 +1,15 @@
 package ru.acediat.feature_profile.model
 
 import android.content.SharedPreferences
+import android.net.Uri
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
 import io.reactivex.rxjava3.disposables.Disposable
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.MultipartBody
+import okhttp3.RequestBody.Companion.asRequestBody
 import ru.acediat.core_android.*
-import ru.acediat.feature_profile.model.dtos.GroupDTO
+import java.io.File
 import javax.inject.Inject
 
 class SettingsViewModel : BaseViewModel() {
@@ -13,8 +17,11 @@ class SettingsViewModel : BaseViewModel() {
     @Inject lateinit var repository: SettingsRepository
     @Inject lateinit var preferences: SharedPreferences
 
+    var imageUri: Uri? = null
+
     private val groups = MutableLiveData<ArrayList<String>>()
     private val saveComplete = MutableLiveData<String>()
+    private val updateAvatarComplete = MutableLiveData<Boolean>()
     private val error = MutableLiveData<Throwable>()
 
     fun setGroupsObserver(lifecycleOwner: LifecycleOwner, observer: (ArrayList<String>) -> Unit) =
@@ -22,6 +29,9 @@ class SettingsViewModel : BaseViewModel() {
 
     fun setSaveCompleteObserver(lifecycleOwner: LifecycleOwner, observer: (String) -> Unit) =
         saveComplete.observe(lifecycleOwner, observer)
+
+    fun setUpdateCompleteObserver(lifecycleOwner: LifecycleOwner, observer: (Boolean) -> Unit) =
+        updateAvatarComplete.observe(lifecycleOwner, observer)
 
     fun setErrorObserver(lifecycleOwner: LifecycleOwner, observer: (Throwable) -> Unit) =
         error.observe(lifecycleOwner, observer)
@@ -52,6 +62,17 @@ class SettingsViewModel : BaseViewModel() {
         }, {
             error.postValue(it)
         })
+
+    fun updateAvatar(imageFile: File){
+        val requestBody = imageFile.asRequestBody("multipart/form-data".toMediaTypeOrNull())
+        val imageFileBody = MultipartBody.Part.createFormData("image", imageFile.name, requestBody)
+        repository.updateAvatar(getUserId(), imageFile.name, imageFileBody)
+            .subscribe({
+                updateAvatarComplete.postValue(true)
+            }, {
+                error.postValue(it)
+            })
+    }
 
     fun getCurrentGroup() = preferences.getString(CURRENT_GROUP, "") ?: ""
 
