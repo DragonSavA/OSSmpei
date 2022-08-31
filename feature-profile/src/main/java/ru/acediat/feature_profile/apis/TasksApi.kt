@@ -4,11 +4,10 @@ import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Single
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
-import okhttp3.ResponseBody
 import retrofit2.http.*
 import ru.acediat.core_network.EndpointUrl
 import ru.acediat.core_network.OSS_URL
-import ru.acediat.feature_profile.model.dtos.RefuseTaskBody
+import ru.acediat.feature_profile.model.dtos.RefuseTaskDTO
 import ru.acediat.feature_profile.model.dtos.TaskDTO
 
 const val AVAILABLE = "available"
@@ -34,7 +33,7 @@ interface TasksApi {
 
     @POST("/Android/refuse_task.php")
     fun refuseTask(
-        @Body body: RefuseTaskBody
+        @Body body: RefuseTaskDTO
     ): Completable
 
     @Multipart

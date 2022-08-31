@@ -35,79 +35,91 @@
 
     </androidx.appcompat.widget.Toolbar>
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_margin="7dp"
-        android:padding="10dp"
-        android:background="@drawable/shape_white_rectangle">
+        android:layout_height="match_parent">
 
-        <TextView
-            style="@style/MainText"
-            android:id="@+id/taskName"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:layout_marginBottom="5dp"
-            android:text="TextView" />
+            android:orientation="vertical">
 
-        <TextView
-            style="@style/MainText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/comment" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_margin="7dp"
+                android:padding="10dp"
+                android:background="@drawable/shape_white_rectangle">
 
-        <EditText
-            style="@style/PrimaryEditText"
-            android:id="@+id/comment"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="7dp"
-            android:hint="@string/write_comment" />
+                <TextView
+                    style="@style/MainText"
+                    android:id="@+id/taskName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:layout_marginBottom="5dp"
+                    android:text="TextView" />
 
-        <Button
-            style="@style/ProfileButton"
-            android:id="@+id/addPhoto"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="7dp"
-            android:drawableStart="@drawable/ic_add_photo"
-            android:text="@string/attach_photo"/>
+                <TextView
+                    style="@style/MainText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/comment" />
 
-        <Button
-            style="@style/ProfileButton"
-            android:id="@+id/createPhoto"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:drawableStart="@drawable/ic_create_photo"
-            android:text="@string/create_photo"/>
+                <EditText
+                    style="@style/PrimaryEditText"
+                    android:id="@+id/comment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="7dp"
+                    android:hint="@string/write_comment" />
 
-        <ImageView
-            android:id="@+id/reportImage"
-            android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:layout_marginVertical="7dp"
-            android:scaleType="centerCrop"
-            tools:srcCompat="@tools:sample/backgrounds/scenic" />
+                <Button
+                    style="@style/ProfileButton"
+                    android:id="@+id/addPhoto"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="7dp"
+                    android:drawableStart="@drawable/ic_add_photo"
+                    android:text="@string/attach_photo"/>
 
-        <Button
-            style="@style/ProfileButton"
-            android:id="@+id/deleteImage"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:drawableStart="@drawable/ic_cross"
-            android:layout_marginBottom="4dp"
-            android:text="@string/delete_image" />
-    </LinearLayout>
+                <Button
+                    style="@style/ProfileButton"
+                    android:id="@+id/createPhoto"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_create_photo"
+                    android:text="@string/create_photo"/>
 
-    <Button
-        style="@style/DefaultButton"
-        android:id="@+id/sendReport"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="7dp"
-        android:padding="10dp"
-        android:text="@string/send_report" />
+                <ImageView
+                    android:id="@+id/reportImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:layout_marginVertical="7dp"
+                    android:scaleType="centerCrop"
+                    tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+                <Button
+                    style="@style/ProfileButton"
+                    android:id="@+id/deleteImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_cross"
+                    android:layout_marginBottom="4dp"
+                    android:text="@string/delete_image" />
+            </LinearLayout>
+
+            <Button
+                style="@style/DefaultButton"
+                android:id="@+id/sendReport"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="7dp"
+                android:padding="10dp"
+                android:text="@string/send_report" />
+
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

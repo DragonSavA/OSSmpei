@@ -1,13 +1,18 @@
 package ru.acediat.feature_timetable.di
 
+import android.content.Context
 import dagger.Component
+import ru.acediat.core_android.di.AndroidModule
 import ru.acediat.feature_timetable.DaysAdapter
 import ru.acediat.feature_timetable.TimetableFragment
 import ru.acediat.feature_timetable.TimetableViewModel
 import javax.inject.Singleton
 
 @Singleton
-@Component(modules = [TimetableModule::class])
+@Component(modules = [
+    TimetableModule::class,
+    AndroidModule::class
+])
 interface TimetableComponent {
 
     fun inject(adapter : DaysAdapter)
@@ -19,8 +24,9 @@ interface TimetableComponent {
     companion object{
 
         @JvmStatic
-        fun init() : TimetableComponent = DaggerTimetableComponent.builder()
+        fun init(context: Context) : TimetableComponent = DaggerTimetableComponent.builder()
             .timetableModule(TimetableModule())
+            .androidModule(AndroidModule(context))
             .build()
 
     }

@@ -20,6 +20,9 @@
         <action
             android:id="@+id/action_profile_to_photoViewFragment"
             app:destination="@id/photoViewFragment" />
+        <action
+            android:id="@+id/action_profile_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
     </fragment>
 
     <fragment
@@ -95,6 +98,15 @@
         android:id="@+id/photoViewFragment"
         android:name="ru.acediat.core_android.PhotoViewFragment"
         android:label="PhotoViewFragment">
+        <argument
+            android:name="imageUrl"
+            app:argType="string"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="ru.acediat.feature_profile.ui.SettingsFragment"
+        android:label="SettingsFragment">
         <argument
             android:name="imageUrl"
             app:argType="string"/>

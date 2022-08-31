@@ -1,13 +1,12 @@
 package ru.acediat.feature_profile.model
 
 import io.reactivex.rxjava3.core.Completable
-import io.reactivex.rxjava3.disposables.Disposable
 import io.reactivex.rxjava3.schedulers.Schedulers
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.toRequestBody
 import ru.acediat.feature_profile.apis.TasksApi
-import ru.acediat.feature_profile.model.dtos.RefuseTaskBody
+import ru.acediat.feature_profile.model.dtos.RefuseTaskDTO
 import javax.inject.Inject
 
 class TasksRepository @Inject constructor(
@@ -32,7 +31,7 @@ class TasksRepository @Inject constructor(
     ).subscribeOn(Schedulers.io())
         .observeOn(Schedulers.io())
 
-    fun refuseTask(userId: Int, taskId: Int) = api.refuseTask(RefuseTaskBody(taskId, userId))
+    fun refuseTask(userId: Int, taskId: Int) = api.refuseTask(RefuseTaskDTO(taskId, userId))
         .subscribeOn(Schedulers.io())
         .observeOn(Schedulers.io())
 }

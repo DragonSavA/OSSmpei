@@ -9,4 +9,6 @@ interface AdapterCallback<DATA : Any, B : ViewBinding>{
 
     fun onViewClicked(view: View, item: DATA)
 
+    fun onViewLongClicked(view: View, item: DATA){}
+
 }

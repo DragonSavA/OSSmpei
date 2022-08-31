@@ -8,7 +8,7 @@ import androidx.viewbinding.ViewBinding
 abstract class RecyclerViewAdapter<DATA : Any, B : ViewBinding>
     : RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder<DATA, B>>(){
 
-    private val items = mutableListOf<DATA>()
+    protected val items = mutableListOf<DATA>()
 
     @SuppressLint("NotifyDataSetChanged")
     fun setItems(items: List<DATA>){

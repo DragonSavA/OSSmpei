@@ -53,7 +53,7 @@ class TimetableFragment : Fragment() {
         return binding.root
     }
 
-    private fun inject() = with(TimetableComponent.init()) {
+    private fun inject() = with(TimetableComponent.init(requireContext())) {
         inject(this@TimetableFragment)
         inject(viewModel)
     }
@@ -71,7 +71,6 @@ class TimetableFragment : Fragment() {
     private fun initViewModel() = with(viewModel) {
         setTimetableObserver(viewLifecycleOwner, ::onTimetableReceived)
         setErrorObserver(viewLifecycleOwner, ::onError)
-        setCurrentGroup("А-07-20")//TODO: Поменять на группу из сохраненных данных
     }
 
     private fun buildDateText(date : LocalDateTime) =

@@ -18,14 +18,7 @@ class TimetableRepository @Inject constructor(
         .subscribeOn(Schedulers.io())
         .observeOn(Schedulers.io())
 
-    //fun getPersonLessons(
-    //    userId : Int,
-    //    from : String, to : String
-    //) : Observable<List<LessonDTO>> = api.getPersonLessons(userId, from, to)
-    //    .subscribeOn(Schedulers.io())
-    //    .observeOn(Schedulers.io())
-
-    //fun isGroupValid(group : String) : Single<GroupValidDTO> = api.isGroupValid(group)
-    //    .subscribeOn(Schedulers.io())
-    //    .observeOn(Schedulers.io())
+    fun getUserGroup(userId: Int) = api.getUserGroup(userId)
+        .subscribeOn(Schedulers.io())
+        .observeOn(Schedulers.io())
 }

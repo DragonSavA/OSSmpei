@@ -58,7 +58,7 @@ class EditReportFragment: BaseFragment<FragmentEditReportBinding, EditReportView
     }
 
     override fun prepareViews(): Unit = with(binding){
-        addPhoto.setOnClickListener { launchSelection() }
+        addPhoto.setOnClickListener { launchPhotoSelection() }
         createPhoto.setOnClickListener { launchCamera() }
         deleteImage.setOnClickListener { deleteImage() }
         backButton.setOnClickListener { requireActivity().onBackPressed() }
@@ -77,7 +77,7 @@ class EditReportFragment: BaseFragment<FragmentEditReportBinding, EditReportView
         grantResults: IntArray
     ) = when(requestCode){
         CAMERA_CODE -> launchCamera()
-        CHOOSE_PHOTO_CODE -> launchSelection()
+        CHOOSE_PHOTO_CODE -> launchPhotoSelection()
         else -> {}
     }
 
@@ -118,13 +118,13 @@ class EditReportFragment: BaseFragment<FragmentEditReportBinding, EditReportView
     }
 
     private fun launchCamera(){
-        if (checkPermission(Manifest.permission.CAMERA))
+        if(!checkPermission(Manifest.permission.CAMERA))
             requestPermission(Manifest.permission.CAMERA, CAMERA_CODE)
         cameraLauncher.launch(viewModel.createImageFile(requireContext()))
     }
 
-    private fun launchSelection(){
-        if(checkPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE))
+    private fun launchPhotoSelection(){
+        if(!checkPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE))
             requestPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE, CHOOSE_PHOTO_CODE)
         choosePhotoLauncher.launch(0)
     }

@@ -68,12 +68,18 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding, ProfileViewModel>()
 
     private fun onNewTasksClick() = findNavController().navigate(navR.id.newTasks)
 
+    private fun onInfoClick(imageUrl: String) = findNavController().navigate(
+        navR.id.settingsFragment,
+        bundleOf(IMAGE_URL_BUNDLE to imageUrl)
+    )
+
     @SuppressLint("SetTextI18n")
     private fun onAuthorize(profile: Profile) = with(binding){
         profileName.text = profile.name + " " + profile.surname
         profileGroup.text = getString(R.string.group) + " " + profile.group
         profileScore.text = getString(R.string.balance) + " " + profile.capital
         profileAvatar.setOnClickListener { onPhotoClick(profile.imageSrc) }
+        profileInfo.setOnClickListener { onInfoClick(profile.imageSrc) }
         picasso.load(profile.imageSrc)
             .fit()
             .centerCrop()

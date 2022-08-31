@@ -11,7 +11,8 @@ import javax.inject.Singleton
 @Component(modules = [
     ProfileModule::class,
     ShopModule::class,
-    TasksModule::class
+    TasksModule::class,
+    SettingsModule::class
 ])
 interface ProfileComponent {
 
@@ -22,6 +23,7 @@ interface ProfileComponent {
     fun inject(model: TaskViewModel)
     fun inject(model: TakenTasksViewModel)
     fun inject(model: EditReportViewModel)
+    fun inject(model: SettingsViewModel)
 
     fun inject(profileFragment: ProfileFragment)
     fun inject(shopFragment: ShopFragment)
@@ -30,6 +32,7 @@ interface ProfileComponent {
     fun inject(takenTasksFragment: TakenTasksFragment)
     fun inject(taskFragment: TaskFragment)
     fun inject(editReportFragment: EditReportFragment)
+    fun inject(settingsFragment: SettingsFragment)
 
     companion object{
 
