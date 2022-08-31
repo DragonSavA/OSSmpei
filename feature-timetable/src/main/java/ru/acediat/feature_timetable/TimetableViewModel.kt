@@ -33,5 +33,5 @@ class TimetableViewModel : ViewModel() {
             error.postValue(it)
         })
 
-    private fun getCurrentGroup() = preferences.getString(CURRENT_GROUP, "") ?: ""
+    fun getCurrentGroup() = preferences.getString(CURRENT_GROUP, "") ?: ""
 }

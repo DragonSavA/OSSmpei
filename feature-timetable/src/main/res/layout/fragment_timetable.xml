@@ -9,15 +9,31 @@
     android:background="@color/bg_blue"
     tools:context=".TimetableFragment">
 
-    <TextView
-        style="@style/MainText"
-        android:id="@+id/dateText"
-        android:layout_width="wrap_content"
+    <FrameLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/main_blue"
         android:layout_marginHorizontal="10dp"
         android:layout_marginTop="5dp"
-        android:text="..."/>
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/MainText"
+            android:id="@+id/dateText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/main_blue"
+            android:text="..."/>
+
+        <TextView
+            style="@style/MainText"
+            android:id="@+id/currentGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:textColor="@color/main_blue"
+            android:text="A-07-20"/>
+
+    </FrameLayout>
 
     <TableRow
         android:layout_width="match_parent"

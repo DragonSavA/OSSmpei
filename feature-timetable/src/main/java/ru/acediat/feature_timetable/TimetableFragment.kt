@@ -65,6 +65,7 @@ class TimetableFragment : Fragment() {
         daysPager.addOnPageChangeListener(onPageChangedListener)
         daysTabs.setupWithViewPager(daysPager, true)
         dateText.text = buildDateText(Time.currentDate())
+        currentGroup.text = viewModel.getCurrentGroup()
         calendarButton.setOnClickListener{ startCalendar() }
     }
 
