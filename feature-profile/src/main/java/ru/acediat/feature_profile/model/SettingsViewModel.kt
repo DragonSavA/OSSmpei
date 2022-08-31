@@ -20,17 +20,19 @@ class SettingsViewModel : BaseViewModel() {
     fun setGroupsObserver(lifecycleOwner: LifecycleOwner, observer: (ArrayList<String>) -> Unit) =
         groups.observe(lifecycleOwner, observer)
 
-    fun setOnSaveCompleteObserver(lifecycleOwner: LifecycleOwner, observer: (String) -> Unit) =
+    fun setSaveCompleteObserver(lifecycleOwner: LifecycleOwner, observer: (String) -> Unit) =
         saveComplete.observe(lifecycleOwner, observer)
 
     fun setErrorObserver(lifecycleOwner: LifecycleOwner, observer: (Throwable) -> Unit) =
         error.observe(lifecycleOwner, observer)
 
-    fun saveGroup(group: String): Disposable = repository.saveGroup(getUserId(), group)
+    fun saveGroup(group: String): Disposable = repository.isGroupValid(group)
         .subscribe({
-            saveComplete.postValue(group)
+            if(it.isValid)
+                saveGroupToServer(group)
+            //TODO: Добавить уведомление об ошибке в else ветку
         }, {
-            error.postValue(it)
+           error.postValue(it)
         })
 
     fun getFavoriteGroups(): Disposable = repository.getFavoriteGroups(getUserId())
@@ -43,11 +45,26 @@ class SettingsViewModel : BaseViewModel() {
             error.postValue(it)
         })
 
-    fun setCurrentGroup(group: String) = preferences.edit()
+    fun setCurrentGroup(group: String): Disposable = repository.isGroupValid(group)
+        .subscribe({
+            if(it.isValid)
+                saveCurrentGroup(group)
+        }, {
+            error.postValue(it)
+        })
+
+    fun getCurrentGroup() = preferences.getString(CURRENT_GROUP, "") ?: ""
+
+    private fun saveCurrentGroup(group: String) = preferences.edit()
         .putString(CURRENT_GROUP, group)
         .apply()
 
-    fun getCurrentGroup() = preferences.getString(CURRENT_GROUP, "") ?: ""
+    private fun saveGroupToServer(group: String) = repository.saveGroup(getUserId(), group)
+        .subscribe({
+            saveComplete.postValue(group)
+        }, {
+            error.postValue(it)
+        })
 
     private fun getUserId() = preferences.getInt(PROFILE_ID, 0)
 

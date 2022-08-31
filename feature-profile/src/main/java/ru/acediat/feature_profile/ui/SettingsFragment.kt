@@ -5,10 +5,11 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import com.squareup.picasso.Picasso
 import ru.acediat.core_android.BaseFragment
+import ru.acediat.core_android.Logger
+import ru.acediat.core_android.OSS_TAG
 import ru.acediat.feature_profile.databinding.FragmentSettingsBinding
 import ru.acediat.feature_profile.di.ProfileComponent
 import ru.acediat.feature_profile.model.SettingsViewModel
-import ru.acediat.feature_profile.model.dtos.GroupDTO
 import ru.acediat.feature_profile.ui.adapters.GroupsAdapter
 import javax.inject.Inject
 
@@ -36,7 +37,7 @@ class SettingsFragment: BaseFragment<FragmentSettingsBinding, SettingsViewModel>
 
     override fun prepareViewModel() = with(viewModel){
         setGroupsObserver(viewLifecycleOwner, ::onGroupsReceived)
-        setOnSaveCompleteObserver(viewLifecycleOwner, ::onGroupSaveComplete)
+        setSaveCompleteObserver(viewLifecycleOwner, ::onGroupSaveComplete)
         setErrorObserver(viewLifecycleOwner, ::onError)
     }
 
@@ -46,6 +47,10 @@ class SettingsFragment: BaseFragment<FragmentSettingsBinding, SettingsViewModel>
         backButton.setOnClickListener { requireActivity().onBackPressed() }
         currentGroup.setText(viewModel.getCurrentGroup())
         groupList.adapter = groupsAdapter
+        picasso.load(arguments?.getString(IMAGE_URL_BUNDLE))
+            .fit()
+            .centerCrop()
+            .into(binding.profileAvatar)
         refresh()
     }
 
@@ -53,8 +58,9 @@ class SettingsFragment: BaseFragment<FragmentSettingsBinding, SettingsViewModel>
         viewModel.getFavoriteGroups()
     }
 
-    private fun onAddFavoriteButtonClick() =
+    private fun onAddFavoriteButtonClick() {
         viewModel.saveGroup(binding.currentGroup.text.toString())
+    }
 
     private fun onGroupSaveComplete(group: String) {
         if(!groupsAdapter.containGroup(group))
@@ -64,5 +70,5 @@ class SettingsFragment: BaseFragment<FragmentSettingsBinding, SettingsViewModel>
 
     private fun onGroupsReceived(groups: ArrayList<String>) = groupsAdapter.setItems(groups)
 
-    private fun onError(t: Throwable){}//TODO: сделать уведомление об ошибке
+    private fun onError(t: Throwable) = Logger.e(OSS_TAG, "error", t)
 }

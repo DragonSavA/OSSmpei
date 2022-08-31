@@ -6,9 +6,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import io.reactivex.rxjava3.disposables.Disposable
 import ru.acediat.core_android.CURRENT_GROUP
-import ru.acediat.core_android.Logger
-import ru.acediat.core_android.OSS_TAG
-import ru.acediat.feature_timetable.di.TimetableComponent
 import ru.acediat.feature_timetable.entities.Lesson
 import javax.inject.Inject
 

@@ -51,28 +51,32 @@ class DaysAdapter @Inject constructor(
     }
 
     private fun instantiateEmptyDay(container: ViewGroup) : View = with(
-        notifyScreen(
-            container, R.drawable.ic_education,
-            R.string.self_education_day, R.string.self_education_descripton
-        )
+        SwipeRefreshLayout(container.context).apply {
+            addView(notifyScreen(
+                container, R.drawable.ic_education,
+                R.string.self_education_day, R.string.self_education_descripton
+            ))
+            setOnRefreshListener { onRefresh() }
+        }
     ){
         container.addView(this)
         return@with this
     }
 
-    private fun instantiateDayTimetable(container : ViewGroup, position: Int) : View =
-        with(SwipeRefreshLayout(container.context)){
-            layoutParams = ViewGroup.LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT
-            )
-            addView(linearRecyclerView(context).apply {
-                adapter = LessonsAdapter().apply {
-                    addItems(data!![position])
-                }
-            })
-            setOnRefreshListener { onRefresh() }
-            container.addView(this)
-            return@with this
-        }
+    private fun instantiateDayTimetable(container : ViewGroup, position: Int) : View = with(
+        SwipeRefreshLayout(container.context)
+    ){
+        layoutParams = ViewGroup.LayoutParams(
+            ViewGroup.LayoutParams.MATCH_PARENT,
+            ViewGroup.LayoutParams.MATCH_PARENT
+        )
+        addView(linearRecyclerView(context).apply {
+            adapter = LessonsAdapter().apply {
+                addItems(data!![position])
+            }
+        })
+        setOnRefreshListener { onRefresh() }
+        container.addView(this)
+        return@with this
+    }
 }
