@@ -46,7 +46,7 @@
     <string name="no_refused_tasks">Нет не принятых заданий</string>
     <string name="take_task">Взять новое задание</string>
     <string name="no_taken_tasks_description">Но они обязательно скоро появятся</string>
-    <string name="notification">Уведомления</string>
+    <string name="notification">Уведомления о новых заданиях</string>
     <string name="current_timetable">Текущее расписание:</string>
     <string name="add_group">Добавить в избранное</string>
     <string name="write_group">Введите группу…</string>

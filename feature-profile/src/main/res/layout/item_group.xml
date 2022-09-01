@@ -16,6 +16,6 @@
         android:paddingHorizontal="30dp"
         android:textSize="20sp"
         android:textColor="@color/text_gray"
-        android:background="@drawable/shape_white_rectangle"
+        android:background="@drawable/background_group"
         android:text="A-07-20" />
 </FrameLayout>

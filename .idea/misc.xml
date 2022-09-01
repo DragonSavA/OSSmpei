@@ -42,6 +42,7 @@
         <entry key="feature-auth/src/main/res/layout/activity_registration.xml" value="0.23700143565302315" />
         <entry key="feature-feed/src/main/res/layout/fragment_feed.xml" value="0.18206521739130435" />
         <entry key="feature-feed/src/main/res/layout/item_post.xml" value="0.29223270139832425" />
+        <entry key="feature-profile/src/main/res/drawable/background_group.xml" value="0.2135" />
         <entry key="feature-profile/src/main/res/drawable/ic_add_photo.xml" value="0.191" />
         <entry key="feature-profile/src/main/res/drawable/ic_coin.xml" value="0.152" />
         <entry key="feature-profile/src/main/res/drawable/ic_create_photo.xml" value="0.2075" />

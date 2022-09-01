@@ -4,6 +4,8 @@ import android.content.SharedPreferences
 import android.net.Uri
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.messaging.ktx.messaging
 import io.reactivex.rxjava3.disposables.Disposable
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
@@ -21,7 +23,6 @@ class SettingsViewModel : BaseViewModel() {
 
     private val groups = MutableLiveData<ArrayList<String>>()
     private val saveComplete = MutableLiveData<String>()
-    private val updateAvatarComplete = MutableLiveData<Boolean>()
     private val error = MutableLiveData<Throwable>()
 
     fun setGroupsObserver(lifecycleOwner: LifecycleOwner, observer: (ArrayList<String>) -> Unit) =
@@ -29,9 +30,6 @@ class SettingsViewModel : BaseViewModel() {
 
     fun setSaveCompleteObserver(lifecycleOwner: LifecycleOwner, observer: (String) -> Unit) =
         saveComplete.observe(lifecycleOwner, observer)
-
-    fun setUpdateCompleteObserver(lifecycleOwner: LifecycleOwner, observer: (Boolean) -> Unit) =
-        updateAvatarComplete.observe(lifecycleOwner, observer)
 
     fun setErrorObserver(lifecycleOwner: LifecycleOwner, observer: (Throwable) -> Unit) =
         error.observe(lifecycleOwner, observer)
@@ -67,12 +65,24 @@ class SettingsViewModel : BaseViewModel() {
         val requestBody = imageFile.asRequestBody("multipart/form-data".toMediaTypeOrNull())
         val imageFileBody = MultipartBody.Part.createFormData("image", imageFile.name, requestBody)
         repository.updateAvatar(getUserId(), imageFile.name, imageFileBody)
-            .subscribe({
-                updateAvatarComplete.postValue(true)
-            }, {
+            .subscribe({}, {
                 error.postValue(it)
             })
     }
+
+    fun setTasksNotificationEnabled(isEnabled: Boolean){
+        preferences.edit()
+            .putBoolean(NOTIFICATION_ENABLED, isEnabled)
+            .apply()
+        if(isEnabled) {
+            Firebase.messaging.subscribeToTopic(TASKS_NOTIFICATION)
+                .addOnCompleteListener { task -> }
+        }else {
+            Firebase.messaging.unsubscribeFromTopic(TASKS_NOTIFICATION)
+        }
+    }
+
+    fun getTasksEnabled() = preferences.getBoolean(NOTIFICATION_ENABLED, false)
 
     fun getCurrentGroup() = preferences.getString(CURRENT_GROUP, "") ?: ""
 

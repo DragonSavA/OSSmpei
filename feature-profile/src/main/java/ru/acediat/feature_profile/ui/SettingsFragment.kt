@@ -59,7 +59,13 @@ class SettingsFragment: BaseFragment<FragmentSettingsBinding, SettingsViewModel>
         backButton.setOnClickListener { requireActivity().onBackPressed() }
         changeAvatarButton.setOnClickListener { launchPhotoSelection() }
         currentGroup.setText(viewModel.getCurrentGroup())
-        groupList.adapter = groupsAdapter
+        notifySwitch.isChecked = viewModel.getTasksEnabled()
+        notifySwitch.setOnCheckedChangeListener { _, isEnabled ->
+            viewModel.setTasksNotificationEnabled(isEnabled)
+        }
+        groupList.adapter = groupsAdapter.apply {
+            setOnGroupClick(::onGroupClick)
+        }
         picasso.load(arguments?.getString(IMAGE_URL_BUNDLE))
             .fit()
             .centerCrop()
@@ -70,6 +76,8 @@ class SettingsFragment: BaseFragment<FragmentSettingsBinding, SettingsViewModel>
     override fun refresh(){
         viewModel.getFavoriteGroups()
     }
+
+    private fun onGroupClick(group: String) = binding.currentGroup.setText(group)
 
     private fun onPhotoTaken(uri: Uri){
         binding.profileAvatar.setImageURI(uri)
