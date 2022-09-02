@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/ic_map.xml" value="0.2135" />
         <entry key="app/src/main/res/drawable/ic_profile.xml" value="0.152" />
         <entry key="app/src/main/res/drawable/ic_timetable.xml" value="0.1865" />
         <entry key="app/src/main/res/drawable/selector_bottom_nav_ic.xml" value="0.151" />
@@ -42,6 +43,7 @@
         <entry key="feature-auth/src/main/res/layout/activity_registration.xml" value="0.23700143565302315" />
         <entry key="feature-feed/src/main/res/layout/fragment_feed.xml" value="0.18206521739130435" />
         <entry key="feature-feed/src/main/res/layout/item_post.xml" value="0.29223270139832425" />
+        <entry key="feature-map/src/main/res/layout/fragment_map.xml" value="0.2543822146216332" />
         <entry key="feature-profile/src/main/res/drawable/background_group.xml" value="0.2135" />
         <entry key="feature-profile/src/main/res/drawable/ic_add_photo.xml" value="0.191" />
         <entry key="feature-profile/src/main/res/drawable/ic_coin.xml" value="0.152" />

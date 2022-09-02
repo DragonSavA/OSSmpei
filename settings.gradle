@@ -11,6 +11,7 @@ dependencyResolutionManagement {
         google()
         mavenCentral()
         maven { url "https://jitpack.io" }
+        maven { url "https://maven.google.com/" }
     }
 }
 rootProject.name = "OSSmpei"
@@ -25,3 +26,4 @@ include ':feature-auth'
 include ':feature-profile'
 include ':core-navigation'
 include ':core-db'
+include ':feature-map'

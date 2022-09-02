@@ -5,6 +5,8 @@ import android.os.Bundle
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
+import com.yandex.mapkit.MapKitFactory
+import ru.acediat.core_android.YANDEX_MAP_API_KEY
 import ru.acediat.ossmpei.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -15,6 +17,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+        MapKitFactory.setApiKey(YANDEX_MAP_API_KEY)
+        MapKitFactory.initialize(this)
         binding.mainBottomNavigation.setupWithNavController(navController)
     }
 

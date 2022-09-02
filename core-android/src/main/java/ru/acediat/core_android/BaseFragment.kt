@@ -18,7 +18,9 @@ abstract class BaseFragment<B: ViewBinding, VM: BaseViewModel>: Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = instanceBinding(inflater, container)
+        Logger.i(OSS_TAG, "${this.javaClass.simpleName} binding instanced")
         inject()
+        Logger.i(OSS_TAG, "${this.javaClass.simpleName} injected")
         prepareViewModel()
         prepareViews()
         return binding.root
