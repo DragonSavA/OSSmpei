@@ -10,6 +10,7 @@ import com.yandex.mapkit.map.CameraPosition
 import ru.acediat.core_android.BaseFragment
 import ru.acediat.core_android.YANDEX_MAP_API_KEY
 import ru.acediat.feature_map.databinding.FragmentMapBinding
+import ru.acediat.feature_map.di.MapComponent
 
 class MapFragment : BaseFragment<FragmentMapBinding, MapViewModel>() {
 
@@ -22,23 +23,18 @@ class MapFragment : BaseFragment<FragmentMapBinding, MapViewModel>() {
         container: ViewGroup?
     ): FragmentMapBinding = FragmentMapBinding.inflate(inflater, container, false)
 
-    override fun inject() {
-        super.inject()
+    override fun inject() = with(MapComponent.init()){
+        inject(this@MapFragment)
+        inject(viewModel)
     }
 
-    override fun prepareViewModel() {
-
+    override fun prepareViewModel() = with(viewModel){
+        addBuildingsObserver(viewLifecycleOwner, ::onBuildingsReceived)
     }
 
-    override fun prepareViews() {
-        binding.mapView.map.move(
-            CameraPosition(viewModel.MPEI_POINT, 16f, 0f, 0f)
-        )
-        //binding.mapView.map.mapObjects.addPlacemark()
-    }
-
-    override fun refresh() {
-        super.refresh()
+    override fun prepareViews(): Unit = with(binding){
+        mapView.map.move(CameraPosition(viewModel.MPEI_POINT, 16f, 0f, 0f))
+        viewModel.getBuildingsMarks()
     }
 
     override fun onStop() {
@@ -51,5 +47,9 @@ class MapFragment : BaseFragment<FragmentMapBinding, MapViewModel>() {
         binding.mapView.onStart()
         MapKitFactory.getInstance().onStart()
         super.onStart()
+    }
+
+    private fun onBuildingsReceived(buildings: ArrayList<Placemark>) = buildings.forEach {
+        binding.mapView.addPlacemark(it)
     }
 }

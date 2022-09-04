@@ -1,9 +1,25 @@
 package ru.acediat.feature_map
 
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.MutableLiveData
 import com.yandex.mapkit.geometry.Point
+import io.reactivex.rxjava3.disposables.Disposable
 import ru.acediat.core_android.BaseViewModel
+import javax.inject.Inject
 
 class MapViewModel: BaseViewModel() {
 
     val MPEI_POINT = Point(55.755373, 37.708753)
+
+    @Inject lateinit var repository: MapRepository
+
+    private val buildings = MutableLiveData<ArrayList<Placemark>>()
+
+    fun addBuildingsObserver(lifecycleOwner: LifecycleOwner, observer: (ArrayList<Placemark>) -> Unit) =
+        buildings.observe(lifecycleOwner, observer)
+
+    fun getBuildingsMarks(): Disposable = repository.getBuidings()
+        .subscribe({
+            buildings.postValue(it)
+        }, {})
 }
