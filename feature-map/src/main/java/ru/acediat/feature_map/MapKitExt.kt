@@ -4,32 +4,30 @@ import android.content.Context
 import android.view.View
 import com.yandex.mapkit.geometry.Point
 import com.yandex.mapkit.map.MapObject
+import com.yandex.mapkit.map.MapObjectTapListener
 import com.yandex.mapkit.mapview.MapView
 import com.yandex.runtime.ui_view.ViewProvider
 import ru.acediat.core_android.ext.getDrawableFromAssets
 
 fun MapView.addPlacemark(
     placemark: Placemark,
-    onPlacemarkTap: (MapObject, Point) -> Unit
+    onPlacemarkTap: MapObjectTapListener
 ) = placemark.imageUrl?.let{
     map.mapObjects.addPlacemark(
         placemark.point,
         createViewProviderFromAsset(context, placemark.imageUrl)
     )
-    map.mapObjects.addTapListener { mapObject, point ->
-        onPlacemarkTap(mapObject, point)
-        return@addTapListener true
-    }
+    map.mapObjects.addTapListener(onPlacemarkTap)
 } ?: run{
     map.mapObjects.addPlacemark(placemark.point)
 }
 
 fun MapView.addPlacemarks(
     placemarks: List<Placemark>,
-    onPlacemarkTap: (MapObject, Point) -> Unit
+    onPlacemarkTap: MapObjectTapListener
 ) = placemarks.forEach { addPlacemark(it, onPlacemarkTap) }
 
-fun MapView.setPlacemarks(placemarks: List<Placemark>, onPlacemarkTap: (MapObject, Point) -> Unit){
+fun MapView.setPlacemarks(placemarks: List<Placemark>, onPlacemarkTap: MapObjectTapListener){
     clearMap()
     addPlacemarks(placemarks, onPlacemarkTap)
 }

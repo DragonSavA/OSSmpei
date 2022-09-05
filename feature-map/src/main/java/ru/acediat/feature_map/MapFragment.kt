@@ -5,9 +5,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.yandex.mapkit.MapKitFactory
-import com.yandex.mapkit.geometry.Point
 import com.yandex.mapkit.map.CameraPosition
-import com.yandex.mapkit.map.MapObject
+import com.yandex.mapkit.map.MapObjectTapListener
 import ru.acediat.core_android.BaseFragment
 import ru.acediat.feature_map.databinding.FragmentMapBinding
 import ru.acediat.feature_map.di.MapComponent
@@ -17,6 +16,13 @@ class MapFragment : BaseFragment<FragmentMapBinding, MapViewModel>() {
     override val viewModel: MapViewModel = ViewModelProvider
         .NewInstanceFactory()
         .create(MapViewModel::class.java)
+
+    private val onPlacemarkTapListener = MapObjectTapListener { p0, point ->
+        val p = viewModel.findPlacemark(point)
+        Toast.makeText(requireContext(),"description: ${p?.description}", Toast.LENGTH_SHORT).show()
+        //TODO: сделать отображение подробного описания места, диалоговое окно или что-то типа того
+        true
+    }
 
     override fun instanceBinding(
         inflater: LayoutInflater,
@@ -52,11 +58,6 @@ class MapFragment : BaseFragment<FragmentMapBinding, MapViewModel>() {
     }
 
     private fun onPlacemarksReceived(placemarks: ArrayList<Placemark>) =
-        binding.mapView.setPlacemarks(placemarks, ::onPlacemarkClick)
+        binding.mapView.setPlacemarks(placemarks, onPlacemarkTapListener)
 
-    private fun onPlacemarkClick(mapObject: MapObject, point: Point){
-        val p = viewModel.findPlacemark(point)
-        Toast.makeText(requireContext(), p?.description ?: "empty point", Toast.LENGTH_SHORT).show()
-        //TODO: сделать отображение подробного описания места, диалоговое окно или что-то типа того
-    }
 }
