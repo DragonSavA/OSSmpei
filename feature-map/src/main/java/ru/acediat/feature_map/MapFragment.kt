@@ -2,13 +2,13 @@ package ru.acediat.feature_map
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.lifecycle.ViewModel
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
-import com.yandex.mapkit.Animation
 import com.yandex.mapkit.MapKitFactory
+import com.yandex.mapkit.geometry.Point
 import com.yandex.mapkit.map.CameraPosition
+import com.yandex.mapkit.map.MapObject
 import ru.acediat.core_android.BaseFragment
-import ru.acediat.core_android.YANDEX_MAP_API_KEY
 import ru.acediat.feature_map.databinding.FragmentMapBinding
 import ru.acediat.feature_map.di.MapComponent
 
@@ -29,11 +29,13 @@ class MapFragment : BaseFragment<FragmentMapBinding, MapViewModel>() {
     }
 
     override fun prepareViewModel() = with(viewModel){
-        addBuildingsObserver(viewLifecycleOwner, ::onBuildingsReceived)
+        addPlacemarksObserver(viewLifecycleOwner, ::onPlacemarksReceived)
     }
 
     override fun prepareViews(): Unit = with(binding){
         mapView.map.move(CameraPosition(viewModel.MPEI_POINT, 16f, 0f, 0f))
+        buildings.setOnClickListener { viewModel.getBuildingsMarks() }
+        food.setOnClickListener { viewModel.getFoodPlacemarks() }
         viewModel.getBuildingsMarks()
     }
 
@@ -49,7 +51,12 @@ class MapFragment : BaseFragment<FragmentMapBinding, MapViewModel>() {
         super.onStart()
     }
 
-    private fun onBuildingsReceived(buildings: ArrayList<Placemark>) = buildings.forEach {
-        binding.mapView.addPlacemark(it)
+    private fun onPlacemarksReceived(placemarks: ArrayList<Placemark>) =
+        binding.mapView.setPlacemarks(placemarks, ::onPlacemarkClick)
+
+    private fun onPlacemarkClick(mapObject: MapObject, point: Point){
+        val p = viewModel.findPlacemark(point)
+        Toast.makeText(requireContext(), p?.description ?: "empty point", Toast.LENGTH_SHORT).show()
+        //TODO: сделать отображение подробного описания места, диалоговое окно или что-то типа того
     }
 }

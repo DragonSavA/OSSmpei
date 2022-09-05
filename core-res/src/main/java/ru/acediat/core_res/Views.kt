@@ -11,6 +11,7 @@ import androidx.core.view.isVisible
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import ru.acediat.core_res.databinding.LayoutNotifyScreenBinding
 
 fun loadingFrame(container : ViewGroup) : View = LayoutInflater.from(container.context).inflate(

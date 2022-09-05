@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import ru.acediat.core_android.BaseFragment
 import ru.acediat.core_android.ext.linearRecyclerView
+import ru.acediat.core_android.ext.refreshLayout
 import ru.acediat.core_res.loadingFrame
 import ru.acediat.core_res.notifyScreen
 import ru.acediat.feature_profile.R
@@ -63,12 +64,16 @@ class NewTasksFragment: BaseFragment<FragmentNewTasksBinding, NewTasksViewModel>
     private fun onTasksReceived(tasks: ArrayList<TaskDTO>) = with(binding.container){
         removeAllViews()
         if(tasks.isEmpty())
-            addView(notifyScreen(
-                this, resR.drawable.ic_sad,
-                R.string.no_new_tasks, R.string.no_taken_tasks_description
-            ))
+            addView(refreshLayout(
+                notifyScreen(
+                    this, resR.drawable.ic_sad,
+                    R.string.no_new_tasks, R.string.no_taken_tasks_description
+                )
+            ){ refresh() })
         else
-            addView(linearRecyclerView(tasksAdapter.apply { setItems(tasks) }))
+            addView(refreshLayout(
+                linearRecyclerView(tasksAdapter.apply { setItems(tasks) })
+            ){ refresh() })
     }
 
     private fun onError(t: Throwable) = Toast.makeText(requireContext(), "error", Toast.LENGTH_SHORT).show()

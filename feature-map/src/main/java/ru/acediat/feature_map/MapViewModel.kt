@@ -13,13 +13,22 @@ class MapViewModel: BaseViewModel() {
 
     @Inject lateinit var repository: MapRepository
 
-    private val buildings = MutableLiveData<ArrayList<Placemark>>()
+    private val placemarks = MutableLiveData<ArrayList<Placemark>>()
 
-    fun addBuildingsObserver(lifecycleOwner: LifecycleOwner, observer: (ArrayList<Placemark>) -> Unit) =
-        buildings.observe(lifecycleOwner, observer)
+    fun findPlacemark(point: Point): Placemark? = placemarks.value?.firstOrNull {
+        it.point == point
+    }
+
+    fun addPlacemarksObserver(lifecycleOwner: LifecycleOwner, observer: (ArrayList<Placemark>) -> Unit) =
+        placemarks.observe(lifecycleOwner, observer)
 
     fun getBuildingsMarks(): Disposable = repository.getBuidings()
         .subscribe({
-            buildings.postValue(it)
+            placemarks.postValue(it)
+        }, {})
+
+    fun getFoodPlacemarks(): Disposable = repository.getFood()
+        .subscribe({
+            placemarks.postValue(it)
         }, {})
 }

@@ -110,7 +110,7 @@ class PlacemarksApiImpl : PlacemarksApi {
     override fun getFood(): Single<ArrayList<Placemark>> =
         object : Single<ArrayList<Placemark>>(){
             override fun subscribeActual(observer: SingleObserver<in ArrayList<Placemark>>) {
-                observer.onSuccess(BUILDINGS)
+                observer.onSuccess(arrayListOf())
             }
         }
 
