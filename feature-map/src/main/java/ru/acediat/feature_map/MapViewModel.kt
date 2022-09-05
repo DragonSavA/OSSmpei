@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import com.yandex.mapkit.geometry.Point
 import io.reactivex.rxjava3.disposables.Disposable
 import ru.acediat.core_android.BaseViewModel
+import ru.acediat.feature_map.placemarks.Placemark
 import javax.inject.Inject
 
 class MapViewModel: BaseViewModel() {
@@ -14,10 +15,6 @@ class MapViewModel: BaseViewModel() {
     @Inject lateinit var repository: MapRepository
 
     private val placemarks = MutableLiveData<ArrayList<Placemark>>()
-
-    fun findPlacemark(point: Point): Placemark? = placemarks.value?.firstOrNull {
-        it.point == point
-    }
 
     fun addPlacemarksObserver(lifecycleOwner: LifecycleOwner, observer: (ArrayList<Placemark>) -> Unit) =
         placemarks.observe(lifecycleOwner, observer)

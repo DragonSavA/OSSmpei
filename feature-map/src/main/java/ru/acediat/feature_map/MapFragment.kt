@@ -8,8 +8,12 @@ import com.yandex.mapkit.MapKitFactory
 import com.yandex.mapkit.map.CameraPosition
 import com.yandex.mapkit.map.MapObjectTapListener
 import ru.acediat.core_android.BaseFragment
+import ru.acediat.core_android.Logger
+import ru.acediat.core_android.OSS_TAG
 import ru.acediat.feature_map.databinding.FragmentMapBinding
 import ru.acediat.feature_map.di.MapComponent
+import ru.acediat.feature_map.placemarks.Placemark
+import ru.acediat.feature_map.placemarks.PlacemarkInfo
 
 class MapFragment : BaseFragment<FragmentMapBinding, MapViewModel>() {
 
@@ -17,9 +21,8 @@ class MapFragment : BaseFragment<FragmentMapBinding, MapViewModel>() {
         .NewInstanceFactory()
         .create(MapViewModel::class.java)
 
-    private val onPlacemarkTapListener = MapObjectTapListener { p0, point ->
-        val p = viewModel.findPlacemark(point)
-        Toast.makeText(requireContext(),"description: ${p?.description}", Toast.LENGTH_SHORT).show()
+    private val onPlacemarkTapListener = MapObjectTapListener { mapObject, point ->
+        val info = mapObject.userData as PlacemarkInfo
         //TODO: сделать отображение подробного описания места, диалоговое окно или что-то типа того
         true
     }

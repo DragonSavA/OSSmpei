@@ -8,16 +8,19 @@ import com.yandex.mapkit.map.MapObjectTapListener
 import com.yandex.mapkit.mapview.MapView
 import com.yandex.runtime.ui_view.ViewProvider
 import ru.acediat.core_android.ext.getDrawableFromAssets
+import ru.acediat.feature_map.placemarks.Placemark
 
 fun MapView.addPlacemark(
     placemark: Placemark,
     onPlacemarkTap: MapObjectTapListener
-) = placemark.imageUrl?.let{
+) = placemark.info.imageUrl?.let{
     map.mapObjects.addPlacemark(
         placemark.point,
-        createViewProviderFromAsset(context, placemark.imageUrl)
-    )
-    map.mapObjects.addTapListener(onPlacemarkTap)
+        createViewProviderFromAsset(context, placemark.info.imageUrl)
+    ).also {
+        it.addTapListener(onPlacemarkTap)
+        it.userData = placemark.info
+    }
 } ?: run{
     map.mapObjects.addPlacemark(placemark.point)
 }
@@ -33,10 +36,6 @@ fun MapView.setPlacemarks(placemarks: List<Placemark>, onPlacemarkTap: MapObject
 }
 
 fun MapView.clearMap() = map.mapObjects.clear()
-
-fun Point.equals(other: Point): Boolean{
-     return this.latitude == other.latitude && this.longitude == other.longitude
-}
 
 private fun createViewProviderFromAsset(context: Context, filename: String) = ViewProvider(
     View(context).apply {
