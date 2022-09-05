@@ -1,4 +1,4 @@
-package ru.acediat.feature_map.placemarks
+package ru.acediat.feature_map
 
 import com.yandex.mapkit.geometry.Point
 

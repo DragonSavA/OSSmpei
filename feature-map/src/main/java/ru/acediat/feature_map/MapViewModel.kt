@@ -5,7 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import com.yandex.mapkit.geometry.Point
 import io.reactivex.rxjava3.disposables.Disposable
 import ru.acediat.core_android.BaseViewModel
-import ru.acediat.feature_map.placemarks.Placemark
 import javax.inject.Inject
 
 class MapViewModel: BaseViewModel() {

@@ -8,7 +8,6 @@ import com.yandex.mapkit.map.MapObjectTapListener
 import com.yandex.mapkit.mapview.MapView
 import com.yandex.runtime.ui_view.ViewProvider
 import ru.acediat.core_android.ext.getDrawableFromAssets
-import ru.acediat.feature_map.placemarks.Placemark
 
 fun MapView.addPlacemark(
     placemark: Placemark,

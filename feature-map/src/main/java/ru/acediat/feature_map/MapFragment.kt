@@ -12,8 +12,6 @@ import ru.acediat.core_android.Logger
 import ru.acediat.core_android.OSS_TAG
 import ru.acediat.feature_map.databinding.FragmentMapBinding
 import ru.acediat.feature_map.di.MapComponent
-import ru.acediat.feature_map.placemarks.Placemark
-import ru.acediat.feature_map.placemarks.PlacemarkInfo
 
 class MapFragment : BaseFragment<FragmentMapBinding, MapViewModel>() {
 

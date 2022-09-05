@@ -1,111 +1,109 @@
 package ru.acediat.feature_map
 
 import com.yandex.mapkit.geometry.Point
-import ru.acediat.feature_map.placemarks.Building
-import ru.acediat.feature_map.placemarks.FoodPlace
 
 val BUILDINGS = arrayListOf(
-    Building(
+    Placemark(
         Point(55.755201, 37.707395),
-        "Корпус Б",null
+        "Корпус Б","",null
     ),
-    Building(
+    Placemark(
         Point(55.755236, 37.708599),
-        "Корпус В", null
+        "Корпус В", "",null
     ),
-    Building(
+    Placemark(
         Point(55.754638, 37.708967),
-        "Корпус Г",null
+        "Корпус Г","",null
     ),
-    Building(
+    Placemark(
         Point(55.755994, 37.707712),
-        "Корпус А",null
+        "Корпус А","",null
     ),
-    Building(
+    Placemark(
         Point(55.755197, 37.710105),
-        "Корпус Д",null
+        "Корпус Д","",null
     ),
-    Building(
+    Placemark(
         Point(55.755982854871554, 37.708284919317),
-        "Корпус Х", null
+        "Корпус Х", "",null
     ),
-    Building(
+    Placemark(
         Point(55.756323961713896, 37.709111039696054),
-        "Корпус Т",null
+        "Корпус Т","",null
     ),
-    Building(
+    Placemark(
         Point(55.754353, 37.706652),
-        "Корпус З",null
+        "Корпус З","",null
     ),
-    Building(
+    Placemark(
         Point(55.754401, 37.707456),
-        "Корпус Ж",null
+        "Корпус Ж","",null
     ),
-    Building(
+    Placemark(
         Point(55.753845, 37.708241),
-        "Корпус И",null
+        "Корпус И","",null
     ),
-    Building(
+    Placemark(
         Point(55.753738, 37.709396),
-        "Корпус К",null
+        "Корпус К","",null
     ),
-    Building(
+    Placemark(
         Point(55.753463, 37.709783),
-        "Корпус Л",null
+        "Корпус Л","",null
     ),
-    Building(
+    Placemark(
         Point(55.75375022598407, 37.706759900150274),
-        "Корпус Р",null
+        "Корпус Р","",null
     ),
-    Building(
+    Placemark(
         Point(55.75628695899076, 37.704254885815466),
-        "Корпус М",null
+        "Корпус М","",null
     ),
-    Building(
+    Placemark(
         Point(55.756472159368315, 37.70409251967778),
-        "Корпус Э",null
+        "Корпус Э","",null
     ),
-    Building(
+    Placemark(
         Point(55.75717344349989, 37.703938930091795),
-        "Корпус Н",null
+        "Корпус Н","",null
     ),
-    Building(
+    Placemark(
         Point(55.75669933729711, 37.70327630071533),
-        "Корпус Е",null
+        "Корпус Е","",null
     ),
-    Building(
+    Placemark(
         Point(55.757785822151874, 37.70558892112334),
-        "Корпус Ф",null
+        "Корпус Ф","",null
     ),
-    Building(
+    Placemark(
         Point(55.75752408084265, 37.70239864588783),
-        "Корпус С",null
+        "Корпус С","",null
     ),
-    Building(
+    Placemark(
         Point(55.758427634364715, 37.70442571913155),
-        "Бассейн МЭИ","ic_pool.png"
+        "Бассейн МЭИ","","ic_pool.png"
     ),
-    Building(
+    Placemark(
         Point(55.76284625314187, 37.701573616804225),
-        "Стадион \"Энергия\"",null
+        "Стадион \"Энергия\"","",null
     )
 )
 
 val FOOD = arrayListOf(
-    FoodPlace(
+    Placemark(
         Point(55.75507394196282, 37.7082797230825),
-        "Столовая №1", "Подвал корпуса В. Вход под лестницей"
+        "Столовая №1", "Подвал корпуса В. Вход под лестницей", "ic_food.png"
     ),
-    FoodPlace(
+    Placemark(
         Point(55.75517425267651, 37.707755437934225),
-        "Буфет корпуса Б", "Корпус Б, второй этаж"
+        "Буфет корпуса Б", "Корпус Б, второй этаж", "ic_food.png"
     ),
-    FoodPlace(
+    Placemark(
         Point(55.75481136269668, 37.70898750803266),
-        "Блинная", "Корпус Г, третий этаж"
+        "Блинная", "Корпус Г, третий этаж", "ic_food.png"
     ),
-    FoodPlace(
+    Placemark(
         Point(55.755959027608455, 37.704342341555794),
-        "Harvard Cafe", "Красноказарменная 13с3"
+        "Harvard Cafe", "Красноказарменная 13с3", "ic_food.png"
     ),
 )
