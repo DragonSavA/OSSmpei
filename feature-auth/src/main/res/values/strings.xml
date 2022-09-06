@@ -21,4 +21,10 @@
     <string name="finish_signup_message">
         Для завершения регистрации пройдите по ссылке в письме, которое пришло на вашу почту
     </string>
+
+    <string name="restore_pass">Восстановление пароля</string>
+    <string name="restore_pass_description">
+        Введите адрес своей почты ОСЭП для восстановления пароля.
+        На нее придет письмо с дальнейшими инструкциями.
+    </string>
 </resources>

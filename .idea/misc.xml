@@ -9,6 +9,7 @@
         <entry key="app/src/main/res/drawable/selector_bottom_nav_ic.xml" value="0.151" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1947411578634511" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.18206521739130435" />
+        <entry key="app/src/main/res/layout/activity_unauthorized.xml" value="0.2543822146216332" />
         <entry key="app/src/main/res/menu/menu_bottom_navigation.xml" value="0.3098958333333333" />
         <entry key="core-android/src/main/res/drawable/backgroud_error.xml" value="0.152" />
         <entry key="core-android/src/main/res/layout/fragment_photo_view.xml" value="0.2535271483539974" />
@@ -25,6 +26,7 @@
         <entry key="core-res/src/main/res/drawable/ic_oss.xml" value="0.17" />
         <entry key="core-res/src/main/res/drawable/ic_oss_mpei.xml" value="0.2075" />
         <entry key="core-res/src/main/res/drawable/ic_plus.xml" value="0.2075" />
+        <entry key="core-res/src/main/res/drawable/ic_timetable.xml" value="0.2135" />
         <entry key="core-res/src/main/res/drawable/shape_bg_blue_rectangle.xml" value="0.2075" />
         <entry key="core-res/src/main/res/drawable/shape_green_rectangle.xml" value="0.2155" />
         <entry key="core-res/src/main/res/drawable/shape_primary_edit_text.xml" value="0.2155" />
@@ -39,8 +41,9 @@
         <entry key="feature-auth/src/main/res/drawable/button_auth.xml" value="0.1995" />
         <entry key="feature-auth/src/main/res/drawable/button_reg.xml" value="0.152" />
         <entry key="feature-auth/src/main/res/drawable/edit_text_auth.xml" value="0.2155" />
-        <entry key="feature-auth/src/main/res/layout/activity_auth.xml" value="0.22393472348141433" />
+        <entry key="feature-auth/src/main/res/layout/activity_auth.xml" value="0.3606122747509454" />
         <entry key="feature-auth/src/main/res/layout/activity_registration.xml" value="0.23700143565302315" />
+        <entry key="feature-auth/src/main/res/layout/dialog_forgot_pass.xml" value="0.2535271483539974" />
         <entry key="feature-feed/src/main/res/layout/fragment_feed.xml" value="0.18206521739130435" />
         <entry key="feature-feed/src/main/res/layout/item_post.xml" value="0.29223270139832425" />
         <entry key="feature-map/src/main/res/drawable/ic_buildings.xml" value="0.2135" />

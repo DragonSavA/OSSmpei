@@ -3,6 +3,8 @@ package ru.acediat.core_android.ext
 import android.content.pm.PackageManager
 import android.view.View
 import androidx.annotation.ColorRes
+import androidx.annotation.IdRes
+import androidx.annotation.StringRes
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -33,3 +35,9 @@ fun Fragment.refreshLayout(
     }
     setOnRefreshListener { onRefresh() }
 }
+
+fun Fragment.getColor(@ColorRes id: Int) = requireActivity().getColor(id)
+
+fun Fragment.getString(@StringRes id: Int) = requireActivity().getText(id)
+
+fun Fragment.onBackPressed() = requireActivity().onBackPressed()

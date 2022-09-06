@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import ru.acediat.core_android.APP_PREFERENCES
 import ru.acediat.core_android.IS_AUTH
+import ru.acediat.ossmpei.auth.AuthActivity
 
 class SplashActivity : AppCompatActivity() {
 

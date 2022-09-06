@@ -17,11 +17,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-        MapKitFactory.setApiKey(YANDEX_MAP_API_KEY)
-        MapKitFactory.initialize(this)
         binding.mainBottomNavigation.setupWithNavController(navController)
     }
-
-
-
 }

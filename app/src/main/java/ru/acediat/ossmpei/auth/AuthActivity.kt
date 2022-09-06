@@ -1,4 +1,4 @@
-package ru.acediat.ossmpei
+package ru.acediat.ossmpei.auth
 
 import android.content.Context
 import android.content.Intent
@@ -10,6 +10,7 @@ import ru.acediat.core_android.APP_PREFERENCES
 import ru.acediat.core_android.ext.showError
 import ru.acediat.feature_auth.AuthViewModel
 import ru.acediat.feature_auth.databinding.ActivityAuthBinding
+import ru.acediat.ossmpei.*
 
 class AuthActivity : AppCompatActivity() {
 
@@ -33,6 +34,8 @@ class AuthActivity : AppCompatActivity() {
             authButton.setOnClickListener(::authenticateClick)
             regButton.setOnClickListener(::registrationClick)
             forgotPass.setOnClickListener(::forgotPassClick)
+            mapsButton.setOnClickListener { onMapsClick() }
+            timetableButton.setOnClickListener { onTimetableClick() }
         }
         setContentView(binding.root)
     }
@@ -41,6 +44,18 @@ class AuthActivity : AppCompatActivity() {
         binding.authEmailEditText.text.toString(),
         binding.authPassEditText.text.toString(),
         getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE)
+    )
+
+    private fun onMapsClick() = startActivity(
+        Intent(this, UnauthorizedActivity::class.java).apply {
+            putExtra(MODE_EXTRA, MAPS)
+        }
+    )
+
+    private fun onTimetableClick() = startActivity(
+        Intent(this, UnauthorizedActivity::class.java).apply {
+            putExtra(MODE_EXTRA, TIMETABLE)
+        }
     )
 
     private fun registrationClick(view : View) =

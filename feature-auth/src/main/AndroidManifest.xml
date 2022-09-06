@@ -4,10 +4,10 @@
 
     <application>
         <activity
-            android:name="ru.acediat.ossmpei.RegistrationActivity"
+            android:name="ru.acediat.ossmpei.auth.RegistrationActivity"
             android:exported="false" />
         <activity
-            android:name="ru.acediat.ossmpei.AuthActivity"
+            android:name="ru.acediat.ossmpei.auth.AuthActivity"
             android:exported="false" />
     </application>
 
