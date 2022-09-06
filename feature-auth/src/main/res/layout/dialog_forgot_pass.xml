@@ -4,8 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="10dp"
-    android:background="@drawable/shape_bg_blue_rectangle">
+    android:padding="15dp"
+    android:background="@color/bg_blue">
 
     <TextView
         style="@style/MainText"
@@ -26,6 +26,7 @@
         android:id="@+id/emailEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
         android:inputType="textEmailAddress"
         android:hint="@string/email_example" />
 

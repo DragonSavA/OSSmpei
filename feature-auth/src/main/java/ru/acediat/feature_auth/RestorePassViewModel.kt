@@ -9,6 +9,8 @@ class RestorePassViewModel: ViewModel() {
 
     @Inject lateinit var repository: RestorePassRepository
 
+    private val emailRegex = Regex("[A-Za-z0-9.]+@mpei\\.ru")
+
     private val restoreRequestSend = MutableLiveData<Boolean>()
     private val error = MutableLiveData<Throwable>()
 
@@ -21,4 +23,6 @@ class RestorePassViewModel: ViewModel() {
         }, {
             error.postValue(it)
         })
+
+    fun isEmailValid(email: String) = email.matches(emailRegex)
 }

@@ -61,7 +61,7 @@ class AuthActivity : AppCompatActivity() {
     private fun registrationClick(view : View) =
         startActivity(Intent(this, RegistrationActivity::class.java))
 
-    private fun forgotPassClick(view : View) {}
+    private fun forgotPassClick(view : View) = RestorePassDialog().show(supportFragmentManager, "restorePass")
 
     private fun onError(t: Throwable) = showError(binding.root,  t.message.toString())
 }
