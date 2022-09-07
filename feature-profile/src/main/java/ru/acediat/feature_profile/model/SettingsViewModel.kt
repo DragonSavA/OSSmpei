@@ -82,7 +82,7 @@ class SettingsViewModel : BaseViewModel() {
         }
     }
 
-    fun getTasksEnabled() = preferences.getBoolean(NOTIFICATION_ENABLED, false)
+    fun getTasksEnabled() = preferences.getBoolean(NOTIFICATION_ENABLED, true)
 
     fun getCurrentGroup() = preferences.getString(CURRENT_GROUP, "") ?: ""
 

@@ -12,6 +12,7 @@ import ru.acediat.core_android.Logger
 import ru.acediat.core_android.OSS_TAG
 import ru.acediat.core_android.ext.checkPermission
 import ru.acediat.core_android.ext.requestPermission
+import ru.acediat.feature_profile.R
 import ru.acediat.feature_profile.databinding.FragmentSettingsBinding
 import ru.acediat.feature_profile.di.ProfileComponent
 import ru.acediat.feature_profile.model.SettingsViewModel
@@ -55,7 +56,7 @@ class SettingsFragment: BaseFragment<FragmentSettingsBinding, SettingsViewModel>
 
     override fun prepareViews() = with(binding){
         addButton.setOnClickListener { onAddFavoriteButtonClick() }
-        okButton.setOnClickListener { viewModel.setCurrentGroup(currentGroup.text.toString()) }
+        okButton.setOnClickListener { setCurrentGroup() }
         backButton.setOnClickListener { requireActivity().onBackPressed() }
         changeAvatarButton.setOnClickListener { launchPhotoSelection() }
         currentGroup.setText(viewModel.getCurrentGroup())
@@ -77,7 +78,15 @@ class SettingsFragment: BaseFragment<FragmentSettingsBinding, SettingsViewModel>
         viewModel.getFavoriteGroups()
     }
 
-    private fun onGroupClick(group: String) = binding.currentGroup.setText(group)
+    private fun onGroupClick(group: String) {
+        binding.currentGroup.setText(group)
+        setCurrentGroup()
+    }
+
+    private fun setCurrentGroup() = with(binding){
+        viewModel.setCurrentGroup(currentGroup.text.toString())
+        showInfoSnackBar(binding.scrollRoot, getString(R.string.group_set))
+    }
 
     private fun onPhotoTaken(uri: Uri){
         binding.profileAvatar.setImageURI(uri)

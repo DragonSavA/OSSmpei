@@ -20,7 +20,7 @@ class App: Application() {
         MapKitFactory.setApiKey(YANDEX_MAP_API_KEY)
         MapKitFactory.initialize(this)
         preferences = applicationContext.getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE)
-        val isNotificationEnabled = preferences.getBoolean(NOTIFICATION_ENABLED, false)
+        val isNotificationEnabled = preferences.getBoolean(NOTIFICATION_ENABLED, true)
         if(isNotificationEnabled) {
             Firebase.messaging.subscribeToTopic(TASKS_NOTIFICATION)
                 .addOnCompleteListener { task -> }

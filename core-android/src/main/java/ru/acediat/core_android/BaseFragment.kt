@@ -15,6 +15,8 @@ abstract class BaseFragment<B: ViewBinding, VM: BaseViewModel>: Fragment() {
     protected lateinit var binding: B
     protected abstract val viewModel: VM
 
+    private var snackBarAnchorView: View? = null
+
     protected abstract fun prepareViews(): Unit
 
     protected abstract fun instanceBinding(inflater: LayoutInflater, container: ViewGroup?): B
@@ -31,6 +33,8 @@ abstract class BaseFragment<B: ViewBinding, VM: BaseViewModel>: Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = instanceBinding(inflater, container)
+        if(requireActivity() is BottomNavigationHolder)
+            snackBarAnchorView = (requireActivity() as BottomNavigationHolder).getBottomNavigationView()
         Logger.i(OSS_TAG, "${this.javaClass.simpleName} binding instanced")
         inject()
         Logger.i(OSS_TAG, "${this.javaClass.simpleName} injected")
@@ -48,8 +52,9 @@ abstract class BaseFragment<B: ViewBinding, VM: BaseViewModel>: Fragment() {
 
     override fun onSaveInstanceState(outState: Bundle) = saveState(outState)
 
-    protected fun showInfoSnackBar(message: String) = Snackbar
-        .make(binding.root, message, Snackbar.LENGTH_LONG).apply {
+    protected fun showInfoSnackBar(view: View, message: String) = Snackbar
+        .make(view, message, Snackbar.LENGTH_LONG).apply {
+            snackBarAnchorView?.let{ this.anchorView = snackBarAnchorView }
             setBackgroundTint(getColor(resR.color.main_blue))
             setTextColor(getColor(resR.color.white))
             setActionTextColor(getColor(resR.color.bg_blue))
