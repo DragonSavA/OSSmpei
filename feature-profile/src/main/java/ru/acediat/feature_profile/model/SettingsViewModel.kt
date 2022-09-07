@@ -23,6 +23,7 @@ class SettingsViewModel : BaseViewModel() {
 
     private val groups = MutableLiveData<ArrayList<String>>()
     private val saveComplete = MutableLiveData<String>()
+    private val deleteGroupComplete = MutableLiveData<String>()
     private val error = MutableLiveData<Throwable>()
 
     fun setGroupsObserver(lifecycleOwner: LifecycleOwner, observer: (ArrayList<String>) -> Unit) =
@@ -30,6 +31,9 @@ class SettingsViewModel : BaseViewModel() {
 
     fun setSaveCompleteObserver(lifecycleOwner: LifecycleOwner, observer: (String) -> Unit) =
         saveComplete.observe(lifecycleOwner, observer)
+
+    fun setGroupDeleteCompleteObserver(lifecycleOwner: LifecycleOwner, observer: (String) -> Unit) =
+        deleteGroupComplete.observe(lifecycleOwner, observer)
 
     fun setErrorObserver(lifecycleOwner: LifecycleOwner, observer: (Throwable) -> Unit) =
         error.observe(lifecycleOwner, observer)
@@ -41,6 +45,14 @@ class SettingsViewModel : BaseViewModel() {
             //TODO: Добавить уведомление об ошибке в else ветку
         }, {
            error.postValue(it)
+        })
+
+    fun deleteFavoriteGroup(group: String): Disposable = repository
+        .deleteFavoriteGroup(getUserId(), group)
+        .subscribe({
+            deleteGroupComplete.postValue(group)
+        }, {
+            error.postValue(it)
         })
 
     fun getFavoriteGroups(): Disposable = repository.getFavoriteGroups(getUserId())

@@ -10,9 +10,14 @@ import ru.acediat.feature_profile.databinding.ItemGroupBinding
 class GroupsAdapter: RecyclerViewAdapter<String, ItemGroupBinding>() {
 
     private var onGroupClick: (item: String) -> Unit = {}
+    private var onDeleteClick: (item: String) -> Unit = {}
 
     fun setOnGroupClick(onClick: (item: String) -> Unit){
         onGroupClick = onClick
+    }
+
+    fun setOnDeleteClick(onClick: (item: String) -> Unit){
+        onDeleteClick = onClick
     }
 
     fun containGroup(group: String) = items.contains(group)
@@ -25,11 +30,11 @@ class GroupsAdapter: RecyclerViewAdapter<String, ItemGroupBinding>() {
         object : AdapterCallback<String, ItemGroupBinding>{
             override fun bindViews(binding: ItemGroupBinding, item: String, position: Int) {
                 binding.group.text = item
+                binding.group.setOnClickListener { onGroupClick(item) }
+                binding.deleteButton.setOnClickListener { onDeleteClick(item) }
             }
 
-            override fun onViewClicked(view: View, item: String) {
-                onGroupClick(item)
-            }
+            override fun onViewClicked(view: View, item: String) {}
         }
     )
 }

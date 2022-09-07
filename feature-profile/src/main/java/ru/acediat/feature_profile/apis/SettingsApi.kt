@@ -23,20 +23,15 @@ interface SettingsApi {
         @Query("user_id") userId: Int
     ): Single<List<GroupDTO>>
 
+    @POST("Android/delete_saved_group.php")
+    fun deleteFavoriteGroup(
+        @Body group: GroupDTO
+    ): Completable
+
     @GET("/Android/is_group_valid.php")
     fun isGroupValid(
         @Query("group") group: String
     ): Single<GroupValidDTO>
-
-    @Multipart
-    @POST("Android/edit_report.php")
-    fun sendReport(
-        @Part("comment") comment: RequestBody,
-        @Part("task_id") task_id: RequestBody,
-        @Part("user_id") user_id: RequestBody,
-        @Part("file_name") file_name: RequestBody,
-        @Part image: MultipartBody.Part?
-    ): Completable
 
     @Multipart
     @POST("/Android/update_avatar.php")

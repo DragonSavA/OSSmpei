@@ -23,6 +23,11 @@ class SettingsRepository @Inject constructor(
         .subscribeOn(Schedulers.io())
         .observeOn(Schedulers.io())
 
+    fun deleteFavoriteGroup(userId: Int, group: String): Completable = api
+        .deleteFavoriteGroup(GroupDTO(userId, group))
+        .subscribeOn(Schedulers.io())
+        .observeOn(Schedulers.io())
+
     fun isGroupValid(group: String): Single<GroupValidDTO> = api.isGroupValid(group)
         .subscribeOn(Schedulers.io())
         .observeOn(Schedulers.io())

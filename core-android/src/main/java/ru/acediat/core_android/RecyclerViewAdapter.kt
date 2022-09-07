@@ -27,6 +27,16 @@ abstract class RecyclerViewAdapter<DATA : Any, B : ViewBinding>
         notifyDataSetChanged()//TODO: Выбрать более оптимизированный метод
     }
 
+    fun removeItem(item: DATA) = with(items.indexOf(item)){
+        items.removeAt(this)
+        notifyItemRemoved(this)
+    }
+
+    fun removeItemAt(index: Int){
+        items.removeAt(index)
+        notifyItemRemoved(index)
+    }
+
     @SuppressLint("NotifyDataSetChanged")
     fun clearItems() {
         this.items.clear()

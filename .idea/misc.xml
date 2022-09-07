@@ -22,6 +22,7 @@
         <entry key="core-res/src/main/res/drawable/background_tab.xml" value="0.1975" />
         <entry key="core-res/src/main/res/drawable/ic_back.xml" value="0.1595" />
         <entry key="core-res/src/main/res/drawable/ic_cross.xml" value="0.2075" />
+        <entry key="core-res/src/main/res/drawable/ic_delete.xml" value="0.2135" />
         <entry key="core-res/src/main/res/drawable/ic_load.xml" value="0.1995" />
         <entry key="core-res/src/main/res/drawable/ic_oss.xml" value="0.17" />
         <entry key="core-res/src/main/res/drawable/ic_oss_mpei.xml" value="0.2075" />
@@ -65,7 +66,7 @@
         <entry key="feature-profile/src/main/res/layout/fragment_taken_tasks.xml" value="0.30885416666666665" />
         <entry key="feature-profile/src/main/res/layout/fragment_task.xml" value="0.27816925048828123" />
         <entry key="feature-profile/src/main/res/layout/fragment_tasks.xml" value="0.30885416666666665" />
-        <entry key="feature-profile/src/main/res/layout/item_group.xml" value="0.2543822146216332" />
+        <entry key="feature-profile/src/main/res/layout/item_group.xml" value="0.36615678776290633" />
         <entry key="feature-profile/src/main/res/layout/item_product.xml" value="0.2600390829851213" />
         <entry key="feature-profile/src/main/res/layout/item_task.xml" value="0.3098958333333333" />
         <entry key="feature-profile/src/main/res/layout/layout_comment_text.xml" value="0.2535271483539974" />

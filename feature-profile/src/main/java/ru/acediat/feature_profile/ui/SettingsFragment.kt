@@ -51,6 +51,7 @@ class SettingsFragment: BaseFragment<FragmentSettingsBinding, SettingsViewModel>
     override fun prepareViewModel() = with(viewModel){
         setGroupsObserver(viewLifecycleOwner, ::onGroupsReceived)
         setSaveCompleteObserver(viewLifecycleOwner, ::onGroupSaveComplete)
+        setGroupDeleteCompleteObserver(viewLifecycleOwner, ::onGroupDeleteComplete)
         setErrorObserver(viewLifecycleOwner, ::onError)
     }
 
@@ -66,6 +67,7 @@ class SettingsFragment: BaseFragment<FragmentSettingsBinding, SettingsViewModel>
         }
         groupList.adapter = groupsAdapter.apply {
             setOnGroupClick(::onGroupClick)
+            setOnDeleteClick(::onDeleteClick)
         }
         picasso.load(arguments?.getString(IMAGE_URL_BUNDLE))
             .fit()
@@ -82,6 +84,8 @@ class SettingsFragment: BaseFragment<FragmentSettingsBinding, SettingsViewModel>
         binding.currentGroup.setText(group)
         setCurrentGroup()
     }
+
+    private fun onDeleteClick(group: String) = viewModel.deleteFavoriteGroup(group)
 
     private fun setCurrentGroup() = with(binding){
         viewModel.setCurrentGroup(currentGroup.text.toString())
@@ -102,6 +106,8 @@ class SettingsFragment: BaseFragment<FragmentSettingsBinding, SettingsViewModel>
             groupsAdapter.addItem(group)
         //TODO: сделать уведомление о том, что такая группа уже есть в else ветке
     }
+
+    private fun onGroupDeleteComplete(group: String) = groupsAdapter.removeItem(group)
 
     private fun onGroupsReceived(groups: ArrayList<String>) = groupsAdapter.setItems(groups)
 
