@@ -33,8 +33,6 @@ abstract class BaseFragment<B: ViewBinding, VM: BaseViewModel>: Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = instanceBinding(inflater, container)
-        if(requireActivity() is BottomNavigationHolder)
-            snackBarAnchorView = (requireActivity() as BottomNavigationHolder).getBottomNavigationView()
         Logger.i(OSS_TAG, "${this.javaClass.simpleName} binding instanced")
         inject()
         Logger.i(OSS_TAG, "${this.javaClass.simpleName} injected")
@@ -48,6 +46,13 @@ abstract class BaseFragment<B: ViewBinding, VM: BaseViewModel>: Fragment() {
             loadState(savedInstanceState)
         else
             refresh()
+    }
+
+    //TODO: заменить на не устаревший способ
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        if(requireActivity() is BottomNavigationHolder)
+            snackBarAnchorView = (requireActivity() as BottomNavigationHolder).getBottomNavigationView()
     }
 
     override fun onSaveInstanceState(outState: Bundle) = saveState(outState)
