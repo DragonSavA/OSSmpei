@@ -20,10 +20,12 @@ class TimetableFragment: BaseFragment<FragmentTimetableBinding, TimetableViewMod
         .create(TimetableViewModel::class.java)
 
     private val calendarLauncher = registerForActivityResult(CalendarContract()){
-        pagerAdapter.changeDays(it)
-        refresh()
-        binding.daysPager.currentItem = it.dayOfWeek.value - 1
-        binding.dateText.text = viewModel.buildDateText(requireContext(), it)
+        it?.let {
+            pagerAdapter.changeDays(it)
+            refresh()
+            binding.daysPager.currentItem = it.dayOfWeek.value - 1
+            binding.dateText.text = viewModel.buildDateText(requireContext(), it)
+        }
     }
 
     private val onPageChangedListener =  object : SimpleOnPageChangeListener{
