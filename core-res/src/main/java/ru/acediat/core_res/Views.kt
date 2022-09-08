@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.appcompat.content.res.AppCompatResources
@@ -11,7 +12,6 @@ import androidx.core.view.isVisible
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import ru.acediat.core_res.databinding.LayoutNotifyScreenBinding
 
 fun loadingFrame(container : ViewGroup) : View = LayoutInflater.from(container.context).inflate(
@@ -37,7 +37,7 @@ fun notifyScreen(
     @StringRes messageId: Int,
     @StringRes descriptionId: Int = -1,
     @StringRes buttonTitleId: Int? = null,
-    onClick: (View) -> Unit = {},
+    onClick: (View) -> Unit = {}
 ): View = with(
     LayoutNotifyScreenBinding.inflate(
         LayoutInflater.from(parent.context), parent, false

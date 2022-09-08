@@ -5,6 +5,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import ru.acediat.core_android.BaseFragment
+import ru.acediat.core_android.Logger
+import ru.acediat.core_android.OSS_TAG
 import ru.acediat.core_android.SimpleOnPageChangeListener
 import ru.acediat.core_utils.Time
 import ru.acediat.feature_timetable.databinding.FragmentTimetableBinding
@@ -49,12 +51,17 @@ class TimetableFragment: BaseFragment<FragmentTimetableBinding, TimetableViewMod
 
     override fun prepareViewModel() = with(viewModel) {
         setTimetableObserver(viewLifecycleOwner, ::onTimetableReceived)
+        setOnGroupValidObserver(viewLifecycleOwner, ::onGroupValidReceived)
         setErrorObserver(viewLifecycleOwner, ::onError)
     }
 
     override fun prepareViews() = with(binding){
-        pagerAdapter.setOnRefreshListener { refresh() }
-        daysPager.adapter = pagerAdapter
+        daysPager.adapter = pagerAdapter.apply{
+            if(viewModel.getCurrentGroup() == "")
+                isEmptyGroup = true
+            setOnRefreshListener { refresh() }
+            setGroupSetCallback { onSetGroupClick(it) }
+        }
         daysPager.currentItem = Time.currentDate().dayOfWeek.value - 1
         daysPager.addOnPageChangeListener(onPageChangedListener)
         daysTabs.setupWithViewPager(daysPager, true)
@@ -64,8 +71,23 @@ class TimetableFragment: BaseFragment<FragmentTimetableBinding, TimetableViewMod
     }
 
     override fun refresh(){
-        viewModel.observeLessons(pagerAdapter.getFirstDate(), pagerAdapter.getLastDate())
+        if(viewModel.getCurrentGroup() != "")
+            viewModel.observeLessons(pagerAdapter.getFirstDate(), pagerAdapter.getLastDate())
     }
+
+    private fun onSetGroupClick(group: String){
+        viewModel.isGroupValid(group)
+    }
+
+    private fun onGroupValidReceived(isValid: Pair<String, Boolean>) = if(isValid.second){
+        viewModel.setCurrentGroup(isValid.first)
+        pagerAdapter.isEmptyGroup = false
+        pagerAdapter.notifyDataSetChanged()
+        refresh()
+    }else{
+        //TODO: Уведомление о неверно вписанной группе
+    }
+
 
     private fun startCalendar() = calendarLauncher.launch(Time.currentDate())
 

@@ -26,4 +26,8 @@
     <string name="self_education_descripton">
         В этот день нет занятий, вы можете заняться выполнением долгов или отдохнуть
     </string>
+
+    <string name="unknown_group_title">Мы не знаем какая у вас группа…</string>
+    <string name="unknown_group_description">Введите вашу группу, чтобы мы могли показать вам расписание: </string>
+
 </resources>

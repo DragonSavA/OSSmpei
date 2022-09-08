@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import io.reactivex.rxjava3.disposables.Disposable
 import ru.acediat.core_android.BaseViewModel
 import ru.acediat.core_android.CURRENT_GROUP
+import ru.acediat.core_android.IS_AUTH
 import ru.acediat.feature_timetable.entities.Lesson
 import java.time.LocalDateTime
 import javax.inject.Inject
@@ -17,10 +18,14 @@ class TimetableViewModel : BaseViewModel() {
     @Inject lateinit var preferences: SharedPreferences
 
     private val timetable = MutableLiveData<Timetable>()
+    private val isGroupValid = MutableLiveData<Pair<String, Boolean>>()
     private val error = MutableLiveData<Throwable>()
 
     fun setTimetableObserver(owner : LifecycleOwner, observer : (Timetable) -> Unit) =
         timetable.observe(owner, observer)
+
+    fun setOnGroupValidObserver(owner: LifecycleOwner, observer: (Pair<String, Boolean>) -> Unit) =
+        isGroupValid.observe(owner, observer)
 
     fun setErrorObserver(owner : LifecycleOwner, observer : (Throwable) -> Unit) =
         error.observe(owner, observer)
@@ -35,7 +40,21 @@ class TimetableViewModel : BaseViewModel() {
             error.postValue(it)
         })
 
-    fun getCurrentGroup() = preferences.getString(CURRENT_GROUP, "") ?: ""
+    fun isGroupValid(group: String) = repository.isGroupValid(group)
+        .subscribe({
+            isGroupValid.postValue(group to it.isGroupValid)
+        }, {
+            error.postValue(it)//TODO: обработка ошибок
+        })
+
+    fun getCurrentGroup() = if(preferences.getBoolean(IS_AUTH, false))
+        preferences.getString(CURRENT_GROUP, "") ?: ""
+    else
+        ""
+
+    fun setCurrentGroup(group: String) = preferences.edit()
+        .putString(CURRENT_GROUP, group)
+        .apply()
 
     fun buildDateText(context: Context, date : LocalDateTime) =
         "${DateNameBuilder.dayName(context, date)}, " +

@@ -21,4 +21,8 @@ class TimetableRepository @Inject constructor(
     fun getUserGroup(userId: Int) = api.getUserGroup(userId)
         .subscribeOn(Schedulers.io())
         .observeOn(Schedulers.io())
+
+    fun isGroupValid(group: String) = api.isGroupValid(group)
+        .subscribeOn(Schedulers.io())
+        .observeOn(Schedulers.io())
 }
