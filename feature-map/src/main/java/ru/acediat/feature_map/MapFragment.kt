@@ -3,6 +3,7 @@ package ru.acediat.feature_map
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.lifecycle.ViewModelProvider
 import com.yandex.mapkit.MapKitFactory
 import com.yandex.mapkit.map.CameraPosition
@@ -21,7 +22,10 @@ class MapFragment : BaseFragment<FragmentMapBinding, MapViewModel>() {
 
     private val onPlacemarkTapListener = MapObjectTapListener { mapObject, point ->
         val info = mapObject.userData as PlacemarkInfo
-        //TODO: сделать отображение подробного описания места, диалоговое окно или что-то типа того
+        PlacemarkDialog.newInstance(bundleOf(
+            PLACEMARK_NAME to info.name,
+            PLACEMARK_DESCRIPTION to info.description
+        )).show(parentFragmentManager, "placemark dialog")
         true
     }
 

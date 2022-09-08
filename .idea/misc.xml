@@ -48,6 +48,7 @@
         <entry key="feature-feed/src/main/res/layout/fragment_feed.xml" value="0.18206521739130435" />
         <entry key="feature-feed/src/main/res/layout/item_post.xml" value="0.29223270139832425" />
         <entry key="feature-map/src/main/res/drawable/ic_buildings.xml" value="0.2135" />
+        <entry key="feature-map/src/main/res/layout/dialog_placemark.xml" value="0.2518508432900811" />
         <entry key="feature-map/src/main/res/layout/fragment_map.xml" value="0.2738388061523438" />
         <entry key="feature-profile/src/main/res/drawable/background_group.xml" value="0.2135" />
         <entry key="feature-profile/src/main/res/drawable/ic_add_photo.xml" value="0.191" />
