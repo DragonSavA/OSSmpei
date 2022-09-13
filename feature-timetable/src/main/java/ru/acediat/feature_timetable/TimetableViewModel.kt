@@ -58,8 +58,10 @@ class TimetableViewModel : BaseViewModel() {
         })
 
     fun getCurrentGroup(){
-        if(!preferences.getBoolean(IS_AUTH, false))
+        if(!preferences.getBoolean(IS_AUTH, false)) {
             currentGroup.postValue("")
+            return
+        }
 
         val prefsGroup = preferences.getString(CURRENT_GROUP, "") ?: ""
         if(prefsGroup == "")
