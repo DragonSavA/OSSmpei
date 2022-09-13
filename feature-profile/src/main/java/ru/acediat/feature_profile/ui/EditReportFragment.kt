@@ -11,7 +11,8 @@ import com.squareup.picasso.Picasso
 import ru.acediat.core_android.*
 import ru.acediat.core_android.ext.checkPermission
 import ru.acediat.core_android.ext.requestPermission
-import ru.acediat.core_navigation.R
+import ru.acediat.core_navigation.R as navR
+import ru.acediat.feature_profile.R
 import ru.acediat.feature_profile.databinding.FragmentEditReportBinding
 import ru.acediat.feature_profile.di.ProfileComponent
 import ru.acediat.feature_profile.model.EditReportViewModel
@@ -82,7 +83,7 @@ class EditReportFragment: BaseFragment<FragmentEditReportBinding, EditReportView
     }
 
     private fun onPhotoClick() = findNavController().navigate(
-        R.id.photoViewFragment,
+        navR.id.photoViewFragment,
         bundleOf(PHOTO_URL to viewModel.task?.getImageUrl()!!)
     )
 
@@ -92,7 +93,7 @@ class EditReportFragment: BaseFragment<FragmentEditReportBinding, EditReportView
             FileUtil.from(requireContext(), it)
         )
     } ?: run{
-        //TODO: сделать уведомление о том, что картинку нужно установить вообще-то
+        showErrorSnackBar(binding.root, getString(R.string.report_photo_error))
     }
 
     private fun onPhotoTaken(){

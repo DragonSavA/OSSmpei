@@ -7,9 +7,13 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
+import com.google.android.material.snackbar.Snackbar
+import ru.acediat.core_android.Logger
+import ru.acediat.core_android.OSS_TAG
 import ru.acediat.feature_auth.RestorePassViewModel
 import ru.acediat.feature_auth.databinding.DialogForgotPassBinding
 import ru.acediat.feature_auth.di.AuthComponent
+import ru.acediat.core_res.R as resR
 
 class RestorePassDialog: DialogFragment() {
 
@@ -36,12 +40,13 @@ class RestorePassDialog: DialogFragment() {
         okButton.setOnClickListener {
             if(viewModel.isEmailValid(emailEditText.text.toString()))
                 viewModel.restorePass(emailEditText.text.toString())
-            //TODO: уведомление о неправильно введенной почте
+            else
+                Toast.makeText(requireContext(), getString(resR.string.wrong_email), Toast.LENGTH_LONG).show()
         }
     }
 
     private fun onRestorePassRequestSend(b: Boolean){
         dismiss()
-        //TODO: сделать уведомление о том, что письмо с восстановлением пароля отправлено
+        Toast.makeText(requireContext(), getString(resR.string.mail_send), Toast.LENGTH_LONG).show()
     }
 }

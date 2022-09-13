@@ -59,7 +59,6 @@ class RegistrationActivity : AppCompatActivity() {
         }
     }
 
-    //TODO: добавить нормальную верстку диалогового окна
     private fun finishSignUp(responseBody: ResponseBody) = AlertDialog.Builder(this)
         .setMessage(ru.acediat.feature_auth.R.string.finish_signup_message)
         .setPositiveButton(ru.acediat.core_res.R.string.ok) { _: DialogInterface, _: Int ->

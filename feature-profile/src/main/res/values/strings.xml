@@ -53,4 +53,5 @@
     <string name="change_avatar">Сменить аватар</string>
     <string name="group_set">Расписание установлено</string>
     <string name="exit">Выйти из аккаунта</string>
+    <string name="report_photo_error">Вы должны прикрепить фотографию!</string>
 </resources>
