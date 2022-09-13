@@ -2,13 +2,10 @@ package ru.acediat.feature_auth
 
 import android.widget.EditText
 import android.widget.RadioButton
-import androidx.appcompat.content.res.AppCompatResources
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import io.reactivex.rxjava3.schedulers.Schedulers
 import okhttp3.ResponseBody
-import retrofit2.Callback
 import ru.acediat.feature_auth.di.AuthComponent
 import javax.inject.Inject
 
@@ -47,7 +44,7 @@ class RegistrationViewModel : ViewModel() {
         error.postValue(it)
     })
 
-    fun isDataValid(
+    fun getErrors(
         email: String,
         name: String,
         surname: String,
@@ -55,9 +52,13 @@ class RegistrationViewModel : ViewModel() {
         femaleChecked: Boolean,
         firstPass: String,
         secondPass: String
-    ) = isEmailValid(email) && isNameValid(name)
-            && isNameValid(surname) && isPasswordValid(firstPass, secondPass)
-            && (maleChecked || femaleChecked)
+    ): ArrayList<String> = arrayListOf(
+        isEmailValid(email),
+        isNameValid(name),
+        isNameValid(surname),
+        isPasswordValid(firstPass, secondPass),
+        isGenderValid(maleChecked, femaleChecked)
+    )
 
     fun getGender(maleChecked: Boolean, femaleChecked: Boolean) =
         if(maleChecked) "male" else if(femaleChecked) "female" else "undefined"
@@ -69,9 +70,23 @@ class RegistrationViewModel : ViewModel() {
         return groupEdit.text.toString()
     }
 
-    private fun isEmailValid(email: String) = email.matches(emailRegex)
+    private fun isEmailValid(email: String): String =
+        if(email.matches(emailRegex))
+            ""
+        else
+            "Ошибка в почте!"
 
-    private fun isNameValid(name: String) = name.matches(nameRegex)
+    private fun isNameValid(name: String): String =
+        if(name.matches(nameRegex))
+            ""
+        else
+            "Неверно указано имя или фамилия!"
 
-    private fun isPasswordValid(firstPass: String, secondPass: String) = firstPass == secondPass
+    private fun isPasswordValid(firstPass: String, secondPass: String): String =
+        if(firstPass == secondPass)
+            ""
+        else
+            "Пароль и его повторение не совпадают!"
+
+    private fun isGenderValid(c1 : Boolean, c2: Boolean): String = if(c1 || c2) "" else "Укажите пол!"
 }

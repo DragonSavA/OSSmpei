@@ -34,7 +34,7 @@ class MapFragment : BaseFragment<FragmentMapBinding, MapViewModel>() {
         container: ViewGroup?
     ): FragmentMapBinding = FragmentMapBinding.inflate(inflater, container, false)
 
-    override fun inject() = with(MapComponent.init()){
+    override fun inject() = with(MapComponent.init(requireContext())){
         inject(this@MapFragment)
         inject(viewModel)
     }

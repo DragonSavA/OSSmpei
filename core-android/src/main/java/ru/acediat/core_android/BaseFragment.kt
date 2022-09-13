@@ -8,9 +8,12 @@ import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
 import com.google.android.material.snackbar.Snackbar
 import ru.acediat.core_android.ext.getColor
+import javax.inject.Inject
 import ru.acediat.core_res.R as resR
 
 abstract class BaseFragment<B: ViewBinding, VM: BaseViewModel>: Fragment() {
+
+    @Inject lateinit var notificator: Notificator
 
     protected lateinit var binding: B
     protected abstract val viewModel: VM
@@ -57,18 +60,10 @@ abstract class BaseFragment<B: ViewBinding, VM: BaseViewModel>: Fragment() {
 
     override fun onSaveInstanceState(outState: Bundle) = saveState(outState)
 
-    protected fun showInfoSnackBar(view: View, message: String) = Snackbar
-        .make(view, message, Snackbar.LENGTH_LONG).apply {
-            snackBarAnchorView?.let{ this.anchorView = snackBarAnchorView }
-            setBackgroundTint(getColor(resR.color.main_blue))
-            setTextColor(getColor(resR.color.white))
-            setActionTextColor(getColor(resR.color.bg_blue))
-            setAction(requireActivity().getText(resR.string.ok)) {
-                this.dismiss()
-            }
-        }.show()
+    protected fun showInfoSnackBar(view: View, message: String) =
+        notificator.showInfo(view, message, snackBarAnchorView)
 
-    protected fun showErrorSnackBar(message: String){}
+    protected fun showErrorSnackBar(view: View, message: String) = notificator.showError(view, message, snackBarAnchorView)
 
     private fun saveState(outState: Bundle) = viewModel.saveData(outState)
 

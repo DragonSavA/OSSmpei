@@ -42,10 +42,15 @@ class RegistrationActivity : AppCompatActivity() {
         val gender = viewModel.getGender(maleChecked, femaleChecked)
         val pass = passEdit.text.toString()
         val repeatPass = repeatPassEdit.text.toString()
-        if(viewModel.isDataValid(email, name, surname, maleChecked, femaleChecked, pass, repeatPass)){
-            viewModel.signUp(email, name, surname, gender, group, pass)
-        }else{
-            showError(root, "Ебать ты долбаеб") //TODO: сделать нормальную верстку ошибки
+        with(viewModel.getErrors(
+            email, name, surname,
+            maleChecked, femaleChecked,
+            pass, repeatPass
+        )){
+            if (firstOrNull { it != "" } == null)
+                viewModel.signUp(email, name, surname, gender, group, pass)
+            else
+                this.forEach { showError(binding.root, it) }
         }
     }
 

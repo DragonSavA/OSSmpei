@@ -5,6 +5,8 @@ import com.squareup.picasso.Picasso
 import dagger.Module
 import dagger.Provides
 import ru.acediat.core_android.APP_PREFERENCES
+import ru.acediat.core_android.FragmentNotificator
+import ru.acediat.core_android.Notificator
 import javax.inject.Singleton
 
 @Module
@@ -18,4 +20,8 @@ class AndroidModule(private val context : Context) {
     @Provides
     @Singleton
     fun providePicasso() = Picasso.Builder(context).build()
+
+    @Provides
+    @Singleton
+    fun provideFragmentNotificator(): Notificator = FragmentNotificator()
 }

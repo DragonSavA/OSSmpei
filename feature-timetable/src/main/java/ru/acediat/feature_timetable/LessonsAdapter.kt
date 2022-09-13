@@ -26,6 +26,10 @@ class LessonsAdapter : RecyclerViewAdapter<Lesson, ItemEventBinding>() {
                 indicator.background = AppCompatResources.getDrawable(parent.context, item.indicatorId)
                 if(item.teacher == Lesson.VACANT)
                     eventOwnerName.isVisible = false
+                if(item.subgroup == null || item.subgroup == "")
+                    eventSubgroup.isVisible = false
+                else
+                    eventSubgroup.text = item.subgroup
             }
 
             override fun onViewClicked(view: View, item: Lesson) {}

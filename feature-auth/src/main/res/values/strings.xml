@@ -27,4 +27,10 @@
         Введите адрес своей почты ОСЭП для восстановления пароля.
         На нее придет письмо с дальнейшими инструкциями.
     </string>
+
+    <string name="name_error">Неверно указано имя!</string>
+    <string name="surname_error">Неверно указана фамилия!</string>
+    <string name="group_error">Неверно указана группа!</string>
+    <string name="email_error">Ошибка в почте!</string>
+    <string name="pass_error">Пароль и его повторение не совпадают!</string>
 </resources>

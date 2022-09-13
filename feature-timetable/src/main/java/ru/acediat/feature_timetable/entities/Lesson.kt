@@ -10,6 +10,7 @@ class Lesson(
     dayOfWeek: Int,
     name : String,
     place : String,
+    val subgroup: String?,
     val type : String,
     val teacher : String,
 ) : Event(id, startTime, endTime, dayOfWeek, name, place){
@@ -36,7 +37,7 @@ class Lesson(
             return@with Lesson(
                 lessonOId, beginLesson, endLesson,
                 dayOfWeek, discipline, auditorium,
-                kindOfWork, lecturer
+                subgroup, kindOfWork, lecturer
             )
         }
     }
