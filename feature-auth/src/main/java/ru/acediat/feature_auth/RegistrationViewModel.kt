@@ -1,10 +1,12 @@
 package ru.acediat.feature_auth
 
+import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.RadioButton
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.google.android.material.chip.Chip
 import okhttp3.ResponseBody
 import ru.acediat.feature_auth.di.AuthComponent
 import javax.inject.Inject
@@ -48,6 +50,7 @@ class RegistrationViewModel : ViewModel() {
         email: String,
         name: String,
         surname: String,
+        group: String,
         maleChecked: Boolean,
         femaleChecked: Boolean,
         firstPass: String,
@@ -58,17 +61,27 @@ class RegistrationViewModel : ViewModel() {
         isNameValid(surname),
         isPasswordValid(firstPass, secondPass),
         isGenderValid(maleChecked, femaleChecked)
-    )
+    ).apply {
+        isGroupValid(this, group)
+    }
 
     fun getGender(maleChecked: Boolean, femaleChecked: Boolean) =
         if(maleChecked) "male" else if(femaleChecked) "female" else "undefined"
 
-    fun getGroup(groupEdit : EditText, otherRadioButton: RadioButton) : String{
+    fun getGroup(groupEdit : EditText, otherRadioButton: CheckBox) : String{
         if(otherRadioButton.isChecked)
             return otherRadioButton.context.getString(R.string.other)
 
         return groupEdit.text.toString()
     }
+
+    private fun isGroupValid(errorList: ArrayList<String>, group: String) = repository.isGroupValid(group)
+        .blockingSubscribe({
+            if(!it.isGroupValid)
+                errorList.add("Некорректная группа!")
+        }, {
+            error.postValue(it)
+        })
 
     private fun isEmailValid(email: String): String =
         if(email.matches(emailRegex))

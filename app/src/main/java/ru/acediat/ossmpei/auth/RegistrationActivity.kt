@@ -4,6 +4,7 @@ import android.content.DialogInterface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.CompoundButton
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.ViewModelProvider
 import okhttp3.ResponseBody
@@ -26,6 +27,7 @@ class RegistrationActivity : AppCompatActivity() {
         with(binding){
             signUpButton.setOnClickListener(::signUpClick)
             signInButton.setOnClickListener{ onBackPressed() }
+            otherRadioButton.setOnCheckedChangeListener { _, checked -> groupEdit.isEnabled = !checked }
         }
         setContentView(binding.root)
         viewModel.setRegistrationFinishedObserver(this, ::finishSignUp)
@@ -43,14 +45,17 @@ class RegistrationActivity : AppCompatActivity() {
         val pass = passEdit.text.toString()
         val repeatPass = repeatPassEdit.text.toString()
         with(viewModel.getErrors(
-            email, name, surname,
+            email, name, surname, group,
             maleChecked, femaleChecked,
             pass, repeatPass
         )){
             if (firstOrNull { it != "" } == null)
                 viewModel.signUp(email, name, surname, gender, group, pass)
             else
-                this.forEach { showError(binding.root, it) }
+                forEach {
+                    if(it != "")
+                        showError(binding.root, it)
+                }
         }
     }
 
