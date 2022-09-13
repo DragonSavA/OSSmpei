@@ -25,10 +25,14 @@
         <entry key="core-res/src/main/res/drawable/ic_cross.xml" value="0.2075" />
         <entry key="core-res/src/main/res/drawable/ic_delete.xml" value="0.2135" />
         <entry key="core-res/src/main/res/drawable/ic_load.xml" value="0.1995" />
+        <entry key="core-res/src/main/res/drawable/ic_map.xml" value="0.2035" />
+        <entry key="core-res/src/main/res/drawable/ic_mpei.xml" value="0.2035" />
         <entry key="core-res/src/main/res/drawable/ic_oss.xml" value="0.17" />
         <entry key="core-res/src/main/res/drawable/ic_oss_mpei.xml" value="0.2075" />
         <entry key="core-res/src/main/res/drawable/ic_plus.xml" value="0.2075" />
         <entry key="core-res/src/main/res/drawable/ic_questionmark.xml" value="0.2135" />
+        <entry key="core-res/src/main/res/drawable/ic_sad.xml" value="0.2035" />
+        <entry key="core-res/src/main/res/drawable/ic_settings.xml" value="0.2035" />
         <entry key="core-res/src/main/res/drawable/ic_timetable.xml" value="0.2135" />
         <entry key="core-res/src/main/res/drawable/shape_bg_blue_rectangle.xml" value="0.2075" />
         <entry key="core-res/src/main/res/drawable/shape_green_rectangle.xml" value="0.2155" />
@@ -50,6 +54,7 @@
         <entry key="feature-feed/src/main/res/layout/fragment_feed.xml" value="0.18206521739130435" />
         <entry key="feature-feed/src/main/res/layout/item_post.xml" value="0.29223270139832425" />
         <entry key="feature-map/src/main/res/drawable/ic_buildings.xml" value="0.2135" />
+        <entry key="feature-map/src/main/res/drawable/ic_food.xml" value="0.2035" />
         <entry key="feature-map/src/main/res/layout/dialog_placemark.xml" value="0.2518508432900811" />
         <entry key="feature-map/src/main/res/layout/fragment_map.xml" value="0.2738388061523438" />
         <entry key="feature-profile/src/main/res/drawable/background_group.xml" value="0.2135" />
@@ -58,6 +63,7 @@
         <entry key="feature-profile/src/main/res/drawable/ic_create_photo.xml" value="0.2075" />
         <entry key="feature-profile/src/main/res/drawable/ic_exit.xml" value="0.2035" />
         <entry key="feature-profile/src/main/res/drawable/ic_favorite.xml" value="0.1595" />
+        <entry key="feature-profile/src/main/res/drawable/ic_party.xml" value="0.2035" />
         <entry key="feature-profile/src/main/res/drawable/ic_play.xml" value="0.1595" />
         <entry key="feature-profile/src/main/res/drawable/ic_store.xml" value="0.166" />
         <entry key="feature-profile/src/main/res/drawable/ic_tasks.xml" value="0.166" />
@@ -81,6 +87,8 @@
         <entry key="feature-profile/src/main/res/xml/file_path.xml" value="0.2535271483539974" />
         <entry key="feature-timetable/src/main/res/drawable/background_calendar.xml" value="0.1995" />
         <entry key="feature-timetable/src/main/res/drawable/ic_calendar.xml" value="0.2075" />
+        <entry key="feature-timetable/src/main/res/drawable/ic_education.xml" value="0.2035" />
+        <entry key="feature-timetable/src/main/res/drawable/ic_group.xml" value="0.2035" />
         <entry key="feature-timetable/src/main/res/drawable/ic_tasks.xml" value="0.166" />
         <entry key="feature-timetable/src/main/res/drawable/selector_calendar_text.xml" value="0.17" />
         <entry key="feature-timetable/src/main/res/layout/activity_calendar.xml" value="0.18370513916015624" />

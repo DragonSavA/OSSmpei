@@ -5,26 +5,23 @@
     android:viewportWidth="18"
     android:width="24dp">
     <path
-        android:fillColor="@color/white"
         android:fillType="evenOdd"
         android:pathData="M17,10L1,10"
-        android:strokeColor="@color/main_blue"
+        android:strokeColor="#4B56A0"
         android:strokeLineCap="round"
         android:strokeLineJoin="round"
         android:strokeWidth="2"/>
     <path
-        android:fillColor="@color/white"
         android:fillType="evenOdd"
         android:pathData="M1,10L9.0623,1.9377"
-        android:strokeColor="@color/main_blue"
+        android:strokeColor="#4B56A0"
         android:strokeLineCap="round"
         android:strokeLineJoin="round"
         android:strokeWidth="2"/>
     <path
-        android:fillColor="@color/white"
         android:fillType="evenOdd"
         android:pathData="M1,10L9.0623,18.0623"
-        android:strokeColor="@color/main_blue"
+        android:strokeColor="#4B56A0"
         android:strokeLineCap="round"
         android:strokeLineJoin="round"
         android:strokeWidth="2"/>
