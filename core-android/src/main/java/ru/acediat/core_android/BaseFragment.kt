@@ -6,10 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
-import com.google.android.material.snackbar.Snackbar
-import ru.acediat.core_android.ext.getColor
 import javax.inject.Inject
-import ru.acediat.core_res.R as resR
 
 abstract class BaseFragment<B: ViewBinding, VM: BaseViewModel>: Fragment() {
 

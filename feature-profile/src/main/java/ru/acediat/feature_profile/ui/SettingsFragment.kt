@@ -11,6 +11,7 @@ import ru.acediat.core_android.FileUtil
 import ru.acediat.core_android.Logger
 import ru.acediat.core_android.OSS_TAG
 import ru.acediat.core_android.ext.checkPermission
+import ru.acediat.core_android.ext.hideKeyboard
 import ru.acediat.core_android.ext.requestPermission
 import ru.acediat.core_navigation.ACTIVITY_AUTH
 import ru.acediat.core_navigation.ActivityNavigator
@@ -58,8 +59,14 @@ class SettingsFragment: BaseFragment<FragmentSettingsBinding, SettingsViewModel>
     }
 
     override fun prepareViews() = with(binding){
-        addButton.setOnClickListener { onAddFavoriteButtonClick() }
-        okButton.setOnClickListener { setCurrentGroup() }
+        addButton.setOnClickListener {
+            onAddFavoriteButtonClick()
+            hideKeyboard()
+        }
+        okButton.setOnClickListener {
+            setCurrentGroup()
+            hideKeyboard()
+        }
         backButton.setOnClickListener { requireActivity().onBackPressed() }
         changeAvatarButton.setOnClickListener { launchPhotoSelection() }
         currentGroup.setText(viewModel.getCurrentGroup())
