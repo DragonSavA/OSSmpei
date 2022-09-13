@@ -47,6 +47,7 @@ class MapFragment : BaseFragment<FragmentMapBinding, MapViewModel>() {
         mapView.map.move(CameraPosition(viewModel.MPEI_POINT, 16f, 0f, 0f))
         buildings.setOnClickListener { viewModel.getBuildingsMarks() }
         food.setOnClickListener { viewModel.getFoodPlacemarks() }
+        hostels.setOnClickListener { viewModel.getHostelsPlacemarks() }
         viewModel.getBuildingsMarks()
     }
 

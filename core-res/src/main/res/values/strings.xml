@@ -9,6 +9,7 @@
     <string name="buildings">Корпуса</string>
     <string name="food">Еда</string>
     <string name="group">Группа</string>
+    <string name="hostels">Общаги</string>
     <string name="wrong_email">Некорректная почта!</string>
     <string name="mail_send">Письмо отправлено</string>
 </resources>

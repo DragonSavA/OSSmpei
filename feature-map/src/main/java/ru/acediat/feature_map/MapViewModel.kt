@@ -27,4 +27,9 @@ class MapViewModel: BaseViewModel() {
         .subscribe({
             placemarks.postValue(it)
         }, {})
+
+    fun getHostelsPlacemarks(): Disposable = repository.getHostels()
+        .subscribe({
+            placemarks.postValue(it)
+        }, {})
 }
