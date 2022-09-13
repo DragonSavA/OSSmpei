@@ -12,6 +12,8 @@ import ru.acediat.core_android.Logger
 import ru.acediat.core_android.OSS_TAG
 import ru.acediat.core_android.ext.checkPermission
 import ru.acediat.core_android.ext.requestPermission
+import ru.acediat.core_navigation.ACTIVITY_AUTH
+import ru.acediat.core_navigation.ActivityNavigator
 import ru.acediat.feature_profile.R
 import ru.acediat.feature_profile.databinding.FragmentSettingsBinding
 import ru.acediat.feature_profile.di.ProfileComponent
@@ -65,6 +67,13 @@ class SettingsFragment: BaseFragment<FragmentSettingsBinding, SettingsViewModel>
         notifySwitch.setOnCheckedChangeListener { _, isEnabled ->
             viewModel.setTasksNotificationEnabled(isEnabled)
         }
+        exitButton.setOnClickListener {
+            viewModel.clearPreferences()
+            if(requireActivity() is ActivityNavigator) {
+                (requireActivity() as ActivityNavigator).navigate(ACTIVITY_AUTH)
+                requireActivity().finish()
+            }
+        }
         groupList.adapter = groupsAdapter.apply {
             setOnGroupClick(::onGroupClick)
             setOnDeleteClick(::onDeleteClick)
@@ -89,7 +98,7 @@ class SettingsFragment: BaseFragment<FragmentSettingsBinding, SettingsViewModel>
 
     private fun setCurrentGroup() = with(binding){
         viewModel.setCurrentGroup(currentGroup.text.toString())
-        showInfoSnackBar(binding.scrollRoot, getString(R.string.group_set))
+        showInfoSnackBar(binding.root, getString(R.string.group_set))
     }
 
     private fun onPhotoTaken(uri: Uri){

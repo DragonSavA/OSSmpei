@@ -30,6 +30,7 @@
     <color name="main_blue">#4B56A0</color>
     <color name="main_blue_dark">#343B6E</color>
     <color name="main_red">#C20932</color>
+    <color name="main_dark_red">#7A0620</color>
     <color name="main_blue_60light">#3C4B56A0</color>
 
     <!-- Text colors -->

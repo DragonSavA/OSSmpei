@@ -52,4 +52,5 @@
     <string name="write_group">Введите группу…</string>
     <string name="change_avatar">Сменить аватар</string>
     <string name="group_set">Расписание установлено</string>
+    <string name="exit">Выйти из аккаунта</string>
 </resources>

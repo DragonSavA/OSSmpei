@@ -98,6 +98,8 @@ class SettingsViewModel : BaseViewModel() {
 
     fun getCurrentGroup() = preferences.getString(CURRENT_GROUP, "") ?: ""
 
+    fun clearPreferences() = preferences.edit().clear().apply()
+
     private fun saveCurrentGroup(group: String) = preferences.edit()
         .putString(CURRENT_GROUP, group)
         .apply()
