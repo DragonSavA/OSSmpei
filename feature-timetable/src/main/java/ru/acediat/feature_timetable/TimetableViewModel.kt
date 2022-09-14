@@ -5,10 +5,7 @@ import android.content.SharedPreferences
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
 import io.reactivex.rxjava3.disposables.Disposable
-import ru.acediat.core_android.BaseViewModel
-import ru.acediat.core_android.CURRENT_GROUP
-import ru.acediat.core_android.IS_AUTH
-import ru.acediat.core_android.PROFILE_ID
+import ru.acediat.core_android.*
 import ru.acediat.feature_timetable.entities.Lesson
 import java.time.LocalDateTime
 import javax.inject.Inject
@@ -21,6 +18,7 @@ class TimetableViewModel : BaseViewModel() {
     private val timetable = MutableLiveData<Timetable>()
     private val isGroupValid = MutableLiveData<Pair<String, Boolean>>()
     private val currentGroup = MutableLiveData<String>()
+    private val favoriteGroups = MutableLiveData<ArrayList<String>>()
     private val error = MutableLiveData<Throwable>()
 
     fun setTimetableObserver(owner : LifecycleOwner, observer : (Timetable) -> Unit) =
@@ -31,6 +29,9 @@ class TimetableViewModel : BaseViewModel() {
 
     fun setCurrentGroupObserver(owner : LifecycleOwner, observer : (String) -> Unit) =
         currentGroup.observe(owner, observer)
+
+    fun setFavoriteGroupsObserver(owner : LifecycleOwner, observer : (ArrayList<String>) -> Unit) =
+        favoriteGroups.observe(owner, observer)
 
     fun setErrorObserver(owner : LifecycleOwner, observer : (Throwable) -> Unit) =
         error.observe(owner, observer)
@@ -60,12 +61,11 @@ class TimetableViewModel : BaseViewModel() {
     fun getCurrentGroup(){
         if(!preferences.getBoolean(IS_AUTH, false)) {
             currentGroup.postValue("")
-            return
         }
 
         val prefsGroup = preferences.getString(CURRENT_GROUP, "") ?: ""
         if(prefsGroup == "")
-            repository.getUserGroup(getUserGroup())
+            repository.getUserGroup(getUserId())
                 .subscribe({
                     currentGroup.postValue(it.group)
                 }, {
@@ -75,6 +75,17 @@ class TimetableViewModel : BaseViewModel() {
             currentGroup.postValue(prefsGroup)
     }
 
+    fun getFavoriteGroups() = repository.getFavoriteGroups(getUserId())
+        .subscribe({
+            val list = ArrayList<String>()
+            it.forEach {
+                list.add(it.group)
+            }
+            favoriteGroups.postValue(list)
+        }, {
+            error.postValue(it)
+        })
+
     fun setCurrentGroup(group: String) = preferences.edit()
         .putString(CURRENT_GROUP, group)
         .apply()
@@ -83,5 +94,7 @@ class TimetableViewModel : BaseViewModel() {
         "${DateNameBuilder.dayName(context, date)}, " +
                 "${date.dayOfMonth} ${DateNameBuilder.ofMonthName(context, date)}"
 
-    private fun getUserGroup() = preferences.getInt(PROFILE_ID, -1)
+    fun isAuth() = preferences.getBoolean(IS_AUTH, false)
+
+    private fun getUserId() = preferences.getInt(PROFILE_ID, 0)
 }

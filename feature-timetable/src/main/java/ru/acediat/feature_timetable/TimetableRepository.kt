@@ -3,6 +3,8 @@ package ru.acediat.feature_timetable
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.core.Single
 import io.reactivex.rxjava3.schedulers.Schedulers
+import ru.acediat.feature_timetable.dtos.FavoriteGroupDTO
+import ru.acediat.feature_timetable.dtos.GroupDTO
 import ru.acediat.feature_timetable.dtos.GroupValidDTO
 import ru.acediat.feature_timetable.dtos.LessonDTO
 import javax.inject.Inject
@@ -23,6 +25,10 @@ class TimetableRepository @Inject constructor(
         .observeOn(Schedulers.io())
 
     fun isGroupValid(group: String) = api.isGroupValid(group)
+        .subscribeOn(Schedulers.io())
+        .observeOn(Schedulers.io())
+
+    fun getFavoriteGroups(userId: Int): Single<List<FavoriteGroupDTO>> = api.getFavoriteGroups(userId)
         .subscribeOn(Schedulers.io())
         .observeOn(Schedulers.io())
 }

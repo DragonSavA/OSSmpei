@@ -29,5 +29,6 @@
 
     <string name="unknown_group_title">Мы не знаем какая у вас группа…</string>
     <string name="unknown_group_description">Введите вашу группу, чтобы мы могли показать вам расписание: </string>
+    <string name="error_group">Некорректная группа!</string>
 
 </resources>

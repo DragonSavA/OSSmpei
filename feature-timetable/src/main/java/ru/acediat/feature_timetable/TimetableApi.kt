@@ -6,6 +6,7 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 import ru.acediat.core_network.EndpointUrl
 import ru.acediat.core_network.OSS_URL
+import ru.acediat.feature_timetable.dtos.FavoriteGroupDTO
 import ru.acediat.feature_timetable.dtos.GroupDTO
 import ru.acediat.feature_timetable.dtos.GroupValidDTO
 import ru.acediat.feature_timetable.dtos.LessonDTO
@@ -29,4 +30,9 @@ interface TimetableApi {
     fun isGroupValid(
         @Query("group") group : String
     ) : Single<GroupValidDTO>
+
+    @GET("/Android/get_saved_groups.php")
+    fun getFavoriteGroups(
+        @Query("user_id") userId: Int
+    ): Single<List<FavoriteGroupDTO>>
 }

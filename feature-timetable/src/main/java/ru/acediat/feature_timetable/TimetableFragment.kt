@@ -2,9 +2,12 @@ package ru.acediat.feature_timetable
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.PopupMenu
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import ru.acediat.core_android.BaseFragment
+import ru.acediat.core_android.Logger
+import ru.acediat.core_android.OSS_TAG
 import ru.acediat.core_android.SimpleOnPageChangeListener
 import ru.acediat.core_utils.Time
 import ru.acediat.feature_timetable.databinding.FragmentTimetableBinding
@@ -18,6 +21,8 @@ class TimetableFragment: BaseFragment<FragmentTimetableBinding, TimetableViewMod
     override val viewModel : TimetableViewModel = ViewModelProvider
         .NewInstanceFactory()
         .create(TimetableViewModel::class.java)
+
+    private lateinit var groupsMenu: PopupMenu
 
     private val calendarLauncher = registerForActivityResult(CalendarContract()){
         it?.let {
@@ -51,6 +56,7 @@ class TimetableFragment: BaseFragment<FragmentTimetableBinding, TimetableViewMod
         setTimetableObserver(viewLifecycleOwner, ::onTimetableReceived)
         setOnGroupValidObserver(viewLifecycleOwner, ::onGroupValidReceived)
         setCurrentGroupObserver(viewLifecycleOwner, ::onGroupReceived)
+        setFavoriteGroupsObserver(viewLifecycleOwner, ::onFavoriteGroupsReceived)
         setErrorObserver(viewLifecycleOwner, ::onError)
     }
 
@@ -64,10 +70,19 @@ class TimetableFragment: BaseFragment<FragmentTimetableBinding, TimetableViewMod
         daysTabs.setupWithViewPager(daysPager, true)
         dateText.text = viewModel.buildDateText(requireContext(), Time.currentDate())
         calendarButton.setOnClickListener{ startCalendar() }
+        groupsMenu = PopupMenu(requireContext(), binding.currentGroup).apply {
+            setOnMenuItemClickListener {
+                viewModel.isGroupValid(it.title.toString())
+                true
+            }
+        }
+        currentGroup.setOnClickListener { groupsMenu.show() }
     }
 
     override fun refresh(): Unit = with(viewModel){
         getCurrentGroup()
+        if(viewModel.isAuth())
+            getFavoriteGroups()
     }
 
     private fun onSetGroupClick(group: String){
@@ -90,7 +105,14 @@ class TimetableFragment: BaseFragment<FragmentTimetableBinding, TimetableViewMod
         pagerAdapter.notifyDataSetChanged()
         refresh()
     }else{
-        //TODO: Уведомление о неверно вписанной группе
+        showErrorSnackBar(binding.root, getString(R.string.error_group))
+    }
+
+    private fun onFavoriteGroupsReceived(groups: ArrayList<String>){
+        groupsMenu.menu.clear()
+        for(i in groups.indices){
+            groupsMenu.menu.add(0, groups[i].hashCode(), i, groups[i])
+        }
     }
 
     private fun startCalendar() = calendarLauncher.launch(Time.currentDate())
