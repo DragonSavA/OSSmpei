@@ -91,9 +91,10 @@ class TimetableFragment: BaseFragment<FragmentTimetableBinding, TimetableViewMod
 
     private fun onGroupReceived(group: String){
         binding.currentGroup.text = group
-        if(group != "" && group != "Другое")
+        if(group != "" && group != "Другое") {
+            pagerAdapter.isEmptyGroup = false
             viewModel.observeLessons(pagerAdapter.getFirstDate(), pagerAdapter.getLastDate())
-        else {
+        }else {
             pagerAdapter.isEmptyGroup = true
             pagerAdapter.notifyDataSetChanged()
         }

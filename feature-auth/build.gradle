@@ -36,6 +36,7 @@ android {
 dependencies {
 
     implementation project(':core-res')
+    implementation project(':core-utils')
     implementation project(':core-android')
     implementation project(':core-network')
 

@@ -8,6 +8,8 @@ import android.widget.CompoundButton
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.ViewModelProvider
 import okhttp3.ResponseBody
+import ru.acediat.core_android.Logger
+import ru.acediat.core_android.OSS_TAG
 import ru.acediat.core_android.ext.showError
 import ru.acediat.feature_auth.RegistrationViewModel
 import ru.acediat.feature_auth.databinding.ActivityRegistrationBinding
@@ -53,6 +55,7 @@ class RegistrationActivity : AppCompatActivity() {
                 viewModel.signUp(email, name, surname, gender, group, pass)
             else
                 forEach {
+                    Logger.d(OSS_TAG, "error: $it")
                     if(it != "")
                         showError(binding.root, it)
                 }

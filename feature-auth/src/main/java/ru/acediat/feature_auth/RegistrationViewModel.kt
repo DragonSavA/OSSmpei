@@ -2,12 +2,11 @@ package ru.acediat.feature_auth
 
 import android.widget.CheckBox
 import android.widget.EditText
-import android.widget.RadioButton
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.google.android.material.chip.Chip
 import okhttp3.ResponseBody
+import ru.acediat.core_utils.removeSpaces
 import ru.acediat.feature_auth.di.AuthComponent
 import javax.inject.Inject
 
@@ -40,7 +39,10 @@ class RegistrationViewModel : ViewModel() {
         gender: String,
         group: String,
         password: String
-    ) = repository.signUp(email, name, surname, gender, group, password).subscribe({
+    ) = repository.signUp(
+        email.removeSpaces(),
+        name.removeSpaces(),
+        surname.removeSpaces(), gender, group, password).subscribe({
         registrationFinished.postValue(it)
     }, {
         error.postValue(it)
@@ -56,9 +58,9 @@ class RegistrationViewModel : ViewModel() {
         firstPass: String,
         secondPass: String
     ): ArrayList<String> = arrayListOf(
-        isEmailValid(email),
-        isNameValid(name),
-        isNameValid(surname),
+        isEmailValid(email.removeSpaces()),
+        isNameValid(name.removeSpaces()),
+        isNameValid(surname.removeSpaces()),
         isPasswordValid(firstPass, secondPass),
         isGenderValid(maleChecked, femaleChecked)
     ).apply {
